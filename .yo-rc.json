@@ -1,0 +1,43 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "net.jogueonline",
+      "nativeLanguage": "pt-br"
+    },
+    "jhipsterVersion": "6.8.0",
+    "applicationType": "monolith",
+    "baseName": "jogueOnline",
+    "packageName": "net.jogueonline",
+    "packageFolder": "net/jogueonline",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "Y2UyOTQ5NDQwODE4NDVmYmY4YjA3YzY3ZDBhZmRlM2U2OTQ3OGUzN2RjNTE1YzNmMmE0ZmY2MjlkY2MzNjg5OGI2ZjI4MjAxZDRlZDRlZmE4Y2VjMzI5ZDE2YzViMGVjMmYzMDQxNGU5ZmM3MmFhZDkxOGU4Y2MzMzVkODEyODA=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "creationTimestamp": 1590417262680,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "pt-br",
+    "languages": ["pt-br"],
+    "blueprints": []
+  }
+}
