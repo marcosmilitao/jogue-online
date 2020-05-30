@@ -31,7 +31,7 @@ export class MainComponent implements OnInit {
         this.updateTitle();
       }
       if (event instanceof NavigationError && event.error.status === 404) {
-        this.router.navigate(['/404']);
+        this.router.navigate(['404']);
       }
     });
 

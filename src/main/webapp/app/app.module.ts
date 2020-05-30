@@ -7,6 +7,7 @@ import { JogueOnlineCoreModule } from 'app/core/core.module';
 import { JogueOnlineAppRoutingModule } from './app-routing.module';
 import { JogueOnlineHomeModule } from './home/home.module';
 import { JogueOnlineEntityModule } from './entities/entity.module';
+import { JogueOnlineLoginModule } from 'app/login/login.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { MainComponent } from './layouts/main/main.component';
 import { NavbarComponent } from './layouts/navbar/navbar.component';
@@ -21,6 +22,7 @@ import { ErrorComponent } from './layouts/error/error.component';
     JogueOnlineSharedModule,
     JogueOnlineCoreModule,
     JogueOnlineHomeModule,
+    JogueOnlineLoginModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     JogueOnlineEntityModule,
     JogueOnlineAppRoutingModule
