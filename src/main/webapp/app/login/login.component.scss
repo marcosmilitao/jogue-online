@@ -1,16 +1,23 @@
 #login-container {
-  background-image: linear-gradient(to bottom right, #242452, #3d6793, #d2d2d2);
+  //background-image: linear-gradient(to bottom right, #242452, #3d6793, #d2d2d2);
+  background-image: linear-gradient(to bottom right, #020204, #397bbf, #000000);
   position: absolute;
   height: auto;
   bottom: 0;
   top: 0;
   left: 0;
   right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
-.form {
-  padding: 0px 15px 40px 15px;
+#login-container div {
+  //width: 100px;
+  //height: 100px;
 }
+//.form {
+//  padding: 0px 15px 40px 15px;
+//}
 .hipster {
   display: flex;
   width: auto;
@@ -29,4 +36,37 @@
     background: url('../../content/images/jogueonline_logo_app.png') no-repeat center top;
     background-size: contain;
   }
+}
+
+.card {
+  background-color: rgba(45, 45, 45, 0.22);
+
+  margin: 0 auto; /* Added */
+  float: none; /* Added */
+  margin-bottom: 10px; /* Added */
+}
+
+.form {
+  width: 100%;
+  padding: 15px;
+  margin: 15px auto;
+}
+
+input {
+  background-color: #0a0a0a00 !important;
+  color: #ffffff !important;
+}
+
+#password {
+  background-color: #0a0a0a00 !important;
+  color: #ffffff !important;
+}
+
+.form-control {
+  background-color: #0a0a0a00 !important;
+  color: #ffffff !important;
+}
+
+#login-subimit-button {
+  width: 100%;
 }
