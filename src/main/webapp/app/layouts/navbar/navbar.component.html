@@ -1,7 +1,8 @@
 <nav *jhiHasAnyAuthority="'ROLE_USER'" class="navbar navbar-dark navbar-expand-md bg-dark">
     <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">
         <span class="logo-img"></span>
-        <span jhiTranslate="global.title" class="navbar-title">JogueOnline</span> <span class="navbar-version">{{ version }}</span>
+        <span jhiTranslate="global.title" class="navbar-title">Jogue Online</span>
+<!--        <span class="navbar-version">{{ version }}</span>-->
     </a>
     <a class="navbar-toggler d-lg-none" href="javascript:void(0);" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbar()">
         <fa-icon icon="bars"></fa-icon>
@@ -17,10 +18,10 @@
                 </a>
             </li>
             <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
-            <li  *jhiHasAnyAuthority="'ROLE_ADMIN'" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <li  *jhiHasAnyAuthority="'ROLE_OPERADOR'" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="cadastro-menu">
                     <span>
-                        <fa-icon icon="faTasks"></fa-icon>
+                        <fa-icon icon="tasks"></fa-icon>
                         <span>
                             Cadastro
                         </span>
@@ -28,6 +29,162 @@
                 </a>
                 <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
                     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
+                    <li>
+                        <a class="dropdown-item"  routerLinkActive="active" (click)="collapseNavbar()">
+                            <fa-icon icon="flag" fixedWidth="true"></fa-icon>
+                            <span >AE Ajuste de Odds Região</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item"  routerLinkActive="active" (click)="collapseNavbar()">
+                            <fa-icon icon="flag" fixedWidth="true"></fa-icon>
+                            <span >Feriados</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item"  routerLinkActive="active" (click)="collapseNavbar()">
+                            <fa-icon icon="flag" fixedWidth="true"></fa-icon>
+                            <span >Promotor</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item"  routerLinkActive="active" (click)="collapseNavbar()">
+                            <fa-icon icon="flag" fixedWidth="true"></fa-icon>
+                            <span >Revendedor</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item"  routerLinkActive="active" (click)="collapseNavbar()">
+                            <fa-icon icon="flag" fixedWidth="true"></fa-icon>
+                            <span >Serial dos Terminais</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item"  routerLinkActive="active" (click)="collapseNavbar()">
+                            <fa-icon icon="flag" fixedWidth="true"></fa-icon>
+                            <span >Supervisor</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item"  routerLinkActive="active" (click)="collapseNavbar()">
+                            <fa-icon icon="flag" fixedWidth="true"></fa-icon>
+                            <span >Terminal</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li  *jhiHasAnyAuthority="'ROLE_BANCA'" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="consultas-menu">
+                    <span>
+                        <fa-icon icon="tasks"></fa-icon>
+                        <span>
+                            Consultas
+                        </span>
+                    </span>
+                </a>
+                <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+                    <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
+                    <li>
+                        <a class="dropdown-item"  routerLinkActive="active" (click)="collapseNavbar()">
+                            <fa-icon icon="flag" fixedWidth="true"></fa-icon>
+                            <span >Cotações</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item"  routerLinkActive="active" (click)="collapseNavbar()">
+                            <fa-icon icon="flag" fixedWidth="true"></fa-icon>
+                            <span >Movimentação Raspadinha</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item"  routerLinkActive="active" (click)="collapseNavbar()">
+                            <fa-icon icon="flag" fixedWidth="true"></fa-icon>
+                            <span >Pré-Descarga Banca</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item"  routerLinkActive="active" (click)="collapseNavbar()">
+                            <fa-icon icon="flag" fixedWidth="true"></fa-icon>
+                            <span >Senha Emissão de Caixa</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item"  routerLinkActive="active" (click)="collapseNavbar()">
+                            <fa-icon icon="flag" fixedWidth="true"></fa-icon>
+                            <span >Transmissões</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li  *jhiHasAnyAuthority="'ROLE_OPERADOR'" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="lancamentos-menu">
+                    <span>
+                        <fa-icon icon="tasks"></fa-icon>
+                        <span>
+                            Lançamentos
+                        </span>
+                    </span>
+                </a>
+                <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+                    <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
+                    <li>
+                        <a class="dropdown-item"  routerLinkActive="active" (click)="collapseNavbar()">
+                            <fa-icon icon="flag" fixedWidth="true"></fa-icon>
+                            <span >Caixa Crédito</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item"  routerLinkActive="active" (click)="collapseNavbar()">
+                            <fa-icon icon="flag" fixedWidth="true"></fa-icon>
+                            <span >Caixa Débito</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item"  routerLinkActive="active" (click)="collapseNavbar()">
+                            <fa-icon icon="flag" fixedWidth="true"></fa-icon>
+                            <span >Cancelamentos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item"  routerLinkActive="active" (click)="collapseNavbar()">
+                            <fa-icon icon="flag" fixedWidth="true"></fa-icon>
+                            <span >Despesas Administrativas</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item"  routerLinkActive="active" (click)="collapseNavbar()">
+                            <fa-icon icon="flag" fixedWidth="true"></fa-icon>
+                            <span >Pré-Caixa</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLinkActive="active" (click)="collapseNavbar()">
+                            <fa-icon icon="flag" fixedWidth="true"></fa-icon>
+                            <span >Resultados</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li  *jhiHasAnyAuthority="'ROLE_OPERADOR'" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="relatorio-menu">
+                    <span>
+                        <fa-icon icon="tasks"></fa-icon>
+                        <span>
+                            Relatório
+                        </span>
+                    </span>
+                </a>
+                <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+                    <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
+                    <li>
+                        <a class="dropdown-item" routerLinkActive="active" (click)="collapseNavbar()">
+                            <fa-icon icon="user" fixedWidth="true"></fa-icon>
+                            <span >Descarga da Banca</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
 
