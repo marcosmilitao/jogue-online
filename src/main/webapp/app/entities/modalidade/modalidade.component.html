@@ -1,0 +1,99 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jogueOnlineApp.modalidade.home.title">Modalidades</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-modalidade" [routerLink]="['/modalidade/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="jogueOnlineApp.modalidade.home.createLabel">
+            Create a new Modalidade
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="modalidades?.length === 0">
+        <span jhiTranslate="jogueOnlineApp.modalidade.home.notFound">No modalidades found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="modalidades?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.modalidade.codigo">Codigo</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.modalidade.nome">Nome</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.modalidade.menorPalpite">Menor Palpite</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.modalidade.maiorPalpite">Maior Palpite</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.modalidade.qtdePalpites">Qtde Palpites</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.modalidade.qtdeMinimaPalpites">Qtde Minima Palpites</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.modalidade.qtdeCaracteres">Qtde Caracteres</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.modalidade.qtdeMinimaCaracteres">Qtde Minima Caracteres</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.modalidade.menorValor">Menor Valor</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.modalidade.maiorValor">Maior Valor</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.modalidade.maiorValorExcessao">Maior Valor Excessao</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.modalidade.repeticao">Repeticao</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.modalidade.mascara">Mascara</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.modalidade.palpiteMultiplo">Palpite Multiplo</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.modalidade.palpiteMultiploTerminal">Palpite Multiplo Terminal</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.modalidade.ordenar">Ordenar</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.modalidade.permitePalpiteAleatorio">Permite Palpite Aleatorio</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.modalidade.premio">Premio</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let modalidade of modalidades ;trackBy: trackId">
+                    <td><a [routerLink]="['/modalidade', modalidade.id, 'view']">{{ modalidade.id }}</a></td>
+                    <td>{{ modalidade.codigo }}</td>
+                    <td>{{ modalidade.nome }}</td>
+                    <td>{{ modalidade.menorPalpite }}</td>
+                    <td>{{ modalidade.maiorPalpite }}</td>
+                    <td>{{ modalidade.qtdePalpites }}</td>
+                    <td>{{ modalidade.qtdeMinimaPalpites }}</td>
+                    <td>{{ modalidade.qtdeCaracteres }}</td>
+                    <td>{{ modalidade.qtdeMinimaCaracteres }}</td>
+                    <td>{{ modalidade.menorValor }}</td>
+                    <td>{{ modalidade.maiorValor }}</td>
+                    <td>{{ modalidade.maiorValorExcessao }}</td>
+                    <td>{{ modalidade.repeticao }}</td>
+                    <td>{{ modalidade.mascara }}</td>
+                    <td>{{ modalidade.palpiteMultiplo }}</td>
+                    <td>{{ modalidade.palpiteMultiploTerminal }}</td>
+                    <td>{{ modalidade.ordenar }}</td>
+                    <td>{{ modalidade.permitePalpiteAleatorio }}</td>
+                    <td>
+                        <span *ngFor="let premio of modalidade.premios; let last = last">
+                            <a class="form-control-static" [routerLink]="['/premio', premio?.id, 'view']">{{ premio.codigo }}</a>{{ last ? '' : ', ' }}
+                        </span>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/modalidade', modalidade.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/modalidade', modalidade.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(modalidade)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

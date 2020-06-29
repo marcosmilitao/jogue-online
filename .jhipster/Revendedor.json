@@ -1,0 +1,79 @@
+{
+    "name": "Revendedor",
+    "fields": [
+        {
+            "fieldName": "nome",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "cidade",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "estado",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "telefone",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tipo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tipoColetor",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "serialColetor",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nomeComercial",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "situacao",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "saldo",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "senha",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "data",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "promotor",
+            "otherEntityRelationshipName": "revendedor",
+            "relationshipName": "promotor",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200616133700",
+    "entityTableName": "revendedor",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

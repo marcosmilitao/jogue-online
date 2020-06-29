@@ -1,0 +1,89 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jogueOnlineApp.loteria.home.title">Loterias</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-loteria" [routerLink]="['/loteria/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="jogueOnlineApp.loteria.home.createLabel">
+            Create a new Loteria
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="loterias?.length === 0">
+        <span jhiTranslate="jogueOnlineApp.loteria.home.notFound">No loterias found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="loterias?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.loteria.nome">Nome</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.loteria.horaEncerramento">Hora Encerramento</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.loteria.premiacaoInicio">Premiacao Inicio</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.loteria.status">Status</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.loteria.limitePremio">Limite Premio</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.loteria.data">Data</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.loteria.codigo">Codigo</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.loteria.descricao">Descricao</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.loteria.hora">Hora</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.loteria.minuto">Minuto</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.loteria.disponivel">Disponivel</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.loteria.descricaoCompleta">Descricao Completa</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.loteria.diasFuncionamento">Dias Funcionamento</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let loteria of loterias ;trackBy: trackId">
+                    <td><a [routerLink]="['/loteria', loteria.id, 'view']">{{ loteria.id }}</a></td>
+                    <td>{{ loteria.nome }}</td>
+                    <td>{{ loteria.horaEncerramento }}</td>
+                    <td>{{ loteria.premiacaoInicio }}</td>
+                    <td>{{ loteria.status }}</td>
+                    <td>{{ loteria.limitePremio }}</td>
+                    <td>{{ loteria.data | date:'medium' }}</td>
+                    <td>{{ loteria.codigo }}</td>
+                    <td>{{ loteria.descricao }}</td>
+                    <td>{{ loteria.hora }}</td>
+                    <td>{{ loteria.minuto }}</td>
+                    <td>{{ loteria.disponivel }}</td>
+                    <td>{{ loteria.descricaoCompleta }}</td>
+                    <td>
+                        <span *ngFor="let diasFuncionamento of loteria.diasFuncionamentos; let last = last">
+                            <a class="form-control-static" [routerLink]="['/dias-funcionamento', diasFuncionamento?.id, 'view']">{{ diasFuncionamento.dia }}</a>{{ last ? '' : ', ' }}
+                        </span>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/loteria', loteria.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/loteria', loteria.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(loteria)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

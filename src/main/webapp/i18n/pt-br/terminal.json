@@ -1,0 +1,39 @@
+{
+  "jogueOnlineApp": {
+    "terminal": {
+      "home": {
+        "title": "Terminals",
+        "createLabel": "Criar novo Terminal",
+        "createOrEditLabel": "Criar ou editar Terminal",
+        "notFound": "Nenhum Terminal encontrado"
+      },
+      "created": "Um novo Terminal foi criado com o identificador {{ param }}",
+      "updated": "Um Terminal foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Terminal foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Terminal {{ id }}?"
+      },
+      "detail": {
+        "title": "Terminal"
+      },
+      "codigoTerminal": "Codigo Terminal",
+      "telefoneChipe": "Telefone Chipe",
+      "revendedor": "Revendedor",
+      "serialChip": "Serial Chip",
+      "menssagem": "Menssagem",
+      "senhaComunicacao": "Senha Comunicacao",
+      "dataInicio": "Data Inicio",
+      "situacao": "Situacao",
+      "versaoTerminal": "Versao Terminal",
+      "mudaCodigo": "Muda Codigo",
+      "numeroTelefoneProvedor": "Numero Telefone Provedor",
+      "dataEntrada": "Data Entrada",
+      "numeroFonte": "Numero Fonte",
+      "codigoAutorizacao": "Codigo Autorizacao",
+      "serialTerminal": "Serial Terminal",
+      "email": "Email",
+      "codigoBanca": "Codigo Banca",
+      "banca": "Banca"
+    }
+  }
+}

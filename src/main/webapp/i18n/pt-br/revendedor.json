@@ -1,0 +1,34 @@
+{
+  "jogueOnlineApp": {
+    "revendedor": {
+      "home": {
+        "title": "Revendedors",
+        "createLabel": "Criar novo Revendedor",
+        "createOrEditLabel": "Criar ou editar Revendedor",
+        "notFound": "Nenhum Revendedor encontrado"
+      },
+      "created": "Um novo Revendedor foi criado com o identificador {{ param }}",
+      "updated": "Um Revendedor foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Revendedor foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Revendedor {{ id }}?"
+      },
+      "detail": {
+        "title": "Revendedor"
+      },
+      "nome": "Nome",
+      "cidade": "Cidade",
+      "estado": "Estado",
+      "telefone": "Telefone",
+      "tipo": "Tipo",
+      "tipoColetor": "Tipo Coletor",
+      "serialColetor": "Serial Coletor",
+      "nomeComercial": "Nome Comercial",
+      "situacao": "Situacao",
+      "saldo": "Saldo",
+      "senha": "Senha",
+      "data": "Data",
+      "promotor": "Promotor"
+    }
+  }
+}

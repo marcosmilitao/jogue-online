@@ -1,0 +1,96 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="banca">
+            <h2><span jhiTranslate="jogueOnlineApp.banca.detail.title">Banca</span> {{ banca.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jogueOnlineApp.banca.codigo">Codigo</span></dt>
+                <dd>
+                    <span>{{ banca.codigo }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.banca.nome">Nome</span></dt>
+                <dd>
+                    <span>{{ banca.nome }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.banca.cidade">Cidade</span></dt>
+                <dd>
+                    <span>{{ banca.cidade }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.banca.telefone">Telefone</span></dt>
+                <dd>
+                    <span>{{ banca.telefone }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.banca.estado">Estado</span></dt>
+                <dd>
+                    <span>{{ banca.estado }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.banca.limiteDescarga">Limite Descarga</span></dt>
+                <dd>
+                    <span>{{ banca.limiteDescarga }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.banca.limitePremiacao">Limite Premiacao</span></dt>
+                <dd>
+                    <span>{{ banca.limitePremiacao }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.banca.limiteBaixaAutomatica">Limite Baixa Automatica</span></dt>
+                <dd>
+                    <span>{{ banca.limiteBaixaAutomatica }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.banca.limiteHorarioEncerramento">Limite Horario Encerramento</span></dt>
+                <dd>
+                    <span>{{ banca.limiteHorarioEncerramento }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.banca.mensagemPule1">Mensagem Pule 1</span></dt>
+                <dd>
+                    <span>{{ banca.mensagemPule1 }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.banca.mensagemPule2">Mensagem Pule 2</span></dt>
+                <dd>
+                    <span>{{ banca.mensagemPule2 }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.banca.mensagemPule3">Mensagem Pule 3</span></dt>
+                <dd>
+                    <span>{{ banca.mensagemPule3 }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.banca.data">Data</span></dt>
+                <dd>
+                    <span>{{ banca.data }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.banca.modalidade">Modalidade</span></dt>
+                <dd>
+                    <span *ngFor="let modalidade of banca.modalidades; let last = last">
+                        <a [routerLink]="['/modalidade', modalidade?.id, 'view']">{{ modalidade.nome }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.banca.loteria">Loteria</span></dt>
+                <dd>
+                    <span *ngFor="let loteria of banca.loterias; let last = last">
+                        <a [routerLink]="['/loteria', loteria?.id, 'view']">{{ loteria.nome }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.banca.customUser">Custom User</span></dt>
+                <dd>
+                    <span *ngFor="let customUser of banca.customUsers; let last = last">
+                        <a [routerLink]="['/custom-user', customUser?.id, 'view']">{{ customUser.login }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/banca', banca.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

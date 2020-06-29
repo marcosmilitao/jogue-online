@@ -1,0 +1,103 @@
+{
+    "name": "Terminal",
+    "fields": [
+        {
+            "fieldName": "codigoTerminal",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "telefoneChipe",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "revendedor",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "serialChip",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "menssagem",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "senhaComunicacao",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dataInicio",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "situacao",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "versaoTerminal",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mudaCodigo",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "numeroTelefoneProvedor",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "dataEntrada",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "numeroFonte",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "codigoAutorizacao",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "serialTerminal",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "codigoBanca",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "banca",
+            "otherEntityRelationshipName": "cadastroTerminal",
+            "relationshipName": "banca",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200616133800",
+    "javadoc": "entity MovimentacaoCliente{\\ntipo String,\\nvalor BigDecimal,\\ndataAtualizacao Instant,\\ntipoMovimentacao TipoMovimento\\n}",
+    "entityTableName": "terminal",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

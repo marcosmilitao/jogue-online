@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="promotor">
+            <h2><span jhiTranslate="jogueOnlineApp.promotor.detail.title">Promotor</span> {{ promotor.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jogueOnlineApp.promotor.codigo">Codigo</span></dt>
+                <dd>
+                    <span>{{ promotor.codigo }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.promotor.nome">Nome</span></dt>
+                <dd>
+                    <span>{{ promotor.nome }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.promotor.cidade">Cidade</span></dt>
+                <dd>
+                    <span>{{ promotor.cidade }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.promotor.estado">Estado</span></dt>
+                <dd>
+                    <span>{{ promotor.estado }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.promotor.telefone">Telefone</span></dt>
+                <dd>
+                    <span>{{ promotor.telefone }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.promotor.comissao">Comissao</span></dt>
+                <dd>
+                    <span>{{ promotor.comissao }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.promotor.data">Data</span></dt>
+                <dd>
+                    <span>{{ promotor.data }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.promotor.banca">Banca</span></dt>
+                <dd>
+                    <div *ngIf="promotor.banca">
+                        <a [routerLink]="['/banca', promotor.banca?.id, 'view']">{{ promotor.banca?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/promotor', promotor.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

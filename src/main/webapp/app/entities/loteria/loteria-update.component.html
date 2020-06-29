@@ -1,0 +1,164 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-loteria-heading" jhiTranslate="jogueOnlineApp.loteria.home.createOrEditLabel">Create or edit a Loteria</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.loteria.nome" for="field_nome">Nome</label>
+                    <input type="text" class="form-control" name="nome" id="field_nome"
+                           formControlName="nome"/>
+                    <div *ngIf="editForm.get('nome')!.invalid && (editForm.get('nome')!.dirty || editForm.get('nome')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nome')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.loteria.horaEncerramento" for="field_horaEncerramento">Hora Encerramento</label>
+                    <input type="text" class="form-control" name="horaEncerramento" id="field_horaEncerramento"
+                           formControlName="horaEncerramento"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.loteria.premiacaoInicio" for="field_premiacaoInicio">Premiacao Inicio</label>
+                    <input type="text" class="form-control" name="premiacaoInicio" id="field_premiacaoInicio"
+                           formControlName="premiacaoInicio"/>
+                    <div *ngIf="editForm.get('premiacaoInicio')!.invalid && (editForm.get('premiacaoInicio')!.dirty || editForm.get('premiacaoInicio')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('premiacaoInicio')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.loteria.status" for="field_status">Status</label>
+                    <input type="checkbox" class="form-control" name="status" id="field_status"
+                           formControlName="status"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.loteria.limitePremio" for="field_limitePremio">Limite Premio</label>
+                    <input type="number" class="form-control" name="limitePremio" id="field_limitePremio"
+                           formControlName="limitePremio"/>
+                    <div *ngIf="editForm.get('limitePremio')!.invalid && (editForm.get('limitePremio')!.dirty || editForm.get('limitePremio')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('limitePremio')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('limitePremio')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.loteria.data" for="field_data">Data</label>
+                    <div class="d-flex">
+                        <input id="field_data" type="datetime-local" class="form-control" name="data" formControlName="data" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.loteria.codigo" for="field_codigo">Codigo</label>
+                    <input type="number" class="form-control" name="codigo" id="field_codigo"
+                           formControlName="codigo"/>
+                    <div *ngIf="editForm.get('codigo')!.invalid && (editForm.get('codigo')!.dirty || editForm.get('codigo')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('codigo')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('codigo')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.loteria.descricao" for="field_descricao">Descricao</label>
+                    <input type="text" class="form-control" name="descricao" id="field_descricao"
+                           formControlName="descricao"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.loteria.hora" for="field_hora">Hora</label>
+                    <input type="number" class="form-control" name="hora" id="field_hora"
+                           formControlName="hora"/>
+                    <div *ngIf="editForm.get('hora')!.invalid && (editForm.get('hora')!.dirty || editForm.get('hora')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('hora')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('hora')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.loteria.minuto" for="field_minuto">Minuto</label>
+                    <input type="number" class="form-control" name="minuto" id="field_minuto"
+                           formControlName="minuto"/>
+                    <div *ngIf="editForm.get('minuto')!.invalid && (editForm.get('minuto')!.dirty || editForm.get('minuto')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('minuto')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('minuto')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.loteria.disponivel" for="field_disponivel">Disponivel</label>
+                    <input type="checkbox" class="form-control" name="disponivel" id="field_disponivel"
+                           formControlName="disponivel"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.loteria.descricaoCompleta" for="field_descricaoCompleta">Descricao Completa</label>
+                    <input type="text" class="form-control" name="descricaoCompleta" id="field_descricaoCompleta"
+                           formControlName="descricaoCompleta"/>
+                    <div *ngIf="editForm.get('descricaoCompleta')!.invalid && (editForm.get('descricaoCompleta')!.dirty || editForm.get('descricaoCompleta')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('descricaoCompleta')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="jogueOnlineApp.loteria.diasFuncionamento" for="field_diasFuncionamentos">Dias Funcionamento</label>
+                    <select class="form-control" id="field_diasFuncionamentos" multiple name="diasFuncionamentos" formControlName="diasFuncionamentos">
+                        <option [ngValue]="getSelected(editForm.get('diasFuncionamentos')!.value, diasFuncionamentoOption)" *ngFor="let diasFuncionamentoOption of diasfuncionamentos; trackBy: trackById">{{ diasFuncionamentoOption.dia }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

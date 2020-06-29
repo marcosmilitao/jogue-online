@@ -1,0 +1,104 @@
+{
+    "name": "Loteria",
+    "fields": [
+        {
+            "fieldName": "nome",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "unique"
+            ]
+        },
+        {
+            "fieldName": "horaEncerramento",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "premiacaoInicio",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "limitePremio",
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "data",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "codigo",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "descricao",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "hora",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "minuto",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "disponivel",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "descricaoCompleta",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "diasFuncionamento",
+            "otherEntityRelationshipName": "loteria",
+            "relationshipName": "diasFuncionamento",
+            "otherEntityField": "dia",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "banca",
+            "otherEntityRelationshipName": "loteria",
+            "relationshipName": "banca",
+            "otherEntityField": "nome",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20200616134100",
+    "entityTableName": "loteria",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

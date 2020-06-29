@@ -1,0 +1,89 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jogueOnlineApp.revendedor.home.title">Revendedors</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-revendedor" [routerLink]="['/revendedor/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="jogueOnlineApp.revendedor.home.createLabel">
+            Create a new Revendedor
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="revendedors?.length === 0">
+        <span jhiTranslate="jogueOnlineApp.revendedor.home.notFound">No revendedors found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="revendedors?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.revendedor.nome">Nome</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.revendedor.cidade">Cidade</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.revendedor.estado">Estado</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.revendedor.telefone">Telefone</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.revendedor.tipo">Tipo</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.revendedor.tipoColetor">Tipo Coletor</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.revendedor.serialColetor">Serial Coletor</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.revendedor.nomeComercial">Nome Comercial</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.revendedor.situacao">Situacao</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.revendedor.saldo">Saldo</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.revendedor.senha">Senha</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.revendedor.data">Data</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.revendedor.promotor">Promotor</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let revendedor of revendedors ;trackBy: trackId">
+                    <td><a [routerLink]="['/revendedor', revendedor.id, 'view']">{{ revendedor.id }}</a></td>
+                    <td>{{ revendedor.nome }}</td>
+                    <td>{{ revendedor.cidade }}</td>
+                    <td>{{ revendedor.estado }}</td>
+                    <td>{{ revendedor.telefone }}</td>
+                    <td>{{ revendedor.tipo }}</td>
+                    <td>{{ revendedor.tipoColetor }}</td>
+                    <td>{{ revendedor.serialColetor }}</td>
+                    <td>{{ revendedor.nomeComercial }}</td>
+                    <td>{{ revendedor.situacao }}</td>
+                    <td>{{ revendedor.saldo }}</td>
+                    <td>{{ revendedor.senha }}</td>
+                    <td>{{ revendedor.data | date:'medium' }}</td>
+                    <td>
+                        <div *ngIf="revendedor.promotor">
+                            <a [routerLink]="['/promotor', revendedor.promotor?.id, 'view']" >{{ revendedor.promotor?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/revendedor', revendedor.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/revendedor', revendedor.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(revendedor)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

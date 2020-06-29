@@ -1,0 +1,100 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="terminal">
+            <h2><span jhiTranslate="jogueOnlineApp.terminal.detail.title">Terminal</span> {{ terminal.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jogueOnlineApp.terminal.codigoTerminal">Codigo Terminal</span></dt>
+                <dd>
+                    <span>{{ terminal.codigoTerminal }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.terminal.telefoneChipe">Telefone Chipe</span></dt>
+                <dd>
+                    <span>{{ terminal.telefoneChipe }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.terminal.revendedor">Revendedor</span></dt>
+                <dd>
+                    <span>{{ terminal.revendedor }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.terminal.serialChip">Serial Chip</span></dt>
+                <dd>
+                    <span>{{ terminal.serialChip }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.terminal.menssagem">Menssagem</span></dt>
+                <dd>
+                    <span>{{ terminal.menssagem }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.terminal.senhaComunicacao">Senha Comunicacao</span></dt>
+                <dd>
+                    <span>{{ terminal.senhaComunicacao }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.terminal.dataInicio">Data Inicio</span></dt>
+                <dd>
+                    <span>{{ terminal.dataInicio }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.terminal.situacao">Situacao</span></dt>
+                <dd>
+                    <span>{{ terminal.situacao }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.terminal.versaoTerminal">Versao Terminal</span></dt>
+                <dd>
+                    <span>{{ terminal.versaoTerminal }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.terminal.mudaCodigo">Muda Codigo</span></dt>
+                <dd>
+                    <span>{{ terminal.mudaCodigo }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.terminal.numeroTelefoneProvedor">Numero Telefone Provedor</span></dt>
+                <dd>
+                    <span>{{ terminal.numeroTelefoneProvedor }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.terminal.dataEntrada">Data Entrada</span></dt>
+                <dd>
+                    <span>{{ terminal.dataEntrada }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.terminal.numeroFonte">Numero Fonte</span></dt>
+                <dd>
+                    <span>{{ terminal.numeroFonte }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.terminal.codigoAutorizacao">Codigo Autorizacao</span></dt>
+                <dd>
+                    <span>{{ terminal.codigoAutorizacao }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.terminal.serialTerminal">Serial Terminal</span></dt>
+                <dd>
+                    <span>{{ terminal.serialTerminal }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.terminal.email">Email</span></dt>
+                <dd>
+                    <span>{{ terminal.email }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.terminal.codigoBanca">Codigo Banca</span></dt>
+                <dd>
+                    <span>{{ terminal.codigoBanca }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.terminal.banca">Banca</span></dt>
+                <dd>
+                    <div *ngIf="terminal.banca">
+                        <a [routerLink]="['/banca', terminal.banca?.id, 'view']">{{ terminal.banca?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/terminal', terminal.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

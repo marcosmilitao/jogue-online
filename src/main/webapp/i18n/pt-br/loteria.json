@@ -1,0 +1,35 @@
+{
+  "jogueOnlineApp": {
+    "loteria": {
+      "home": {
+        "title": "Loterias",
+        "createLabel": "Criar novo Loteria",
+        "createOrEditLabel": "Criar ou editar Loteria",
+        "notFound": "Nenhum Loteria encontrado"
+      },
+      "created": "Um novo Loteria foi criado com o identificador {{ param }}",
+      "updated": "Um Loteria foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Loteria foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Loteria {{ id }}?"
+      },
+      "detail": {
+        "title": "Loteria"
+      },
+      "nome": "Nome",
+      "horaEncerramento": "Hora Encerramento",
+      "premiacaoInicio": "Premiacao Inicio",
+      "status": "Status",
+      "limitePremio": "Limite Premio",
+      "data": "Data",
+      "codigo": "Codigo",
+      "descricao": "Descricao",
+      "hora": "Hora",
+      "minuto": "Minuto",
+      "disponivel": "Disponivel",
+      "descricaoCompleta": "Descricao Completa",
+      "diasFuncionamento": "Dias Funcionamento",
+      "banca": "Banca"
+    }
+  }
+}

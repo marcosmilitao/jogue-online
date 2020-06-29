@@ -1,0 +1,68 @@
+{
+    "name": "Promotor",
+    "fields": [
+        {
+            "fieldName": "codigo",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nome",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "cidade",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "estado",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "telefone",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "comissao",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "data",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "revendedor",
+            "otherEntityRelationshipName": "promotor",
+            "relationshipName": "revendedor"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "banca",
+            "otherEntityRelationshipName": "promotor",
+            "relationshipName": "banca",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200616133600",
+    "entityTableName": "promotor",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

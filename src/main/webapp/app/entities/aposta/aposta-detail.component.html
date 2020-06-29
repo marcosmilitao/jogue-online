@@ -1,0 +1,72 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="aposta">
+            <h2><span jhiTranslate="jogueOnlineApp.aposta.detail.title">Aposta</span> {{ aposta.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jogueOnlineApp.aposta.codigoJogo">Codigo Jogo</span></dt>
+                <dd>
+                    <span>{{ aposta.codigoJogo }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.aposta.dataAposta">Data Aposta</span></dt>
+                <dd>
+                    <span>{{ aposta.dataAposta }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.aposta.loteriaNome">Loteria Nome</span></dt>
+                <dd>
+                    <span>{{ aposta.loteriaNome }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.aposta.loteriaCodigo">Loteria Codigo</span></dt>
+                <dd>
+                    <span>{{ aposta.loteriaCodigo }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.aposta.modalide">Modalide</span></dt>
+                <dd>
+                    <span>{{ aposta.modalide }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.aposta.codigoModalidade">Codigo Modalidade</span></dt>
+                <dd>
+                    <span>{{ aposta.codigoModalidade }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.aposta.premio">Premio</span></dt>
+                <dd>
+                    <span>{{ aposta.premio }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.aposta.codigoPremio">Codigo Premio</span></dt>
+                <dd>
+                    <span>{{ aposta.codigoPremio }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.aposta.valorJogo">Valor Jogo</span></dt>
+                <dd>
+                    <span>{{ aposta.valorJogo }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.aposta.codigoBanca">Codigo Banca</span></dt>
+                <dd>
+                    <span>{{ aposta.codigoBanca }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.aposta.banca">Banca</span></dt>
+                <dd>
+                    <div *ngIf="aposta.banca">
+                        <a [routerLink]="['/banca', aposta.banca?.id, 'view']">{{ aposta.banca?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/aposta', aposta.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+{
+  "jogueOnlineApp": {
+    "aposta": {
+      "home": {
+        "title": "Apostas",
+        "createLabel": "Criar novo Aposta",
+        "createOrEditLabel": "Criar ou editar Aposta",
+        "notFound": "Nenhum Aposta encontrado"
+      },
+      "created": "Um novo Aposta foi criado com o identificador {{ param }}",
+      "updated": "Um Aposta foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Aposta foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Aposta {{ id }}?"
+      },
+      "detail": {
+        "title": "Aposta"
+      },
+      "codigoJogo": "Codigo Jogo",
+      "dataAposta": "Data Aposta",
+      "loteriaNome": "Loteria Nome",
+      "loteriaCodigo": "Loteria Codigo",
+      "modalide": "Modalide",
+      "codigoModalidade": "Codigo Modalidade",
+      "premio": "Premio",
+      "codigoPremio": "Codigo Premio",
+      "valorJogo": "Valor Jogo",
+      "codigoBanca": "Codigo Banca",
+      "banca": "Banca"
+    }
+  }
+}

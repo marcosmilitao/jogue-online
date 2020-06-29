@@ -1,0 +1,119 @@
+{
+    "name": "Banca",
+    "fields": [
+        {
+            "fieldName": "codigo",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nome",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "cidade",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "telefone",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "estado",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "limiteDescarga",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "limitePremiacao",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "limiteBaixaAutomatica",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "limiteHorarioEncerramento",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "mensagemPule1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mensagemPule2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mensagemPule3",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "data",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "promotor",
+            "otherEntityRelationshipName": "banca",
+            "relationshipName": "promotor"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "terminal",
+            "otherEntityRelationshipName": "banca",
+            "relationshipName": "cadastroTerminal"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "aposta",
+            "otherEntityRelationshipName": "banca",
+            "relationshipName": "aposta"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "modalidade",
+            "otherEntityRelationshipName": "banca",
+            "relationshipName": "modalidade",
+            "otherEntityField": "nome",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "loteria",
+            "otherEntityRelationshipName": "banca",
+            "relationshipName": "loteria",
+            "otherEntityField": "nome",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "customUser",
+            "otherEntityRelationshipName": "banca",
+            "relationshipName": "customUser",
+            "otherEntityField": "login",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20200616133500",
+    "javadoc": "entity RevendedorStatus{\\ntotalDevedor Long,\\ntotalAtivos Long,\\ncomMovimentacao Long,\\nsemMovimentacao Long,\\ndata Instant,\\ntotalRevenderes Long\\n}",
+    "entityTableName": "banca",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

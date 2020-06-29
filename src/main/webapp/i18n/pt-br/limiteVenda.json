@@ -1,0 +1,26 @@
+{
+  "jogueOnlineApp": {
+    "limiteVenda": {
+      "home": {
+        "title": "Limite Vendas",
+        "createLabel": "Criar novo Limite Venda",
+        "createOrEditLabel": "Criar ou editar Limite Venda",
+        "notFound": "Nenhum Limite Venda encontrado"
+      },
+      "created": "Um novo Limite Venda foi criado com o identificador {{ param }}",
+      "updated": "Um Limite Venda foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Limite Venda foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Limite Venda {{ id }}?"
+      },
+      "detail": {
+        "title": "Limite Venda"
+      },
+      "codigoRevendedor": "Codigo Revendedor",
+      "vendaDia": "Venda Dia",
+      "debitoAtual": "Debito Atual",
+      "limite": "Limite",
+      "revendedor": "Revendedor"
+    }
+  }
+}

@@ -1,0 +1,80 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="loteria">
+            <h2><span jhiTranslate="jogueOnlineApp.loteria.detail.title">Loteria</span> {{ loteria.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jogueOnlineApp.loteria.nome">Nome</span></dt>
+                <dd>
+                    <span>{{ loteria.nome }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.loteria.horaEncerramento">Hora Encerramento</span></dt>
+                <dd>
+                    <span>{{ loteria.horaEncerramento }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.loteria.premiacaoInicio">Premiacao Inicio</span></dt>
+                <dd>
+                    <span>{{ loteria.premiacaoInicio }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.loteria.status">Status</span></dt>
+                <dd>
+                    <span>{{ loteria.status }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.loteria.limitePremio">Limite Premio</span></dt>
+                <dd>
+                    <span>{{ loteria.limitePremio }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.loteria.data">Data</span></dt>
+                <dd>
+                    <span>{{ loteria.data }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.loteria.codigo">Codigo</span></dt>
+                <dd>
+                    <span>{{ loteria.codigo }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.loteria.descricao">Descricao</span></dt>
+                <dd>
+                    <span>{{ loteria.descricao }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.loteria.hora">Hora</span></dt>
+                <dd>
+                    <span>{{ loteria.hora }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.loteria.minuto">Minuto</span></dt>
+                <dd>
+                    <span>{{ loteria.minuto }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.loteria.disponivel">Disponivel</span></dt>
+                <dd>
+                    <span>{{ loteria.disponivel }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.loteria.descricaoCompleta">Descricao Completa</span></dt>
+                <dd>
+                    <span>{{ loteria.descricaoCompleta }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.loteria.diasFuncionamento">Dias Funcionamento</span></dt>
+                <dd>
+                    <span *ngFor="let diasFuncionamento of loteria.diasFuncionamentos; let last = last">
+                        <a [routerLink]="['/dias-funcionamento', diasFuncionamento?.id, 'view']">{{ diasFuncionamento.dia }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/loteria', loteria.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

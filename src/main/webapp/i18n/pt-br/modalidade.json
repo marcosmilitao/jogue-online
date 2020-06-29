@@ -1,0 +1,40 @@
+{
+  "jogueOnlineApp": {
+    "modalidade": {
+      "home": {
+        "title": "Modalidades",
+        "createLabel": "Criar novo Modalidade",
+        "createOrEditLabel": "Criar ou editar Modalidade",
+        "notFound": "Nenhum Modalidade encontrado"
+      },
+      "created": "Um novo Modalidade foi criado com o identificador {{ param }}",
+      "updated": "Um Modalidade foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Modalidade foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Modalidade {{ id }}?"
+      },
+      "detail": {
+        "title": "Modalidade"
+      },
+      "codigo": "Codigo",
+      "nome": "Nome",
+      "menorPalpite": "Menor Palpite",
+      "maiorPalpite": "Maior Palpite",
+      "qtdePalpites": "Qtde Palpites",
+      "qtdeMinimaPalpites": "Qtde Minima Palpites",
+      "qtdeCaracteres": "Qtde Caracteres",
+      "qtdeMinimaCaracteres": "Qtde Minima Caracteres",
+      "menorValor": "Menor Valor",
+      "maiorValor": "Maior Valor",
+      "maiorValorExcessao": "Maior Valor Excessao",
+      "repeticao": "Repeticao",
+      "mascara": "Mascara",
+      "palpiteMultiplo": "Palpite Multiplo",
+      "palpiteMultiploTerminal": "Palpite Multiplo Terminal",
+      "ordenar": "Ordenar",
+      "permitePalpiteAleatorio": "Permite Palpite Aleatorio",
+      "premio": "Premio",
+      "banca": "Banca"
+    }
+  }
+}

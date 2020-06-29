@@ -1,0 +1,73 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jogueOnlineApp.limiteVenda.home.title">Limite Vendas</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-limite-venda" [routerLink]="['/limite-venda/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="jogueOnlineApp.limiteVenda.home.createLabel">
+            Create a new Limite Venda
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="limiteVendas?.length === 0">
+        <span jhiTranslate="jogueOnlineApp.limiteVenda.home.notFound">No limiteVendas found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="limiteVendas?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.limiteVenda.codigoRevendedor">Codigo Revendedor</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.limiteVenda.vendaDia">Venda Dia</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.limiteVenda.debitoAtual">Debito Atual</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.limiteVenda.limite">Limite</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.limiteVenda.revendedor">Revendedor</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let limiteVenda of limiteVendas ;trackBy: trackId">
+                    <td><a [routerLink]="['/limite-venda', limiteVenda.id, 'view']">{{ limiteVenda.id }}</a></td>
+                    <td>{{ limiteVenda.codigoRevendedor }}</td>
+                    <td>{{ limiteVenda.vendaDia }}</td>
+                    <td>{{ limiteVenda.debitoAtual }}</td>
+                    <td>{{ limiteVenda.limite }}</td>
+                    <td>
+                        <div *ngIf="limiteVenda.revendedor">
+                            <a [routerLink]="['/revendedor', limiteVenda.revendedor?.id, 'view']" >{{ limiteVenda.revendedor?.nome }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/limite-venda', limiteVenda.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/limite-venda', limiteVenda.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(limiteVenda)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

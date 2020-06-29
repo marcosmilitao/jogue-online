@@ -1,0 +1,40 @@
+{
+  "jogueOnlineApp": {
+    "banca": {
+      "home": {
+        "title": "Bancas",
+        "createLabel": "Criar novo Banca",
+        "createOrEditLabel": "Criar ou editar Banca",
+        "notFound": "Nenhum Banca encontrado"
+      },
+      "created": "Um novo Banca foi criado com o identificador {{ param }}",
+      "updated": "Um Banca foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Banca foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Banca {{ id }}?"
+      },
+      "detail": {
+        "title": "Banca"
+      },
+      "codigo": "Codigo",
+      "nome": "Nome",
+      "cidade": "Cidade",
+      "telefone": "Telefone",
+      "estado": "Estado",
+      "limiteDescarga": "Limite Descarga",
+      "limitePremiacao": "Limite Premiacao",
+      "limiteBaixaAutomatica": "Limite Baixa Automatica",
+      "limiteHorarioEncerramento": "Limite Horario Encerramento",
+      "mensagemPule1": "Mensagem Pule 1",
+      "mensagemPule2": "Mensagem Pule 2",
+      "mensagemPule3": "Mensagem Pule 3",
+      "data": "Data",
+      "promotor": "Promotor",
+      "cadastroTerminal": "Cadastro Terminal",
+      "aposta": "Aposta",
+      "modalidade": "Modalidade",
+      "loteria": "Loteria",
+      "customUser": "Custom User"
+    }
+  }
+}

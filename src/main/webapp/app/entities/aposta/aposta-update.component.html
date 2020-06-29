@@ -1,0 +1,101 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-aposta-heading" jhiTranslate="jogueOnlineApp.aposta.home.createOrEditLabel">Create or edit a Aposta</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.aposta.codigoJogo" for="field_codigoJogo">Codigo Jogo</label>
+                    <input type="number" class="form-control" name="codigoJogo" id="field_codigoJogo"
+                           formControlName="codigoJogo"/>
+                    <div *ngIf="editForm.get('codigoJogo')!.invalid && (editForm.get('codigoJogo')!.dirty || editForm.get('codigoJogo')!.touched)">
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('codigoJogo')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.aposta.dataAposta" for="field_dataAposta">Data Aposta</label>
+                    <div class="d-flex">
+                        <input id="field_dataAposta" type="datetime-local" class="form-control" name="dataAposta" formControlName="dataAposta" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.aposta.loteriaNome" for="field_loteriaNome">Loteria Nome</label>
+                    <input type="text" class="form-control" name="loteriaNome" id="field_loteriaNome"
+                           formControlName="loteriaNome"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.aposta.loteriaCodigo" for="field_loteriaCodigo">Loteria Codigo</label>
+                    <input type="number" class="form-control" name="loteriaCodigo" id="field_loteriaCodigo"
+                           formControlName="loteriaCodigo"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.aposta.modalide" for="field_modalide">Modalide</label>
+                    <input type="text" class="form-control" name="modalide" id="field_modalide"
+                           formControlName="modalide"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.aposta.codigoModalidade" for="field_codigoModalidade">Codigo Modalidade</label>
+                    <input type="text" class="form-control" name="codigoModalidade" id="field_codigoModalidade"
+                           formControlName="codigoModalidade"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.aposta.premio" for="field_premio">Premio</label>
+                    <input type="text" class="form-control" name="premio" id="field_premio"
+                           formControlName="premio"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.aposta.codigoPremio" for="field_codigoPremio">Codigo Premio</label>
+                    <input type="number" class="form-control" name="codigoPremio" id="field_codigoPremio"
+                           formControlName="codigoPremio"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.aposta.valorJogo" for="field_valorJogo">Valor Jogo</label>
+                    <input type="number" class="form-control" name="valorJogo" id="field_valorJogo"
+                           formControlName="valorJogo"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.aposta.codigoBanca" for="field_codigoBanca">Codigo Banca</label>
+                    <input type="number" class="form-control" name="codigoBanca" id="field_codigoBanca"
+                           formControlName="codigoBanca"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.aposta.banca" for="field_banca">Banca</label>
+                    <select class="form-control" id="field_banca" name="banca" formControlName="banca">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="bancaOption.id === editForm.get('banca')!.value?.id ? editForm.get('banca')!.value : bancaOption" *ngFor="let bancaOption of bancas; trackBy: trackById">{{ bancaOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

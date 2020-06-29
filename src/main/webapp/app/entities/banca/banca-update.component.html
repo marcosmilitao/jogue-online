@@ -1,0 +1,142 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-banca-heading" jhiTranslate="jogueOnlineApp.banca.home.createOrEditLabel">Create or edit a Banca</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.banca.codigo" for="field_codigo">Codigo</label>
+                    <input type="number" class="form-control" name="codigo" id="field_codigo"
+                           formControlName="codigo"/>
+                    <div *ngIf="editForm.get('codigo')!.invalid && (editForm.get('codigo')!.dirty || editForm.get('codigo')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('codigo')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('codigo')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.banca.nome" for="field_nome">Nome</label>
+                    <input type="text" class="form-control" name="nome" id="field_nome"
+                           formControlName="nome"/>
+                    <div *ngIf="editForm.get('nome')!.invalid && (editForm.get('nome')!.dirty || editForm.get('nome')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nome')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.banca.cidade" for="field_cidade">Cidade</label>
+                    <input type="text" class="form-control" name="cidade" id="field_cidade"
+                           formControlName="cidade"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.banca.telefone" for="field_telefone">Telefone</label>
+                    <input type="text" class="form-control" name="telefone" id="field_telefone"
+                           formControlName="telefone"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.banca.estado" for="field_estado">Estado</label>
+                    <input type="text" class="form-control" name="estado" id="field_estado"
+                           formControlName="estado"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.banca.limiteDescarga" for="field_limiteDescarga">Limite Descarga</label>
+                    <input type="number" class="form-control" name="limiteDescarga" id="field_limiteDescarga"
+                           formControlName="limiteDescarga"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.banca.limitePremiacao" for="field_limitePremiacao">Limite Premiacao</label>
+                    <input type="number" class="form-control" name="limitePremiacao" id="field_limitePremiacao"
+                           formControlName="limitePremiacao"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.banca.limiteBaixaAutomatica" for="field_limiteBaixaAutomatica">Limite Baixa Automatica</label>
+                    <input type="number" class="form-control" name="limiteBaixaAutomatica" id="field_limiteBaixaAutomatica"
+                           formControlName="limiteBaixaAutomatica"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.banca.limiteHorarioEncerramento" for="field_limiteHorarioEncerramento">Limite Horario Encerramento</label>
+                    <input type="number" class="form-control" name="limiteHorarioEncerramento" id="field_limiteHorarioEncerramento"
+                           formControlName="limiteHorarioEncerramento"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.banca.mensagemPule1" for="field_mensagemPule1">Mensagem Pule 1</label>
+                    <input type="text" class="form-control" name="mensagemPule1" id="field_mensagemPule1"
+                           formControlName="mensagemPule1"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.banca.mensagemPule2" for="field_mensagemPule2">Mensagem Pule 2</label>
+                    <input type="text" class="form-control" name="mensagemPule2" id="field_mensagemPule2"
+                           formControlName="mensagemPule2"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.banca.mensagemPule3" for="field_mensagemPule3">Mensagem Pule 3</label>
+                    <input type="text" class="form-control" name="mensagemPule3" id="field_mensagemPule3"
+                           formControlName="mensagemPule3"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.banca.data" for="field_data">Data</label>
+                    <div class="d-flex">
+                        <input id="field_data" type="datetime-local" class="form-control" name="data" formControlName="data" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="jogueOnlineApp.banca.modalidade" for="field_modalidades">Modalidade</label>
+                    <select class="form-control" id="field_modalidades" multiple name="modalidades" formControlName="modalidades">
+                        <option [ngValue]="getSelected(editForm.get('modalidades')!.value, modalidadeOption)" *ngFor="let modalidadeOption of modalidades; trackBy: trackById">{{ modalidadeOption.nome }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="jogueOnlineApp.banca.loteria" for="field_loterias">Loteria</label>
+                    <select class="form-control" id="field_loterias" multiple name="loterias" formControlName="loterias">
+                        <option [ngValue]="getSelected(editForm.get('loterias')!.value, loteriaOption)" *ngFor="let loteriaOption of loterias; trackBy: trackById">{{ loteriaOption.nome }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="jogueOnlineApp.banca.customUser" for="field_customUsers">Custom User</label>
+                    <select class="form-control" id="field_customUsers" multiple name="customUsers" formControlName="customUsers">
+                        <option [ngValue]="getSelected(editForm.get('customUsers')!.value, customUserOption)" *ngFor="let customUserOption of customusers; trackBy: trackById">{{ customUserOption.login }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

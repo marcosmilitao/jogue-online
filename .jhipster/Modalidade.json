@@ -1,0 +1,129 @@
+{
+    "name": "Modalidade",
+    "fields": [
+        {
+            "fieldName": "codigo",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nome",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "menorPalpite",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "maiorPalpite",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "qtdePalpites",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "qtdeMinimaPalpites",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "qtdeCaracteres",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "qtdeMinimaCaracteres",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "menorValor",
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "maiorValor",
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "maiorValorExcessao",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "repeticao",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "mascara",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "palpiteMultiplo",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "palpiteMultiploTerminal",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "ordenar",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "permitePalpiteAleatorio",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "premio",
+            "otherEntityRelationshipName": "modalidade",
+            "relationshipName": "premio",
+            "otherEntityField": "codigo",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "banca",
+            "otherEntityRelationshipName": "modalidade",
+            "relationshipName": "banca",
+            "otherEntityField": "nome",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20200616133900",
+    "entityTableName": "modalidade",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

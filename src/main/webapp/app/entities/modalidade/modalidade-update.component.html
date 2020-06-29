@@ -1,0 +1,217 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-modalidade-heading" jhiTranslate="jogueOnlineApp.modalidade.home.createOrEditLabel">Create or edit a Modalidade</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.modalidade.codigo" for="field_codigo">Codigo</label>
+                    <input type="text" class="form-control" name="codigo" id="field_codigo"
+                           formControlName="codigo"/>
+                    <div *ngIf="editForm.get('codigo')!.invalid && (editForm.get('codigo')!.dirty || editForm.get('codigo')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('codigo')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.modalidade.nome" for="field_nome">Nome</label>
+                    <input type="text" class="form-control" name="nome" id="field_nome"
+                           formControlName="nome"/>
+                    <div *ngIf="editForm.get('nome')!.invalid && (editForm.get('nome')!.dirty || editForm.get('nome')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nome')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.modalidade.menorPalpite" for="field_menorPalpite">Menor Palpite</label>
+                    <input type="number" class="form-control" name="menorPalpite" id="field_menorPalpite"
+                           formControlName="menorPalpite"/>
+                    <div *ngIf="editForm.get('menorPalpite')!.invalid && (editForm.get('menorPalpite')!.dirty || editForm.get('menorPalpite')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('menorPalpite')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('menorPalpite')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.modalidade.maiorPalpite" for="field_maiorPalpite">Maior Palpite</label>
+                    <input type="number" class="form-control" name="maiorPalpite" id="field_maiorPalpite"
+                           formControlName="maiorPalpite"/>
+                    <div *ngIf="editForm.get('maiorPalpite')!.invalid && (editForm.get('maiorPalpite')!.dirty || editForm.get('maiorPalpite')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('maiorPalpite')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('maiorPalpite')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.modalidade.qtdePalpites" for="field_qtdePalpites">Qtde Palpites</label>
+                    <input type="number" class="form-control" name="qtdePalpites" id="field_qtdePalpites"
+                           formControlName="qtdePalpites"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.modalidade.qtdeMinimaPalpites" for="field_qtdeMinimaPalpites">Qtde Minima Palpites</label>
+                    <input type="number" class="form-control" name="qtdeMinimaPalpites" id="field_qtdeMinimaPalpites"
+                           formControlName="qtdeMinimaPalpites"/>
+                    <div *ngIf="editForm.get('qtdeMinimaPalpites')!.invalid && (editForm.get('qtdeMinimaPalpites')!.dirty || editForm.get('qtdeMinimaPalpites')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('qtdeMinimaPalpites')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('qtdeMinimaPalpites')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.modalidade.qtdeCaracteres" for="field_qtdeCaracteres">Qtde Caracteres</label>
+                    <input type="number" class="form-control" name="qtdeCaracteres" id="field_qtdeCaracteres"
+                           formControlName="qtdeCaracteres"/>
+                    <div *ngIf="editForm.get('qtdeCaracteres')!.invalid && (editForm.get('qtdeCaracteres')!.dirty || editForm.get('qtdeCaracteres')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('qtdeCaracteres')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('qtdeCaracteres')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.modalidade.qtdeMinimaCaracteres" for="field_qtdeMinimaCaracteres">Qtde Minima Caracteres</label>
+                    <input type="number" class="form-control" name="qtdeMinimaCaracteres" id="field_qtdeMinimaCaracteres"
+                           formControlName="qtdeMinimaCaracteres"/>
+                    <div *ngIf="editForm.get('qtdeMinimaCaracteres')!.invalid && (editForm.get('qtdeMinimaCaracteres')!.dirty || editForm.get('qtdeMinimaCaracteres')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('qtdeMinimaCaracteres')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('qtdeMinimaCaracteres')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.modalidade.menorValor" for="field_menorValor">Menor Valor</label>
+                    <input type="number" class="form-control" name="menorValor" id="field_menorValor"
+                           formControlName="menorValor"/>
+                    <div *ngIf="editForm.get('menorValor')!.invalid && (editForm.get('menorValor')!.dirty || editForm.get('menorValor')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('menorValor')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('menorValor')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.modalidade.maiorValor" for="field_maiorValor">Maior Valor</label>
+                    <input type="number" class="form-control" name="maiorValor" id="field_maiorValor"
+                           formControlName="maiorValor"/>
+                    <div *ngIf="editForm.get('maiorValor')!.invalid && (editForm.get('maiorValor')!.dirty || editForm.get('maiorValor')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('maiorValor')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('maiorValor')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.modalidade.maiorValorExcessao" for="field_maiorValorExcessao">Maior Valor Excessao</label>
+                    <input type="checkbox" class="form-control" name="maiorValorExcessao" id="field_maiorValorExcessao"
+                           formControlName="maiorValorExcessao"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.modalidade.repeticao" for="field_repeticao">Repeticao</label>
+                    <input type="checkbox" class="form-control" name="repeticao" id="field_repeticao"
+                           formControlName="repeticao"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.modalidade.mascara" for="field_mascara">Mascara</label>
+                    <input type="text" class="form-control" name="mascara" id="field_mascara"
+                           formControlName="mascara"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.modalidade.palpiteMultiplo" for="field_palpiteMultiplo">Palpite Multiplo</label>
+                    <input type="checkbox" class="form-control" name="palpiteMultiplo" id="field_palpiteMultiplo"
+                           formControlName="palpiteMultiplo"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.modalidade.palpiteMultiploTerminal" for="field_palpiteMultiploTerminal">Palpite Multiplo Terminal</label>
+                    <input type="checkbox" class="form-control" name="palpiteMultiploTerminal" id="field_palpiteMultiploTerminal"
+                           formControlName="palpiteMultiploTerminal"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.modalidade.ordenar" for="field_ordenar">Ordenar</label>
+                    <input type="checkbox" class="form-control" name="ordenar" id="field_ordenar"
+                           formControlName="ordenar"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.modalidade.permitePalpiteAleatorio" for="field_permitePalpiteAleatorio">Permite Palpite Aleatorio</label>
+                    <input type="checkbox" class="form-control" name="permitePalpiteAleatorio" id="field_permitePalpiteAleatorio"
+                           formControlName="permitePalpiteAleatorio"/>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="jogueOnlineApp.modalidade.premio" for="field_premios">Premio</label>
+                    <select class="form-control" id="field_premios" multiple name="premios" formControlName="premios">
+                        <option [ngValue]="getSelected(editForm.get('premios')!.value, premioOption)" *ngFor="let premioOption of premios; trackBy: trackById">{{ premioOption.codigo }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

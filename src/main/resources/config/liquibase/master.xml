@@ -14,6 +14,26 @@
     <property name="uuidType" value="uuid" dbms="h2, postgresql"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200616133500_added_entity_Banca.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200616133600_added_entity_Promotor.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200616133700_added_entity_Revendedor.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200616133800_added_entity_Terminal.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200616133900_added_entity_Modalidade.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200616134000_added_entity_Premio.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200616134100_added_entity_Loteria.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200616134200_added_entity_DiasFuncionamento.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200616134300_added_entity_Aposta.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200616134400_added_entity_LimiteVenda.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200616134500_added_entity_CustomUser.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20200616133500_added_entity_constraints_Banca.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200616133600_added_entity_constraints_Promotor.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200616133700_added_entity_constraints_Revendedor.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200616133800_added_entity_constraints_Terminal.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200616133900_added_entity_constraints_Modalidade.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200616134100_added_entity_constraints_Loteria.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200616134300_added_entity_constraints_Aposta.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200616134400_added_entity_constraints_LimiteVenda.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200616134500_added_entity_constraints_CustomUser.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

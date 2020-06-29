@@ -1,0 +1,23 @@
+{
+  "jogueOnlineApp": {
+    "diasFuncionamento": {
+      "home": {
+        "title": "Dias Funcionamentos",
+        "createLabel": "Criar novo Dias Funcionamento",
+        "createOrEditLabel": "Criar ou editar Dias Funcionamento",
+        "notFound": "Nenhum Dias Funcionamento encontrado"
+      },
+      "created": "Um novo Dias Funcionamento foi criado com o identificador {{ param }}",
+      "updated": "Um Dias Funcionamento foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Dias Funcionamento foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Dias Funcionamento {{ id }}?"
+      },
+      "detail": {
+        "title": "Dias Funcionamento"
+      },
+      "dia": "Dia",
+      "loteria": "Loteria"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+    "name": "LimiteVenda",
+    "fields": [
+        {
+            "fieldName": "codigoRevendedor",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "vendaDia",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "debitoAtual",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "limite",
+            "fieldType": "BigDecimal"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "revendedor",
+            "otherEntityRelationshipName": "limiteVenda",
+            "relationshipName": "revendedor",
+            "otherEntityField": "nome",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20200616134400",
+    "entityTableName": "limite_venda",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

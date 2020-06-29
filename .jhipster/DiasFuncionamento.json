@@ -1,0 +1,33 @@
+{
+    "name": "DiasFuncionamento",
+    "fields": [
+        {
+            "fieldName": "dia",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "loteria",
+            "otherEntityRelationshipName": "diasFuncionamento",
+            "relationshipName": "loteria",
+            "otherEntityField": "nome",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20200616134200",
+    "entityTableName": "dias_funcionamento",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

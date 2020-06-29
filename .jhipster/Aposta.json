@@ -1,0 +1,69 @@
+{
+    "name": "Aposta",
+    "fields": [
+        {
+            "fieldName": "codigoJogo",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "unique"
+            ]
+        },
+        {
+            "fieldName": "dataAposta",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "loteriaNome",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "loteriaCodigo",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "modalide",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "codigoModalidade",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "premio",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "codigoPremio",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "valorJogo",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "codigoBanca",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "banca",
+            "otherEntityRelationshipName": "aposta",
+            "relationshipName": "banca",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200616134300",
+    "javadoc": "entity MovimentoGeral {\\ndataMovimentacao Instant,\\nvalor BigDecimal,\\ntipo String,\\nidDadosEntrada Long,\\nidDadosSaida Long,\\nidBanca Long,\\nidCliente Long,\\ndescricao String,\\ntipoMovimentacao TipoMovimento\\n}",
+    "entityTableName": "aposta",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,100 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="modalidade">
+            <h2><span jhiTranslate="jogueOnlineApp.modalidade.detail.title">Modalidade</span> {{ modalidade.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jogueOnlineApp.modalidade.codigo">Codigo</span></dt>
+                <dd>
+                    <span>{{ modalidade.codigo }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.modalidade.nome">Nome</span></dt>
+                <dd>
+                    <span>{{ modalidade.nome }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.modalidade.menorPalpite">Menor Palpite</span></dt>
+                <dd>
+                    <span>{{ modalidade.menorPalpite }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.modalidade.maiorPalpite">Maior Palpite</span></dt>
+                <dd>
+                    <span>{{ modalidade.maiorPalpite }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.modalidade.qtdePalpites">Qtde Palpites</span></dt>
+                <dd>
+                    <span>{{ modalidade.qtdePalpites }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.modalidade.qtdeMinimaPalpites">Qtde Minima Palpites</span></dt>
+                <dd>
+                    <span>{{ modalidade.qtdeMinimaPalpites }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.modalidade.qtdeCaracteres">Qtde Caracteres</span></dt>
+                <dd>
+                    <span>{{ modalidade.qtdeCaracteres }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.modalidade.qtdeMinimaCaracteres">Qtde Minima Caracteres</span></dt>
+                <dd>
+                    <span>{{ modalidade.qtdeMinimaCaracteres }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.modalidade.menorValor">Menor Valor</span></dt>
+                <dd>
+                    <span>{{ modalidade.menorValor }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.modalidade.maiorValor">Maior Valor</span></dt>
+                <dd>
+                    <span>{{ modalidade.maiorValor }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.modalidade.maiorValorExcessao">Maior Valor Excessao</span></dt>
+                <dd>
+                    <span>{{ modalidade.maiorValorExcessao }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.modalidade.repeticao">Repeticao</span></dt>
+                <dd>
+                    <span>{{ modalidade.repeticao }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.modalidade.mascara">Mascara</span></dt>
+                <dd>
+                    <span>{{ modalidade.mascara }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.modalidade.palpiteMultiplo">Palpite Multiplo</span></dt>
+                <dd>
+                    <span>{{ modalidade.palpiteMultiplo }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.modalidade.palpiteMultiploTerminal">Palpite Multiplo Terminal</span></dt>
+                <dd>
+                    <span>{{ modalidade.palpiteMultiploTerminal }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.modalidade.ordenar">Ordenar</span></dt>
+                <dd>
+                    <span>{{ modalidade.ordenar }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.modalidade.permitePalpiteAleatorio">Permite Palpite Aleatorio</span></dt>
+                <dd>
+                    <span>{{ modalidade.permitePalpiteAleatorio }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.modalidade.premio">Premio</span></dt>
+                <dd>
+                    <span *ngFor="let premio of modalidade.premios; let last = last">
+                        <a [routerLink]="['/premio', premio?.id, 'view']">{{ premio.codigo }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/modalidade', modalidade.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,160 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-terminal-heading" jhiTranslate="jogueOnlineApp.terminal.home.createOrEditLabel">Create or edit a Terminal</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.terminal.codigoTerminal" for="field_codigoTerminal">Codigo Terminal</label>
+                    <input type="number" class="form-control" name="codigoTerminal" id="field_codigoTerminal"
+                           formControlName="codigoTerminal"/>
+                    <div *ngIf="editForm.get('codigoTerminal')!.invalid && (editForm.get('codigoTerminal')!.dirty || editForm.get('codigoTerminal')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('codigoTerminal')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('codigoTerminal')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.terminal.telefoneChipe" for="field_telefoneChipe">Telefone Chipe</label>
+                    <input type="number" class="form-control" name="telefoneChipe" id="field_telefoneChipe"
+                           formControlName="telefoneChipe"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.terminal.revendedor" for="field_revendedor">Revendedor</label>
+                    <input type="text" class="form-control" name="revendedor" id="field_revendedor"
+                           formControlName="revendedor"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.terminal.serialChip" for="field_serialChip">Serial Chip</label>
+                    <input type="text" class="form-control" name="serialChip" id="field_serialChip"
+                           formControlName="serialChip"/>
+                    <div *ngIf="editForm.get('serialChip')!.invalid && (editForm.get('serialChip')!.dirty || editForm.get('serialChip')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('serialChip')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.terminal.menssagem" for="field_menssagem">Menssagem</label>
+                    <input type="text" class="form-control" name="menssagem" id="field_menssagem"
+                           formControlName="menssagem"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.terminal.senhaComunicacao" for="field_senhaComunicacao">Senha Comunicacao</label>
+                    <input type="text" class="form-control" name="senhaComunicacao" id="field_senhaComunicacao"
+                           formControlName="senhaComunicacao"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.terminal.dataInicio" for="field_dataInicio">Data Inicio</label>
+                    <div class="d-flex">
+                        <input id="field_dataInicio" type="datetime-local" class="form-control" name="dataInicio" formControlName="dataInicio" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.terminal.situacao" for="field_situacao">Situacao</label>
+                    <input type="checkbox" class="form-control" name="situacao" id="field_situacao"
+                           formControlName="situacao"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.terminal.versaoTerminal" for="field_versaoTerminal">Versao Terminal</label>
+                    <input type="text" class="form-control" name="versaoTerminal" id="field_versaoTerminal"
+                           formControlName="versaoTerminal"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.terminal.mudaCodigo" for="field_mudaCodigo">Muda Codigo</label>
+                    <input type="number" class="form-control" name="mudaCodigo" id="field_mudaCodigo"
+                           formControlName="mudaCodigo"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.terminal.numeroTelefoneProvedor" for="field_numeroTelefoneProvedor">Numero Telefone Provedor</label>
+                    <input type="number" class="form-control" name="numeroTelefoneProvedor" id="field_numeroTelefoneProvedor"
+                           formControlName="numeroTelefoneProvedor"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.terminal.dataEntrada" for="field_dataEntrada">Data Entrada</label>
+                    <div class="d-flex">
+                        <input id="field_dataEntrada" type="datetime-local" class="form-control" name="dataEntrada" formControlName="dataEntrada" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.terminal.numeroFonte" for="field_numeroFonte">Numero Fonte</label>
+                    <input type="number" class="form-control" name="numeroFonte" id="field_numeroFonte"
+                           formControlName="numeroFonte"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.terminal.codigoAutorizacao" for="field_codigoAutorizacao">Codigo Autorizacao</label>
+                    <input type="number" class="form-control" name="codigoAutorizacao" id="field_codigoAutorizacao"
+                           formControlName="codigoAutorizacao"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.terminal.serialTerminal" for="field_serialTerminal">Serial Terminal</label>
+                    <input type="text" class="form-control" name="serialTerminal" id="field_serialTerminal"
+                           formControlName="serialTerminal"/>
+                    <div *ngIf="editForm.get('serialTerminal')!.invalid && (editForm.get('serialTerminal')!.dirty || editForm.get('serialTerminal')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('serialTerminal')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.terminal.email" for="field_email">Email</label>
+                    <input type="text" class="form-control" name="email" id="field_email"
+                           formControlName="email"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.terminal.codigoBanca" for="field_codigoBanca">Codigo Banca</label>
+                    <input type="number" class="form-control" name="codigoBanca" id="field_codigoBanca"
+                           formControlName="codigoBanca"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.terminal.banca" for="field_banca">Banca</label>
+                    <select class="form-control" id="field_banca" name="banca" formControlName="banca">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="bancaOption.id === editForm.get('banca')!.value?.id ? editForm.get('banca')!.value : bancaOption" *ngFor="let bancaOption of bancas; trackBy: trackById">{{ bancaOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

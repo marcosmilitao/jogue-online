@@ -1,0 +1,231 @@
+/**entity SaldoGeral {
+ *	vendas BigDecimal,
+ *  comissao BigDecimal,
+ *  premiosBaixados BigDecimal,
+ *  mensalidadeSistema BigDecimal,
+ *  descarga BigDecimal,
+ *  despesas BigDecimal,
+ *  premiacaoDescarga BigDecimal,
+ *  totalLiquido BigDecimal,
+ *  data Instant
+ * }
+ */
+
+/**entity HistoricoSaldoGeral {
+*	vendas BigDecimal,
+*   comissao BigDecimal,
+*   premiosBaixados BigDecimal,
+*   mensalidadeSistema BigDecimal,
+*   descarga BigDecimal,
+*   despesas BigDecimal,
+*   premiacaoDescarga BigDecimal,
+*   totalLiquido BigDecimal,
+*   data Instant,
+*   nomeBanca String,
+*   codigoBanca Long,
+*}
+**/
+/**entity RevendedorStatus{
+*	totalDevedor Long,
+*    totalAtivos Long,
+*    comMovimentacao Long,
+*    semMovimentacao Long,
+*    data Instant,
+*    totalRevenderes Long
+*}
+**/
+entity Banca{
+	codigo Long required,
+    nome String required,
+    cidade String,
+    telefone String,
+    estado String,
+    limiteDescarga BigDecimal,
+    limitePremiacao BigDecimal,
+    limiteBaixaAutomatica BigDecimal,
+    limiteHorarioEncerramento Long,
+    mensagemPule1 String,
+    mensagemPule2 String,
+    mensagemPule3 String,
+    data Instant
+}
+
+entity Promotor{
+	codigo Long required,
+    nome String required,
+    cidade String,
+    estado String,
+    telefone String required,
+    comissao Long, //percentual
+    data Instant
+}
+
+entity Revendedor{
+	nome String required,
+	cidade String ,
+    estado String,
+    telefone String required,
+    tipo String,
+    tipoColetor String,
+    serialColetor String,
+    nomeComercial String,
+    situacao Boolean, //ativo ou inativo
+    saldo BigDecimal,
+    senha String,
+    data Instant
+    
+}
+
+/**entity Cliente{
+*	nome String required,
+*    bonus Integer,
+*    telefone String required,
+*    codigo String,
+*    saldo BigDecimal,
+*    dataCadastro Instant,
+*    dataAtualizacao Instant,
+*    codigoBanca Long required
+*}
+**/
+
+/**entity MovimentacaoCliente{
+*    tipo String,
+*    valor BigDecimal,
+*    dataAtualizacao Instant,
+*    tipoMovimentacao TipoMovimento
+*}
+**/
+entity Terminal{
+	codigoTerminal Long required,
+    telefoneChipe Long ,
+    revendedor String,
+    serialChip String required,
+    menssagem String,
+    senhaComunicacao String,
+    dataInicio Instant,
+    situacao Boolean,
+    versaoTerminal String,
+    mudaCodigo Long,
+    numeroTelefoneProvedor Long,
+    dataEntrada Instant,
+    numeroFonte Long,
+    codigoAutorizacao Long,
+    serialTerminal String required,
+    email String,
+    codigoBanca Long
+    
+}
+entity Modalidade{        
+   codigo String required, //:"M",
+   nome String required, //:"Milhar",
+   menorPalpite Integer required, //:0,
+   maiorPalpite Integer required, //:9999,
+   qtdePalpites Integer, //:1,
+   qtdeMinimaPalpites Integer required, //:1
+   qtdeCaracteres Integer required, //:4,
+   qtdeMinimaCaracteres Integer required, //:4,
+   menorValor BigDecimal required, //:"0,01",
+   maiorValor BigDecimal required, //:"30,00",
+   maiorValorExcessao Boolean, //:!1,
+   repeticao Boolean, //:!0,
+   mascara String //:"9999",
+   palpiteMultiplo Boolean, //:!0,
+   palpiteMultiploTerminal Boolean, //:!1,
+   ordenar Boolean, //:!0,
+   permitePalpiteAleatorio Boolean //:!0
+}
+
+
+
+entity Premio{
+	codigo Long,
+    nome String
+}
+entity Loteria{
+    nome String required unique,
+    horaEncerramento String,
+    premiacaoInicio String required, //(regra)
+    status Boolean,
+    limitePremio BigDecimal required,
+    data Instant,
+    codigo Integer required, //:"5",
+	descricao String, //"5 - PT-Rio - 11:20",
+	hora Integer required, //:"11",
+	minuto Integer required, //15",
+	disponivel Boolean, //:"NAO",
+	descricaoCompleta String required//:"PT-Rio - 11:20"
+}
+entity DiasFuncionamento{
+    dia String required
+}
+
+/**
+*entity MovimentoGeral {
+*	dataMovimentacao Instant,
+*    valor BigDecimal,
+*    tipo String,
+*    idDadosEntrada Long,
+*    idDadosSaida Long,
+*    idBanca Long,
+*    idCliente Long,
+*    descricao String,
+*    tipoMovimentacao TipoMovimento
+*}
+**/
+
+entity Aposta{
+	codigoJogo Long unique,
+    dataAposta Instant,
+    loteriaNome String,
+    loteriaCodigo Integer,
+    modalide String,
+    codigoModalidade String,
+    premio String,
+    codigoPremio Long,
+    valorJogo BigDecimal,
+    codigoBanca Long,
+}
+
+entity LimiteVenda{
+	codigoRevendedor Integer,
+    vendaDia BigDecimal,
+    debitoAtual BigDecimal,
+    limite BigDecimal
+}
+entity CustomUser{
+	
+	login String,
+    banca String
+}
+
+/**enum TipoMovimento {
+*    ENTRADA,
+*    SAIDA
+*}
+**/
+
+
+
+relationship OneToMany {
+
+   Promotor{revendedor} to Revendedor
+   Banca{promotor} to Promotor
+   Banca{cadastroTerminal} to Terminal
+   Banca{aposta} to Aposta
+}
+
+relationship OneToOne{
+
+    CustomUser{user(login)} to User
+    LimiteVenda{revendedor(nome)} to Revendedor
+}
+
+
+relationship ManyToMany {
+
+   Banca{modalidade(nome)} to Modalidade { Banca(nome) }
+   Banca{loteria(nome)} to Loteria{banca(nome)}
+   Banca {customUser(login)} to CustomUser {banca(nome)}
+   Loteria{diasFuncionamento(dia)} to DiasFuncionamento{loteria(nome)}
+   Modalidade{premio(codigo)} to Premio {modalidade(come)}
+}

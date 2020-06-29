@@ -1,0 +1,24 @@
+{
+  "jogueOnlineApp": {
+    "premio": {
+      "home": {
+        "title": "Premios",
+        "createLabel": "Criar novo Premio",
+        "createOrEditLabel": "Criar ou editar Premio",
+        "notFound": "Nenhum Premio encontrado"
+      },
+      "created": "Um novo Premio foi criado com o identificador {{ param }}",
+      "updated": "Um Premio foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Premio foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Premio {{ id }}?"
+      },
+      "detail": {
+        "title": "Premio"
+      },
+      "codigo": "Codigo",
+      "nome": "Nome",
+      "modalidade": "Modalidade"
+    }
+  }
+}

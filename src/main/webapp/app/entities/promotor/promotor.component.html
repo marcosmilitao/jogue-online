@@ -1,0 +1,79 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jogueOnlineApp.promotor.home.title">Promotors</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-promotor" [routerLink]="['/promotor/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="jogueOnlineApp.promotor.home.createLabel">
+            Create a new Promotor
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="promotors?.length === 0">
+        <span jhiTranslate="jogueOnlineApp.promotor.home.notFound">No promotors found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="promotors?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.promotor.codigo">Codigo</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.promotor.nome">Nome</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.promotor.cidade">Cidade</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.promotor.estado">Estado</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.promotor.telefone">Telefone</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.promotor.comissao">Comissao</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.promotor.data">Data</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.promotor.banca">Banca</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let promotor of promotors ;trackBy: trackId">
+                    <td><a [routerLink]="['/promotor', promotor.id, 'view']">{{ promotor.id }}</a></td>
+                    <td>{{ promotor.codigo }}</td>
+                    <td>{{ promotor.nome }}</td>
+                    <td>{{ promotor.cidade }}</td>
+                    <td>{{ promotor.estado }}</td>
+                    <td>{{ promotor.telefone }}</td>
+                    <td>{{ promotor.comissao }}</td>
+                    <td>{{ promotor.data | date:'medium' }}</td>
+                    <td>
+                        <div *ngIf="promotor.banca">
+                            <a [routerLink]="['/banca', promotor.banca?.id, 'view']" >{{ promotor.banca?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/promotor', promotor.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/promotor', promotor.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(promotor)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

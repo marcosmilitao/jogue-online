@@ -7,6 +7,17 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entidades",
+        "banca": "Banca",
+        "promotor": "Promotor",
+        "revendedor": "Revendedor",
+        "terminal": "Terminal",
+        "modalidade": "Modalidade",
+        "premio": "Premio",
+        "loteria": "Loteria",
+        "diasFuncionamento": "Dias Funcionamento",
+        "aposta": "Aposta",
+        "limiteVenda": "Limite Venda",
+        "customUser": "Custom User",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
