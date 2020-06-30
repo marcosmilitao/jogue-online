@@ -13,6 +13,7 @@ export interface IAposta {
   codigoPremio?: number;
   valorJogo?: number;
   codigoBanca?: number;
+  numeroAposta?: number;
   banca?: IBanca;
 }
 
@@ -29,6 +30,7 @@ export class Aposta implements IAposta {
     public codigoPremio?: number,
     public valorJogo?: number,
     public codigoBanca?: number,
+    public numeroAposta?: number,
     public banca?: IBanca
   ) {}
 }

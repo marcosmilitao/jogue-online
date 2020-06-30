@@ -63,6 +63,9 @@ public class ApostaResourceIT {
     private static final Long DEFAULT_CODIGO_BANCA = 1L;
     private static final Long UPDATED_CODIGO_BANCA = 2L;
 
+    private static final Long DEFAULT_NUMERO_APOSTA = 1L;
+    private static final Long UPDATED_NUMERO_APOSTA = 2L;
+
     @Autowired
     private ApostaRepository apostaRepository;
 
@@ -91,7 +94,8 @@ public class ApostaResourceIT {
             .premio(DEFAULT_PREMIO)
             .codigoPremio(DEFAULT_CODIGO_PREMIO)
             .valorJogo(DEFAULT_VALOR_JOGO)
-            .codigoBanca(DEFAULT_CODIGO_BANCA);
+            .codigoBanca(DEFAULT_CODIGO_BANCA)
+            .numeroAposta(DEFAULT_NUMERO_APOSTA);
         return aposta;
     }
     /**
@@ -111,7 +115,8 @@ public class ApostaResourceIT {
             .premio(UPDATED_PREMIO)
             .codigoPremio(UPDATED_CODIGO_PREMIO)
             .valorJogo(UPDATED_VALOR_JOGO)
-            .codigoBanca(UPDATED_CODIGO_BANCA);
+            .codigoBanca(UPDATED_CODIGO_BANCA)
+            .numeroAposta(UPDATED_NUMERO_APOSTA);
         return aposta;
     }
 
@@ -145,6 +150,7 @@ public class ApostaResourceIT {
         assertThat(testAposta.getCodigoPremio()).isEqualTo(DEFAULT_CODIGO_PREMIO);
         assertThat(testAposta.getValorJogo()).isEqualTo(DEFAULT_VALOR_JOGO);
         assertThat(testAposta.getCodigoBanca()).isEqualTo(DEFAULT_CODIGO_BANCA);
+        assertThat(testAposta.getNumeroAposta()).isEqualTo(DEFAULT_NUMERO_APOSTA);
     }
 
     @Test
@@ -169,6 +175,114 @@ public class ApostaResourceIT {
 
     @Test
     @Transactional
+    public void checkCodigoJogoIsRequired() throws Exception {
+        int databaseSizeBeforeTest = apostaRepository.findAll().size();
+        // set the field null
+        aposta.setCodigoJogo(null);
+
+        // Create the Aposta, which fails.
+
+        restApostaMockMvc.perform(post("/api/apostas")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(aposta)))
+            .andExpect(status().isBadRequest());
+
+        List<Aposta> apostaList = apostaRepository.findAll();
+        assertThat(apostaList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkDataApostaIsRequired() throws Exception {
+        int databaseSizeBeforeTest = apostaRepository.findAll().size();
+        // set the field null
+        aposta.setDataAposta(null);
+
+        // Create the Aposta, which fails.
+
+        restApostaMockMvc.perform(post("/api/apostas")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(aposta)))
+            .andExpect(status().isBadRequest());
+
+        List<Aposta> apostaList = apostaRepository.findAll();
+        assertThat(apostaList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkLoteriaCodigoIsRequired() throws Exception {
+        int databaseSizeBeforeTest = apostaRepository.findAll().size();
+        // set the field null
+        aposta.setLoteriaCodigo(null);
+
+        // Create the Aposta, which fails.
+
+        restApostaMockMvc.perform(post("/api/apostas")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(aposta)))
+            .andExpect(status().isBadRequest());
+
+        List<Aposta> apostaList = apostaRepository.findAll();
+        assertThat(apostaList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkCodigoModalidadeIsRequired() throws Exception {
+        int databaseSizeBeforeTest = apostaRepository.findAll().size();
+        // set the field null
+        aposta.setCodigoModalidade(null);
+
+        // Create the Aposta, which fails.
+
+        restApostaMockMvc.perform(post("/api/apostas")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(aposta)))
+            .andExpect(status().isBadRequest());
+
+        List<Aposta> apostaList = apostaRepository.findAll();
+        assertThat(apostaList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkCodigoPremioIsRequired() throws Exception {
+        int databaseSizeBeforeTest = apostaRepository.findAll().size();
+        // set the field null
+        aposta.setCodigoPremio(null);
+
+        // Create the Aposta, which fails.
+
+        restApostaMockMvc.perform(post("/api/apostas")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(aposta)))
+            .andExpect(status().isBadRequest());
+
+        List<Aposta> apostaList = apostaRepository.findAll();
+        assertThat(apostaList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkNumeroApostaIsRequired() throws Exception {
+        int databaseSizeBeforeTest = apostaRepository.findAll().size();
+        // set the field null
+        aposta.setNumeroAposta(null);
+
+        // Create the Aposta, which fails.
+
+        restApostaMockMvc.perform(post("/api/apostas")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(aposta)))
+            .andExpect(status().isBadRequest());
+
+        List<Aposta> apostaList = apostaRepository.findAll();
+        assertThat(apostaList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllApostas() throws Exception {
         // Initialize the database
         apostaRepository.saveAndFlush(aposta);
@@ -187,7 +301,8 @@ public class ApostaResourceIT {
             .andExpect(jsonPath("$.[*].premio").value(hasItem(DEFAULT_PREMIO)))
             .andExpect(jsonPath("$.[*].codigoPremio").value(hasItem(DEFAULT_CODIGO_PREMIO.intValue())))
             .andExpect(jsonPath("$.[*].valorJogo").value(hasItem(DEFAULT_VALOR_JOGO.intValue())))
-            .andExpect(jsonPath("$.[*].codigoBanca").value(hasItem(DEFAULT_CODIGO_BANCA.intValue())));
+            .andExpect(jsonPath("$.[*].codigoBanca").value(hasItem(DEFAULT_CODIGO_BANCA.intValue())))
+            .andExpect(jsonPath("$.[*].numeroAposta").value(hasItem(DEFAULT_NUMERO_APOSTA.intValue())));
     }
     
     @Test
@@ -210,7 +325,8 @@ public class ApostaResourceIT {
             .andExpect(jsonPath("$.premio").value(DEFAULT_PREMIO))
             .andExpect(jsonPath("$.codigoPremio").value(DEFAULT_CODIGO_PREMIO.intValue()))
             .andExpect(jsonPath("$.valorJogo").value(DEFAULT_VALOR_JOGO.intValue()))
-            .andExpect(jsonPath("$.codigoBanca").value(DEFAULT_CODIGO_BANCA.intValue()));
+            .andExpect(jsonPath("$.codigoBanca").value(DEFAULT_CODIGO_BANCA.intValue()))
+            .andExpect(jsonPath("$.numeroAposta").value(DEFAULT_NUMERO_APOSTA.intValue()));
     }
 
     @Test
@@ -243,7 +359,8 @@ public class ApostaResourceIT {
             .premio(UPDATED_PREMIO)
             .codigoPremio(UPDATED_CODIGO_PREMIO)
             .valorJogo(UPDATED_VALOR_JOGO)
-            .codigoBanca(UPDATED_CODIGO_BANCA);
+            .codigoBanca(UPDATED_CODIGO_BANCA)
+            .numeroAposta(UPDATED_NUMERO_APOSTA);
 
         restApostaMockMvc.perform(put("/api/apostas")
             .contentType(MediaType.APPLICATION_JSON)
@@ -264,6 +381,7 @@ public class ApostaResourceIT {
         assertThat(testAposta.getCodigoPremio()).isEqualTo(UPDATED_CODIGO_PREMIO);
         assertThat(testAposta.getValorJogo()).isEqualTo(UPDATED_VALOR_JOGO);
         assertThat(testAposta.getCodigoBanca()).isEqualTo(UPDATED_CODIGO_BANCA);
+        assertThat(testAposta.getNumeroAposta()).isEqualTo(UPDATED_NUMERO_APOSTA);
     }
 
     @Test

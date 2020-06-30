@@ -100,14 +100,6 @@
     "relationships": [
         {
             "relationshipType": "many-to-many",
-            "otherEntityName": "premio",
-            "otherEntityRelationshipName": "modalidade",
-            "relationshipName": "premio",
-            "otherEntityField": "codigo",
-            "ownerSide": true
-        },
-        {
-            "relationshipType": "many-to-many",
             "otherEntityName": "banca",
             "otherEntityRelationshipName": "modalidade",
             "relationshipName": "banca",

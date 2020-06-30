@@ -18,20 +18,16 @@ import java.util.Optional;
 @Repository
 public interface LoteriaRepository extends JpaRepository<Loteria, Long> {
 
-    @Query(value = "select distinct loteria from Loteria loteria left join fetch loteria.diasFuncionamentos",
+    @Query(value = "select distinct loteria from Loteria loteria left join fetch loteria.diasFuncionamentos left join fetch loteria.premios",
         countQuery = "select count(distinct loteria) from Loteria loteria")
     Page<Loteria> findAllWithEagerRelationships(Pageable pageable);
 
-    @Query("select distinct loteria from Loteria loteria left join fetch loteria.diasFuncionamentos")
+    @Query("select distinct loteria from Loteria loteria left join fetch loteria.diasFuncionamentos left join fetch loteria.premios")
     List<Loteria> findAllWithEagerRelationships();
 
-    @Query("select loteria from Loteria loteria left join fetch loteria.diasFuncionamentos where loteria.id =:id")
+    @Query("select loteria from Loteria loteria left join fetch loteria.diasFuncionamentos left join fetch loteria.premios where loteria.id =:id")
     Optional<Loteria> findOneWithEagerRelationships(@Param("id") Long id);
 
-    @Query(value = "SELECT * FROM loteria lo\n" +
-        "LEFT JOIN banca_loteria bl ON lo.id = bl.loteria_id\n" +
-        "LEFT JOIN banca ba ON ba.id = bl.banca_id\n" +
-        "where ba.id =:id",
-        nativeQuery = true)
+    @Query("select distinct loteria from Loteria loteria left join fetch loteria.premios left join fetch loteria.bancas b where b.id =:id")
     List<Loteria> findByBanca(@Param("id") Long id);
 }

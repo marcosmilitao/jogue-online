@@ -1,5 +1,6 @@
 import { Moment } from 'moment';
 import { IDiasFuncionamento } from 'app/shared/model/dias-funcionamento.model';
+import { IPremio } from 'app/shared/model/premio.model';
 import { IBanca } from 'app/shared/model/banca.model';
 
 export interface ILoteria {
@@ -17,6 +18,7 @@ export interface ILoteria {
   disponivel?: boolean;
   descricaoCompleta?: string;
   diasFuncionamentos?: IDiasFuncionamento[];
+  premios?: IPremio[];
   bancas?: IBanca[];
 }
 
@@ -36,6 +38,7 @@ export class Loteria implements ILoteria {
     public disponivel?: boolean,
     public descricaoCompleta?: string,
     public diasFuncionamentos?: IDiasFuncionamento[],
+    public premios?: IPremio[],
     public bancas?: IBanca[]
   ) {
     this.status = this.status || false;

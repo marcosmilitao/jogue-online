@@ -24,7 +24,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new Aposta(0, 0, currentDate, 'AAAAAAA', 0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 0, 0, 0);
+      elemDefault = new Aposta(0, 0, currentDate, 'AAAAAAA', 0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 0, 0, 0, 0);
     });
 
     describe('Service methods', () => {
@@ -78,7 +78,8 @@ describe('Service Tests', () => {
             premio: 'BBBBBB',
             codigoPremio: 1,
             valorJogo: 1,
-            codigoBanca: 1
+            codigoBanca: 1,
+            numeroAposta: 1
           },
           elemDefault
         );
@@ -109,7 +110,8 @@ describe('Service Tests', () => {
             premio: 'BBBBBB',
             codigoPremio: 1,
             valorJogo: 1,
-            codigoBanca: 1
+            codigoBanca: 1,
+            numeroAposta: 1
           },
           elemDefault
         );

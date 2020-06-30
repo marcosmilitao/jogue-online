@@ -85,12 +85,6 @@ public class Modalidade implements Serializable {
     @Column(name = "permite_palpite_aleatorio")
     private Boolean permitePalpiteAleatorio;
 
-    @ManyToMany
-    @JoinTable(name = "modalidade_premio",
-               joinColumns = @JoinColumn(name = "modalidade_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "premio_id", referencedColumnName = "id"))
-    private Set<Premio> premios = new HashSet<>();
-
     @ManyToMany(mappedBy = "modalidades")
     @JsonIgnore
     private Set<Banca> bancas = new HashSet<>();
@@ -323,31 +317,6 @@ public class Modalidade implements Serializable {
 
     public void setPermitePalpiteAleatorio(Boolean permitePalpiteAleatorio) {
         this.permitePalpiteAleatorio = permitePalpiteAleatorio;
-    }
-
-    public Set<Premio> getPremios() {
-        return premios;
-    }
-
-    public Modalidade premios(Set<Premio> premios) {
-        this.premios = premios;
-        return this;
-    }
-
-    public Modalidade addPremio(Premio premio) {
-        this.premios.add(premio);
-        premio.getModalidades().add(this);
-        return this;
-    }
-
-    public Modalidade removePremio(Premio premio) {
-        this.premios.remove(premio);
-        premio.getModalidades().remove(this);
-        return this;
-    }
-
-    public void setPremios(Set<Premio> premios) {
-        this.premios = premios;
     }
 
     public Set<Banca> getBancas() {

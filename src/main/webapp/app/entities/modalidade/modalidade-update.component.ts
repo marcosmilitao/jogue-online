@@ -7,8 +7,6 @@ import { Observable } from 'rxjs';
 
 import { IModalidade, Modalidade } from 'app/shared/model/modalidade.model';
 import { ModalidadeService } from './modalidade.service';
-import { IPremio } from 'app/shared/model/premio.model';
-import { PremioService } from 'app/entities/premio/premio.service';
 
 @Component({
   selector: 'jhi-modalidade-update',
@@ -16,7 +14,6 @@ import { PremioService } from 'app/entities/premio/premio.service';
 })
 export class ModalidadeUpdateComponent implements OnInit {
   isSaving = false;
-  premios: IPremio[] = [];
 
   editForm = this.fb.group({
     id: [],
@@ -36,22 +33,14 @@ export class ModalidadeUpdateComponent implements OnInit {
     palpiteMultiplo: [],
     palpiteMultiploTerminal: [],
     ordenar: [],
-    permitePalpiteAleatorio: [],
-    premios: []
+    permitePalpiteAleatorio: []
   });
 
-  constructor(
-    protected modalidadeService: ModalidadeService,
-    protected premioService: PremioService,
-    protected activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
-  ) {}
+  constructor(protected modalidadeService: ModalidadeService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ modalidade }) => {
       this.updateForm(modalidade);
-
-      this.premioService.query().subscribe((res: HttpResponse<IPremio[]>) => (this.premios = res.body || []));
     });
   }
 
@@ -74,8 +63,7 @@ export class ModalidadeUpdateComponent implements OnInit {
       palpiteMultiplo: modalidade.palpiteMultiplo,
       palpiteMultiploTerminal: modalidade.palpiteMultiploTerminal,
       ordenar: modalidade.ordenar,
-      permitePalpiteAleatorio: modalidade.permitePalpiteAleatorio,
-      premios: modalidade.premios
+      permitePalpiteAleatorio: modalidade.permitePalpiteAleatorio
     });
   }
 
@@ -113,8 +101,7 @@ export class ModalidadeUpdateComponent implements OnInit {
       palpiteMultiplo: this.editForm.get(['palpiteMultiplo'])!.value,
       palpiteMultiploTerminal: this.editForm.get(['palpiteMultiploTerminal'])!.value,
       ordenar: this.editForm.get(['ordenar'])!.value,
-      permitePalpiteAleatorio: this.editForm.get(['permitePalpiteAleatorio'])!.value,
-      premios: this.editForm.get(['premios'])!.value
+      permitePalpiteAleatorio: this.editForm.get(['permitePalpiteAleatorio'])!.value
     };
   }
 
@@ -132,20 +119,5 @@ export class ModalidadeUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
-  }
-
-  trackById(index: number, item: IPremio): any {
-    return item.id;
-  }
-
-  getSelected(selectedVals: IPremio[], option: IPremio): IPremio {
-    if (selectedVals) {
-      for (let i = 0; i < selectedVals.length; i++) {
-        if (option.id === selectedVals[i].id) {
-          return selectedVals[i];
-        }
-      }
-    }
-    return option;
   }
 }

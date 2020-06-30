@@ -1,7 +1,6 @@
 package net.jogueonline.web.rest;
 
 import net.jogueonline.domain.Loteria;
-import net.jogueonline.domain.Modalidade;
 import net.jogueonline.repository.LoteriaRepository;
 import net.jogueonline.web.rest.errors.BadRequestAlertException;
 
@@ -119,9 +118,8 @@ public class LoteriaResource {
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
 
-
     @GetMapping("/loterias/banca/{id}")
-    public List<Loteria> getModalidadeBanca(@PathVariable Long id){
+    public List<Loteria> findByBanca(@PathVariable Long id){
         return loteriaRepository.findByBanca(id);
     }
 }

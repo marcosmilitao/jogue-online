@@ -33,6 +33,7 @@
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.aposta.codigoPremio">Codigo Premio</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.aposta.valorJogo">Valor Jogo</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.aposta.codigoBanca">Codigo Banca</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.aposta.numeroAposta">Numero Aposta</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.aposta.banca">Banca</span></th>
                     <th scope="col"></th>
                 </tr>
@@ -50,6 +51,7 @@
                     <td>{{ aposta.codigoPremio }}</td>
                     <td>{{ aposta.valorJogo }}</td>
                     <td>{{ aposta.codigoBanca }}</td>
+                    <td>{{ aposta.numeroAposta }}</td>
                     <td>
                         <div *ngIf="aposta.banca">
                             <a [routerLink]="['/banca', aposta.banca?.id, 'view']" >{{ aposta.banca?.id }}</a>

@@ -76,12 +76,6 @@
                 <dd>
                     <span>{{ modalidade.permitePalpiteAleatorio }}</span>
                 </dd>
-                <dt><span jhiTranslate="jogueOnlineApp.modalidade.premio">Premio</span></dt>
-                <dd>
-                    <span *ngFor="let premio of modalidade.premios; let last = last">
-                        <a [routerLink]="['/premio', premio?.id, 'view']">{{ premio.codigo }}</a>{{ last ? '' : ', ' }}
-                    </span>
-                </dd>
             </dl>
 
             <button type="submit"

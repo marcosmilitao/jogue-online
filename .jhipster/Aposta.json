@@ -5,12 +5,15 @@
             "fieldName": "codigoJogo",
             "fieldType": "Long",
             "fieldValidateRules": [
-                "unique"
+                "required"
             ]
         },
         {
             "fieldName": "dataAposta",
-            "fieldType": "Instant"
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "loteriaNome",
@@ -18,7 +21,10 @@
         },
         {
             "fieldName": "loteriaCodigo",
-            "fieldType": "Integer"
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "modalide",
@@ -26,7 +32,10 @@
         },
         {
             "fieldName": "codigoModalidade",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "premio",
@@ -34,7 +43,10 @@
         },
         {
             "fieldName": "codigoPremio",
-            "fieldType": "Long"
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "valorJogo",
@@ -43,6 +55,13 @@
         {
             "fieldName": "codigoBanca",
             "fieldType": "Long"
+        },
+        {
+            "fieldName": "numeroAposta",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "relationships": [

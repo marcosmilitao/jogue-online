@@ -83,13 +83,12 @@ public class ModalidadeResource {
     /**
      * {@code GET  /modalidades} : get all the modalidades.
      *
-     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of modalidades in body.
      */
     @GetMapping("/modalidades")
-    public List<Modalidade> getAllModalidades(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
+    public List<Modalidade> getAllModalidades() {
         log.debug("REST request to get all Modalidades");
-        return modalidadeRepository.findAllWithEagerRelationships();
+        return modalidadeRepository.findAll();
     }
 
     /**
@@ -101,13 +100,8 @@ public class ModalidadeResource {
     @GetMapping("/modalidades/{id}")
     public ResponseEntity<Modalidade> getModalidade(@PathVariable Long id) {
         log.debug("REST request to get Modalidade : {}", id);
-        Optional<Modalidade> modalidade = modalidadeRepository.findOneWithEagerRelationships(id);
+        Optional<Modalidade> modalidade = modalidadeRepository.findById(id);
         return ResponseUtil.wrapOrNotFound(modalidade);
-    }
-
-    @GetMapping("/modalidade/banca/{id}")
-    public List<Modalidade> getModalidadeBanca(@PathVariable Long id){
-        return modalidadeRepository.findByBancaPremio(id);
     }
 
     /**
@@ -121,5 +115,11 @@ public class ModalidadeResource {
         log.debug("REST request to delete Modalidade : {}", id);
         modalidadeRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
+    }
+
+
+    @GetMapping("/modalidade/banca/{id}")
+    public List<Modalidade> getModalidadeBanca(@PathVariable Long id){
+        return modalidadeRepository.findByBancaPremio(id);
     }
 }

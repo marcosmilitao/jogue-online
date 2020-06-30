@@ -31,7 +31,7 @@ public class Premio implements Serializable {
 
     @ManyToMany(mappedBy = "premios")
     @JsonIgnore
-    private Set<Modalidade> modalidades = new HashSet<>();
+    private Set<Loteria> loterias = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -68,29 +68,29 @@ public class Premio implements Serializable {
         this.nome = nome;
     }
 
-    public Set<Modalidade> getModalidades() {
-        return modalidades;
+    public Set<Loteria> getLoterias() {
+        return loterias;
     }
 
-    public Premio modalidades(Set<Modalidade> modalidades) {
-        this.modalidades = modalidades;
+    public Premio loterias(Set<Loteria> loterias) {
+        this.loterias = loterias;
         return this;
     }
 
-    public Premio addModalidade(Modalidade modalidade) {
-        this.modalidades.add(modalidade);
-        modalidade.getPremios().add(this);
+    public Premio addLoteria(Loteria loteria) {
+        this.loterias.add(loteria);
+        loteria.getPremios().add(this);
         return this;
     }
 
-    public Premio removeModalidade(Modalidade modalidade) {
-        this.modalidades.remove(modalidade);
-        modalidade.getPremios().remove(this);
+    public Premio removeLoteria(Loteria loteria) {
+        this.loterias.remove(loteria);
+        loteria.getPremios().remove(this);
         return this;
     }
 
-    public void setModalidades(Set<Modalidade> modalidades) {
-        this.modalidades = modalidades;
+    public void setLoterias(Set<Loteria> loterias) {
+        this.loterias = loterias;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

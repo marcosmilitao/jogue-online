@@ -83,6 +83,14 @@
         },
         {
             "relationshipType": "many-to-many",
+            "otherEntityName": "premio",
+            "otherEntityRelationshipName": "loteria",
+            "relationshipName": "premio",
+            "otherEntityField": "nome",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
             "otherEntityName": "banca",
             "otherEntityRelationshipName": "loteria",
             "relationshipName": "banca",

@@ -62,6 +62,12 @@
                         <a [routerLink]="['/dias-funcionamento', diasFuncionamento?.id, 'view']">{{ diasFuncionamento.dia }}</a>{{ last ? '' : ', ' }}
                     </span>
                 </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.loteria.premio">Premio</span></dt>
+                <dd>
+                    <span *ngFor="let premio of loteria.premios; let last = last">
+                        <a [routerLink]="['/premio', premio?.id, 'view']">{{ premio.nome }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
             </dl>
 
             <button type="submit"

@@ -174,16 +174,17 @@ entity DiasFuncionamento{
 **/
 
 entity Aposta{
-	codigoJogo Long unique,
-    dataAposta Instant,
-    loteriaNome String,
-    loteriaCodigo Integer,
+	codigoJogo Long required,
+    dataAposta Instant required,
+    loteriaNome String ,
+    loteriaCodigo Integer required,
     modalide String,
-    codigoModalidade String,
+    codigoModalidade String required,
     premio String,
-    codigoPremio Long,
+    codigoPremio Long required,
     valorJogo BigDecimal,
     codigoBanca Long,
+    numeroAposta Long required
 }
 
 entity LimiteVenda{
@@ -223,9 +224,9 @@ relationship OneToOne{
 
 relationship ManyToMany {
 
-   Banca{modalidade(nome)} to Modalidade { Banca(nome) }
+   Banca{modalidade(nome)} to Modalidade { banca(nome) }
    Banca{loteria(nome)} to Loteria{banca(nome)}
    Banca {customUser(login)} to CustomUser {banca(nome)}
    Loteria{diasFuncionamento(dia)} to DiasFuncionamento{loteria(nome)}
-   Modalidade{premio(codigo)} to Premio {modalidade(come)}
+   Loteria{premio(nome)} to Premio {loteria(nome)}
 }

@@ -13,10 +13,10 @@
     "relationships": [
         {
             "relationshipType": "many-to-many",
-            "otherEntityName": "modalidade",
+            "otherEntityName": "loteria",
             "otherEntityRelationshipName": "premio",
-            "relationshipName": "modalidade",
-            "otherEntityField": "come",
+            "relationshipName": "loteria",
+            "otherEntityField": "nome",
             "ownerSide": false
         }
     ],

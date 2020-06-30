@@ -16,34 +16,37 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="codigo_jogo" type="bigint">
-                <constraints nullable="true" unique="true" uniqueConstraintName="ux_aposta_codigo_jogo" />
+                <constraints nullable="false" />
             </column>
             <column name="data_aposta" type="datetime">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
             <column name="loteria_nome" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="loteria_codigo" type="integer">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
             <column name="modalide" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="codigo_modalidade" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
             <column name="premio" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="codigo_premio" type="bigint">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
             <column name="valor_jogo" type="decimal(21,2)">
                 <constraints nullable="true" />
             </column>
             <column name="codigo_banca" type="bigint">
                 <constraints nullable="true" />
+            </column>
+            <column name="numero_aposta" type="bigint">
+                <constraints nullable="false" />
             </column>
             <column name="banca_id" type="bigint">
                 <constraints nullable="true" />
@@ -82,6 +85,7 @@
             <column name="codigo_premio" type="numeric"/>
             <column name="valor_jogo" type="numeric"/>
             <column name="codigo_banca" type="numeric"/>
+            <column name="numero_aposta" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>
     </changeSet>

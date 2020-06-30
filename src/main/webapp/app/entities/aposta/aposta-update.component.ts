@@ -22,16 +22,17 @@ export class ApostaUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    codigoJogo: [null, []],
-    dataAposta: [],
+    codigoJogo: [null, [Validators.required]],
+    dataAposta: [null, [Validators.required]],
     loteriaNome: [],
-    loteriaCodigo: [],
+    loteriaCodigo: [null, [Validators.required]],
     modalide: [],
-    codigoModalidade: [],
+    codigoModalidade: [null, [Validators.required]],
     premio: [],
-    codigoPremio: [],
+    codigoPremio: [null, [Validators.required]],
     valorJogo: [],
     codigoBanca: [],
+    numeroAposta: [null, [Validators.required]],
     banca: []
   });
 
@@ -68,6 +69,7 @@ export class ApostaUpdateComponent implements OnInit {
       codigoPremio: aposta.codigoPremio,
       valorJogo: aposta.valorJogo,
       codigoBanca: aposta.codigoBanca,
+      numeroAposta: aposta.numeroAposta,
       banca: aposta.banca
     });
   }
@@ -100,6 +102,7 @@ export class ApostaUpdateComponent implements OnInit {
       codigoPremio: this.editForm.get(['codigoPremio'])!.value,
       valorJogo: this.editForm.get(['valorJogo'])!.value,
       codigoBanca: this.editForm.get(['codigoBanca'])!.value,
+      numeroAposta: this.editForm.get(['numeroAposta'])!.value,
       banca: this.editForm.get(['banca'])!.value
     };
   }

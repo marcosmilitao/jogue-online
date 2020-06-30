@@ -7,6 +7,8 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Objects;
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -26,29 +28,33 @@ public class Aposta implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-
-    @Column(name = "codigo_jogo", unique = true)
+    @NotNull
+    @Column(name = "codigo_jogo", nullable = false)
     private Long codigoJogo;
 
-    @Column(name = "data_aposta")
+    @NotNull
+    @Column(name = "data_aposta", nullable = false)
     private Instant dataAposta;
 
     @Column(name = "loteria_nome")
     private String loteriaNome;
 
-    @Column(name = "loteria_codigo")
+    @NotNull
+    @Column(name = "loteria_codigo", nullable = false)
     private Integer loteriaCodigo;
 
     @Column(name = "modalide")
     private String modalide;
 
-    @Column(name = "codigo_modalidade")
+    @NotNull
+    @Column(name = "codigo_modalidade", nullable = false)
     private String codigoModalidade;
 
     @Column(name = "premio")
     private String premio;
 
-    @Column(name = "codigo_premio")
+    @NotNull
+    @Column(name = "codigo_premio", nullable = false)
     private Long codigoPremio;
 
     @Column(name = "valor_jogo", precision = 21, scale = 2)
@@ -56,6 +62,10 @@ public class Aposta implements Serializable {
 
     @Column(name = "codigo_banca")
     private Long codigoBanca;
+
+    @NotNull
+    @Column(name = "numero_aposta", nullable = false)
+    private Long numeroAposta;
 
     @ManyToOne
     @JsonIgnoreProperties("apostas")
@@ -94,6 +104,18 @@ public class Aposta implements Serializable {
 
     public void setDataAposta(Instant dataAposta) {
         this.dataAposta = dataAposta;
+    }
+
+    @PrePersist
+    protected void prePersist() {
+        if (this.dataAposta == null){
+            Instant nowUtc = Instant.now();
+            ZoneId brasilSaoPaulo = ZoneId.of("America/Sao_Paulo");
+            ZonedDateTime nowBrasil = ZonedDateTime.ofInstant(nowUtc,brasilSaoPaulo);
+            this.dataAposta = nowBrasil.toInstant();
+        }
+
+
     }
 
     public String getLoteriaNome() {
@@ -200,6 +222,19 @@ public class Aposta implements Serializable {
         this.codigoBanca = codigoBanca;
     }
 
+    public Long getNumeroAposta() {
+        return numeroAposta;
+    }
+
+    public Aposta numeroAposta(Long numeroAposta) {
+        this.numeroAposta = numeroAposta;
+        return this;
+    }
+
+    public void setNumeroAposta(Long numeroAposta) {
+        this.numeroAposta = numeroAposta;
+    }
+
     public Banca getBanca() {
         return banca;
     }
@@ -244,6 +279,7 @@ public class Aposta implements Serializable {
             ", codigoPremio=" + getCodigoPremio() +
             ", valorJogo=" + getValorJogo() +
             ", codigoBanca=" + getCodigoBanca() +
+            ", numeroAposta=" + getNumeroAposta() +
             "}";
     }
 }

@@ -30,7 +30,6 @@
     <include file="config/liquibase/changelog/20200616133600_added_entity_constraints_Promotor.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200616133700_added_entity_constraints_Revendedor.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200616133800_added_entity_constraints_Terminal.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20200616133900_added_entity_constraints_Modalidade.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200616134100_added_entity_constraints_Loteria.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200616134300_added_entity_constraints_Aposta.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200616134400_added_entity_constraints_LimiteVenda.xml" relativeToChangelogFile="false"/>

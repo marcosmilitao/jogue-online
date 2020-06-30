@@ -69,6 +69,17 @@
 
         <addPrimaryKey columnNames="loteria_id, dias_funcionamento_id" tableName="loteria_dias_funcionamento"/>
         
+        <createTable tableName="loteria_premio">
+            <column name="premio_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="loteria_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="loteria_id, premio_id" tableName="loteria_premio"/>
+        
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 

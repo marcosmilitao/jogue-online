@@ -75,6 +75,12 @@ public class Loteria implements Serializable {
                inverseJoinColumns = @JoinColumn(name = "dias_funcionamento_id", referencedColumnName = "id"))
     private Set<DiasFuncionamento> diasFuncionamentos = new HashSet<>();
 
+    @ManyToMany
+    @JoinTable(name = "loteria_premio",
+               joinColumns = @JoinColumn(name = "loteria_id", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "premio_id", referencedColumnName = "id"))
+    private Set<Premio> premios = new HashSet<>();
+
     @ManyToMany(mappedBy = "loterias")
     @JsonIgnore
     private Set<Banca> bancas = new HashSet<>();
@@ -267,6 +273,31 @@ public class Loteria implements Serializable {
 
     public void setDiasFuncionamentos(Set<DiasFuncionamento> diasFuncionamentos) {
         this.diasFuncionamentos = diasFuncionamentos;
+    }
+
+    public Set<Premio> getPremios() {
+        return premios;
+    }
+
+    public Loteria premios(Set<Premio> premios) {
+        this.premios = premios;
+        return this;
+    }
+
+    public Loteria addPremio(Premio premio) {
+        this.premios.add(premio);
+        premio.getLoterias().add(this);
+        return this;
+    }
+
+    public Loteria removePremio(Premio premio) {
+        this.premios.remove(premio);
+        premio.getLoterias().remove(this);
+        return this;
+    }
+
+    public void setPremios(Set<Premio> premios) {
+        this.premios = premios;
     }
 
     public Set<Banca> getBancas() {

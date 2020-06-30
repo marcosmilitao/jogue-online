@@ -40,7 +40,6 @@
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.modalidade.palpiteMultiploTerminal">Palpite Multiplo Terminal</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.modalidade.ordenar">Ordenar</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.modalidade.permitePalpiteAleatorio">Permite Palpite Aleatorio</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.modalidade.premio">Premio</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -64,11 +63,6 @@
                     <td>{{ modalidade.palpiteMultiploTerminal }}</td>
                     <td>{{ modalidade.ordenar }}</td>
                     <td>{{ modalidade.permitePalpiteAleatorio }}</td>
-                    <td>
-                        <span *ngFor="let premio of modalidade.premios; let last = last">
-                            <a class="form-control-static" [routerLink]="['/premio', premio?.id, 'view']">{{ premio.codigo }}</a>{{ last ? '' : ', ' }}
-                        </span>
-                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"
