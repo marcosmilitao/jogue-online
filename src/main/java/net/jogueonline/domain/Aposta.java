@@ -114,8 +114,6 @@ public class Aposta implements Serializable {
             ZonedDateTime nowBrasil = ZonedDateTime.ofInstant(nowUtc,brasilSaoPaulo);
             this.dataAposta = nowBrasil.toInstant();
         }
-
-
     }
 
     public String getLoteriaNome() {
