@@ -24,7 +24,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new Banca(0, 0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 0, 0, 0, 0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', currentDate);
+      elemDefault = new Banca(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 0, 0, 0, 0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', currentDate, 0);
     });
 
     describe('Service methods', () => {
@@ -69,7 +69,6 @@ describe('Service Tests', () => {
       it('should update a Banca', () => {
         const returnedFromService = Object.assign(
           {
-            codigo: 1,
             nome: 'BBBBBB',
             cidade: 'BBBBBB',
             telefone: 'BBBBBB',
@@ -81,7 +80,8 @@ describe('Service Tests', () => {
             mensagemPule1: 'BBBBBB',
             mensagemPule2: 'BBBBBB',
             mensagemPule3: 'BBBBBB',
-            data: currentDate.format(DATE_TIME_FORMAT)
+            data: currentDate.format(DATE_TIME_FORMAT),
+            bonus: 1
           },
           elemDefault
         );
@@ -103,7 +103,6 @@ describe('Service Tests', () => {
       it('should return a list of Banca', () => {
         const returnedFromService = Object.assign(
           {
-            codigo: 1,
             nome: 'BBBBBB',
             cidade: 'BBBBBB',
             telefone: 'BBBBBB',
@@ -115,7 +114,8 @@ describe('Service Tests', () => {
             mensagemPule1: 'BBBBBB',
             mensagemPule2: 'BBBBBB',
             mensagemPule3: 'BBBBBB',
-            data: currentDate.format(DATE_TIME_FORMAT)
+            data: currentDate.format(DATE_TIME_FORMAT),
+            bonus: 1
           },
           elemDefault
         );

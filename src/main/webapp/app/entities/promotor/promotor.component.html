@@ -23,7 +23,6 @@
             <thead>
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.promotor.codigo">Codigo</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.promotor.nome">Nome</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.promotor.cidade">Cidade</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.promotor.estado">Estado</span></th>
@@ -37,7 +36,6 @@
             <tbody>
                 <tr *ngFor="let promotor of promotors ;trackBy: trackId">
                     <td><a [routerLink]="['/promotor', promotor.id, 'view']">{{ promotor.id }}</a></td>
-                    <td>{{ promotor.codigo }}</td>
                     <td>{{ promotor.nome }}</td>
                     <td>{{ promotor.cidade }}</td>
                     <td>{{ promotor.estado }}</td>
@@ -46,7 +44,7 @@
                     <td>{{ promotor.data | date:'medium' }}</td>
                     <td>
                         <div *ngIf="promotor.banca">
-                            <a [routerLink]="['/banca', promotor.banca?.id, 'view']" >{{ promotor.banca?.id }}</a>
+                            <a [routerLink]="['/banca', promotor.banca?.id, 'view']" >{{ promotor.banca?.nome }}</a>
                         </div>
                     </td>
                     <td class="text-right">

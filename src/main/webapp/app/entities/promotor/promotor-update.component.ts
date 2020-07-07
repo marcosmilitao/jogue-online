@@ -22,7 +22,6 @@ export class PromotorUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    codigo: [null, [Validators.required]],
     nome: [null, [Validators.required]],
     cidade: [],
     estado: [],
@@ -55,7 +54,6 @@ export class PromotorUpdateComponent implements OnInit {
   updateForm(promotor: IPromotor): void {
     this.editForm.patchValue({
       id: promotor.id,
-      codigo: promotor.codigo,
       nome: promotor.nome,
       cidade: promotor.cidade,
       estado: promotor.estado,
@@ -84,7 +82,6 @@ export class PromotorUpdateComponent implements OnInit {
     return {
       ...new Promotor(),
       id: this.editForm.get(['id'])!.value,
-      codigo: this.editForm.get(['codigo'])!.value,
       nome: this.editForm.get(['nome'])!.value,
       cidade: this.editForm.get(['cidade'])!.value,
       estado: this.editForm.get(['estado'])!.value,

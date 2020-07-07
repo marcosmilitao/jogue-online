@@ -12,16 +12,16 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.aposta.codigoJogo" for="field_codigoJogo">Codigo Jogo</label>
-                    <input type="number" class="form-control" name="codigoJogo" id="field_codigoJogo"
-                           formControlName="codigoJogo"/>
-                    <div *ngIf="editForm.get('codigoJogo')!.invalid && (editForm.get('codigoJogo')!.dirty || editForm.get('codigoJogo')!.touched)">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.aposta.numeroBilhete" for="field_numeroBilhete">Numero Bilhete</label>
+                    <input type="number" class="form-control" name="numeroBilhete" id="field_numeroBilhete"
+                           formControlName="numeroBilhete"/>
+                    <div *ngIf="editForm.get('numeroBilhete')!.invalid && (editForm.get('numeroBilhete')!.dirty || editForm.get('numeroBilhete')!.touched)">
                         <small class="form-text text-danger"
-                               *ngIf="editForm.get('codigoJogo')?.errors?.required" jhiTranslate="entity.validation.required">
+                               *ngIf="editForm.get('numeroBilhete')?.errors?.required" jhiTranslate="entity.validation.required">
                         This field is required.
                         </small>
                         <small class="form-text text-danger"
-                            [hidden]="!editForm.get('codigoJogo')?.errors?.number" jhiTranslate="entity.validation.number">
+                            [hidden]="!editForm.get('numeroBilhete')?.errors?.number" jhiTranslate="entity.validation.number">
                             This field should be a number.
                         </small>
                     </div>
@@ -42,12 +42,6 @@
                             This field should be a date and time.
                         </small>
                     </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.aposta.loteriaNome" for="field_loteriaNome">Loteria Nome</label>
-                    <input type="text" class="form-control" name="loteriaNome" id="field_loteriaNome"
-                           formControlName="loteriaNome"/>
                 </div>
 
                 <div class="form-group">
@@ -135,10 +129,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.aposta.banca" for="field_banca">Banca</label>
-                    <select class="form-control" id="field_banca" name="banca" formControlName="banca">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.aposta.bilhete" for="field_bilhete">Bilhete</label>
+                    <select class="form-control" id="field_bilhete" name="bilhete" formControlName="bilhete">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="bancaOption.id === editForm.get('banca')!.value?.id ? editForm.get('banca')!.value : bancaOption" *ngFor="let bancaOption of bancas; trackBy: trackById">{{ bancaOption.id }}</option>
+                        <option [ngValue]="bilheteOption.id === editForm.get('bilhete')!.value?.id ? editForm.get('bilhete')!.value : bilheteOption" *ngFor="let bilheteOption of bilhetes; trackBy: trackById">{{ bilheteOption.numeroBilhete }}</option>
                     </select>
                 </div>
             </div>

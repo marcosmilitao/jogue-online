@@ -54,7 +54,7 @@ describe('Service Tests', () => {
       it('should update a Modalidade', () => {
         const returnedFromService = Object.assign(
           {
-            codigo: 'BBBBBB',
+            codigoModalidade: 'BBBBBB',
             nome: 'BBBBBB',
             menorPalpite: 1,
             maiorPalpite: 1,
@@ -87,7 +87,7 @@ describe('Service Tests', () => {
       it('should return a list of Modalidade', () => {
         const returnedFromService = Object.assign(
           {
-            codigo: 'BBBBBB',
+            codigoModalidade: 'BBBBBB',
             nome: 'BBBBBB',
             menorPalpite: 1,
             maiorPalpite: 1,

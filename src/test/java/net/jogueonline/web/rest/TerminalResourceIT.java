@@ -32,17 +32,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class TerminalResourceIT {
 
-    private static final Long DEFAULT_CODIGO_TERMINAL = 1L;
-    private static final Long UPDATED_CODIGO_TERMINAL = 2L;
-
     private static final Long DEFAULT_TELEFONE_CHIPE = 1L;
     private static final Long UPDATED_TELEFONE_CHIPE = 2L;
 
-    private static final String DEFAULT_REVENDEDOR = "AAAAAAAAAA";
-    private static final String UPDATED_REVENDEDOR = "BBBBBBBBBB";
-
-    private static final String DEFAULT_SERIAL_CHIP = "AAAAAAAAAA";
-    private static final String UPDATED_SERIAL_CHIP = "BBBBBBBBBB";
+    private static final String DEFAULT_SERIAL = "AAAAAAAAAA";
+    private static final String UPDATED_SERIAL = "BBBBBBBBBB";
 
     private static final String DEFAULT_MENSSAGEM = "AAAAAAAAAA";
     private static final String UPDATED_MENSSAGEM = "BBBBBBBBBB";
@@ -62,9 +56,6 @@ public class TerminalResourceIT {
     private static final Long DEFAULT_MUDA_CODIGO = 1L;
     private static final Long UPDATED_MUDA_CODIGO = 2L;
 
-    private static final Long DEFAULT_NUMERO_TELEFONE_PROVEDOR = 1L;
-    private static final Long UPDATED_NUMERO_TELEFONE_PROVEDOR = 2L;
-
     private static final Instant DEFAULT_DATA_ENTRADA = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_DATA_ENTRADA = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
@@ -74,8 +65,8 @@ public class TerminalResourceIT {
     private static final Long DEFAULT_CODIGO_AUTORIZACAO = 1L;
     private static final Long UPDATED_CODIGO_AUTORIZACAO = 2L;
 
-    private static final String DEFAULT_SERIAL_TERMINAL = "AAAAAAAAAA";
-    private static final String UPDATED_SERIAL_TERMINAL = "BBBBBBBBBB";
+    private static final String DEFAULT_IMEI = "AAAAAAAAAA";
+    private static final String UPDATED_IMEI = "BBBBBBBBBB";
 
     private static final String DEFAULT_EMAIL = "AAAAAAAAAA";
     private static final String UPDATED_EMAIL = "BBBBBBBBBB";
@@ -102,21 +93,18 @@ public class TerminalResourceIT {
      */
     public static Terminal createEntity(EntityManager em) {
         Terminal terminal = new Terminal()
-            .codigoTerminal(DEFAULT_CODIGO_TERMINAL)
             .telefoneChipe(DEFAULT_TELEFONE_CHIPE)
-            .revendedor(DEFAULT_REVENDEDOR)
-            .serialChip(DEFAULT_SERIAL_CHIP)
+            .serial(DEFAULT_SERIAL)
             .menssagem(DEFAULT_MENSSAGEM)
             .senhaComunicacao(DEFAULT_SENHA_COMUNICACAO)
             .dataInicio(DEFAULT_DATA_INICIO)
             .situacao(DEFAULT_SITUACAO)
             .versaoTerminal(DEFAULT_VERSAO_TERMINAL)
             .mudaCodigo(DEFAULT_MUDA_CODIGO)
-            .numeroTelefoneProvedor(DEFAULT_NUMERO_TELEFONE_PROVEDOR)
             .dataEntrada(DEFAULT_DATA_ENTRADA)
             .numeroFonte(DEFAULT_NUMERO_FONTE)
             .codigoAutorizacao(DEFAULT_CODIGO_AUTORIZACAO)
-            .serialTerminal(DEFAULT_SERIAL_TERMINAL)
+            .imei(DEFAULT_IMEI)
             .email(DEFAULT_EMAIL)
             .codigoBanca(DEFAULT_CODIGO_BANCA);
         return terminal;
@@ -129,21 +117,18 @@ public class TerminalResourceIT {
      */
     public static Terminal createUpdatedEntity(EntityManager em) {
         Terminal terminal = new Terminal()
-            .codigoTerminal(UPDATED_CODIGO_TERMINAL)
             .telefoneChipe(UPDATED_TELEFONE_CHIPE)
-            .revendedor(UPDATED_REVENDEDOR)
-            .serialChip(UPDATED_SERIAL_CHIP)
+            .serial(UPDATED_SERIAL)
             .menssagem(UPDATED_MENSSAGEM)
             .senhaComunicacao(UPDATED_SENHA_COMUNICACAO)
             .dataInicio(UPDATED_DATA_INICIO)
             .situacao(UPDATED_SITUACAO)
             .versaoTerminal(UPDATED_VERSAO_TERMINAL)
             .mudaCodigo(UPDATED_MUDA_CODIGO)
-            .numeroTelefoneProvedor(UPDATED_NUMERO_TELEFONE_PROVEDOR)
             .dataEntrada(UPDATED_DATA_ENTRADA)
             .numeroFonte(UPDATED_NUMERO_FONTE)
             .codigoAutorizacao(UPDATED_CODIGO_AUTORIZACAO)
-            .serialTerminal(UPDATED_SERIAL_TERMINAL)
+            .imei(UPDATED_IMEI)
             .email(UPDATED_EMAIL)
             .codigoBanca(UPDATED_CODIGO_BANCA);
         return terminal;
@@ -169,21 +154,18 @@ public class TerminalResourceIT {
         List<Terminal> terminalList = terminalRepository.findAll();
         assertThat(terminalList).hasSize(databaseSizeBeforeCreate + 1);
         Terminal testTerminal = terminalList.get(terminalList.size() - 1);
-        assertThat(testTerminal.getCodigoTerminal()).isEqualTo(DEFAULT_CODIGO_TERMINAL);
         assertThat(testTerminal.getTelefoneChipe()).isEqualTo(DEFAULT_TELEFONE_CHIPE);
-        assertThat(testTerminal.getRevendedor()).isEqualTo(DEFAULT_REVENDEDOR);
-        assertThat(testTerminal.getSerialChip()).isEqualTo(DEFAULT_SERIAL_CHIP);
+        assertThat(testTerminal.getSerial()).isEqualTo(DEFAULT_SERIAL);
         assertThat(testTerminal.getMenssagem()).isEqualTo(DEFAULT_MENSSAGEM);
         assertThat(testTerminal.getSenhaComunicacao()).isEqualTo(DEFAULT_SENHA_COMUNICACAO);
         assertThat(testTerminal.getDataInicio()).isEqualTo(DEFAULT_DATA_INICIO);
         assertThat(testTerminal.isSituacao()).isEqualTo(DEFAULT_SITUACAO);
         assertThat(testTerminal.getVersaoTerminal()).isEqualTo(DEFAULT_VERSAO_TERMINAL);
         assertThat(testTerminal.getMudaCodigo()).isEqualTo(DEFAULT_MUDA_CODIGO);
-        assertThat(testTerminal.getNumeroTelefoneProvedor()).isEqualTo(DEFAULT_NUMERO_TELEFONE_PROVEDOR);
         assertThat(testTerminal.getDataEntrada()).isEqualTo(DEFAULT_DATA_ENTRADA);
         assertThat(testTerminal.getNumeroFonte()).isEqualTo(DEFAULT_NUMERO_FONTE);
         assertThat(testTerminal.getCodigoAutorizacao()).isEqualTo(DEFAULT_CODIGO_AUTORIZACAO);
-        assertThat(testTerminal.getSerialTerminal()).isEqualTo(DEFAULT_SERIAL_TERMINAL);
+        assertThat(testTerminal.getImei()).isEqualTo(DEFAULT_IMEI);
         assertThat(testTerminal.getEmail()).isEqualTo(DEFAULT_EMAIL);
         assertThat(testTerminal.getCodigoBanca()).isEqualTo(DEFAULT_CODIGO_BANCA);
     }
@@ -210,10 +192,10 @@ public class TerminalResourceIT {
 
     @Test
     @Transactional
-    public void checkCodigoTerminalIsRequired() throws Exception {
+    public void checkSerialIsRequired() throws Exception {
         int databaseSizeBeforeTest = terminalRepository.findAll().size();
         // set the field null
-        terminal.setCodigoTerminal(null);
+        terminal.setSerial(null);
 
         // Create the Terminal, which fails.
 
@@ -228,28 +210,10 @@ public class TerminalResourceIT {
 
     @Test
     @Transactional
-    public void checkSerialChipIsRequired() throws Exception {
+    public void checkImeiIsRequired() throws Exception {
         int databaseSizeBeforeTest = terminalRepository.findAll().size();
         // set the field null
-        terminal.setSerialChip(null);
-
-        // Create the Terminal, which fails.
-
-        restTerminalMockMvc.perform(post("/api/terminals")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(terminal)))
-            .andExpect(status().isBadRequest());
-
-        List<Terminal> terminalList = terminalRepository.findAll();
-        assertThat(terminalList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkSerialTerminalIsRequired() throws Exception {
-        int databaseSizeBeforeTest = terminalRepository.findAll().size();
-        // set the field null
-        terminal.setSerialTerminal(null);
+        terminal.setImei(null);
 
         // Create the Terminal, which fails.
 
@@ -273,21 +237,18 @@ public class TerminalResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(terminal.getId().intValue())))
-            .andExpect(jsonPath("$.[*].codigoTerminal").value(hasItem(DEFAULT_CODIGO_TERMINAL.intValue())))
             .andExpect(jsonPath("$.[*].telefoneChipe").value(hasItem(DEFAULT_TELEFONE_CHIPE.intValue())))
-            .andExpect(jsonPath("$.[*].revendedor").value(hasItem(DEFAULT_REVENDEDOR)))
-            .andExpect(jsonPath("$.[*].serialChip").value(hasItem(DEFAULT_SERIAL_CHIP)))
+            .andExpect(jsonPath("$.[*].serial").value(hasItem(DEFAULT_SERIAL)))
             .andExpect(jsonPath("$.[*].menssagem").value(hasItem(DEFAULT_MENSSAGEM)))
             .andExpect(jsonPath("$.[*].senhaComunicacao").value(hasItem(DEFAULT_SENHA_COMUNICACAO)))
             .andExpect(jsonPath("$.[*].dataInicio").value(hasItem(DEFAULT_DATA_INICIO.toString())))
             .andExpect(jsonPath("$.[*].situacao").value(hasItem(DEFAULT_SITUACAO.booleanValue())))
             .andExpect(jsonPath("$.[*].versaoTerminal").value(hasItem(DEFAULT_VERSAO_TERMINAL)))
             .andExpect(jsonPath("$.[*].mudaCodigo").value(hasItem(DEFAULT_MUDA_CODIGO.intValue())))
-            .andExpect(jsonPath("$.[*].numeroTelefoneProvedor").value(hasItem(DEFAULT_NUMERO_TELEFONE_PROVEDOR.intValue())))
             .andExpect(jsonPath("$.[*].dataEntrada").value(hasItem(DEFAULT_DATA_ENTRADA.toString())))
             .andExpect(jsonPath("$.[*].numeroFonte").value(hasItem(DEFAULT_NUMERO_FONTE.intValue())))
             .andExpect(jsonPath("$.[*].codigoAutorizacao").value(hasItem(DEFAULT_CODIGO_AUTORIZACAO.intValue())))
-            .andExpect(jsonPath("$.[*].serialTerminal").value(hasItem(DEFAULT_SERIAL_TERMINAL)))
+            .andExpect(jsonPath("$.[*].imei").value(hasItem(DEFAULT_IMEI)))
             .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL)))
             .andExpect(jsonPath("$.[*].codigoBanca").value(hasItem(DEFAULT_CODIGO_BANCA.intValue())));
     }
@@ -303,21 +264,18 @@ public class TerminalResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(terminal.getId().intValue()))
-            .andExpect(jsonPath("$.codigoTerminal").value(DEFAULT_CODIGO_TERMINAL.intValue()))
             .andExpect(jsonPath("$.telefoneChipe").value(DEFAULT_TELEFONE_CHIPE.intValue()))
-            .andExpect(jsonPath("$.revendedor").value(DEFAULT_REVENDEDOR))
-            .andExpect(jsonPath("$.serialChip").value(DEFAULT_SERIAL_CHIP))
+            .andExpect(jsonPath("$.serial").value(DEFAULT_SERIAL))
             .andExpect(jsonPath("$.menssagem").value(DEFAULT_MENSSAGEM))
             .andExpect(jsonPath("$.senhaComunicacao").value(DEFAULT_SENHA_COMUNICACAO))
             .andExpect(jsonPath("$.dataInicio").value(DEFAULT_DATA_INICIO.toString()))
             .andExpect(jsonPath("$.situacao").value(DEFAULT_SITUACAO.booleanValue()))
             .andExpect(jsonPath("$.versaoTerminal").value(DEFAULT_VERSAO_TERMINAL))
             .andExpect(jsonPath("$.mudaCodigo").value(DEFAULT_MUDA_CODIGO.intValue()))
-            .andExpect(jsonPath("$.numeroTelefoneProvedor").value(DEFAULT_NUMERO_TELEFONE_PROVEDOR.intValue()))
             .andExpect(jsonPath("$.dataEntrada").value(DEFAULT_DATA_ENTRADA.toString()))
             .andExpect(jsonPath("$.numeroFonte").value(DEFAULT_NUMERO_FONTE.intValue()))
             .andExpect(jsonPath("$.codigoAutorizacao").value(DEFAULT_CODIGO_AUTORIZACAO.intValue()))
-            .andExpect(jsonPath("$.serialTerminal").value(DEFAULT_SERIAL_TERMINAL))
+            .andExpect(jsonPath("$.imei").value(DEFAULT_IMEI))
             .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL))
             .andExpect(jsonPath("$.codigoBanca").value(DEFAULT_CODIGO_BANCA.intValue()));
     }
@@ -343,21 +301,18 @@ public class TerminalResourceIT {
         // Disconnect from session so that the updates on updatedTerminal are not directly saved in db
         em.detach(updatedTerminal);
         updatedTerminal
-            .codigoTerminal(UPDATED_CODIGO_TERMINAL)
             .telefoneChipe(UPDATED_TELEFONE_CHIPE)
-            .revendedor(UPDATED_REVENDEDOR)
-            .serialChip(UPDATED_SERIAL_CHIP)
+            .serial(UPDATED_SERIAL)
             .menssagem(UPDATED_MENSSAGEM)
             .senhaComunicacao(UPDATED_SENHA_COMUNICACAO)
             .dataInicio(UPDATED_DATA_INICIO)
             .situacao(UPDATED_SITUACAO)
             .versaoTerminal(UPDATED_VERSAO_TERMINAL)
             .mudaCodigo(UPDATED_MUDA_CODIGO)
-            .numeroTelefoneProvedor(UPDATED_NUMERO_TELEFONE_PROVEDOR)
             .dataEntrada(UPDATED_DATA_ENTRADA)
             .numeroFonte(UPDATED_NUMERO_FONTE)
             .codigoAutorizacao(UPDATED_CODIGO_AUTORIZACAO)
-            .serialTerminal(UPDATED_SERIAL_TERMINAL)
+            .imei(UPDATED_IMEI)
             .email(UPDATED_EMAIL)
             .codigoBanca(UPDATED_CODIGO_BANCA);
 
@@ -370,21 +325,18 @@ public class TerminalResourceIT {
         List<Terminal> terminalList = terminalRepository.findAll();
         assertThat(terminalList).hasSize(databaseSizeBeforeUpdate);
         Terminal testTerminal = terminalList.get(terminalList.size() - 1);
-        assertThat(testTerminal.getCodigoTerminal()).isEqualTo(UPDATED_CODIGO_TERMINAL);
         assertThat(testTerminal.getTelefoneChipe()).isEqualTo(UPDATED_TELEFONE_CHIPE);
-        assertThat(testTerminal.getRevendedor()).isEqualTo(UPDATED_REVENDEDOR);
-        assertThat(testTerminal.getSerialChip()).isEqualTo(UPDATED_SERIAL_CHIP);
+        assertThat(testTerminal.getSerial()).isEqualTo(UPDATED_SERIAL);
         assertThat(testTerminal.getMenssagem()).isEqualTo(UPDATED_MENSSAGEM);
         assertThat(testTerminal.getSenhaComunicacao()).isEqualTo(UPDATED_SENHA_COMUNICACAO);
         assertThat(testTerminal.getDataInicio()).isEqualTo(UPDATED_DATA_INICIO);
         assertThat(testTerminal.isSituacao()).isEqualTo(UPDATED_SITUACAO);
         assertThat(testTerminal.getVersaoTerminal()).isEqualTo(UPDATED_VERSAO_TERMINAL);
         assertThat(testTerminal.getMudaCodigo()).isEqualTo(UPDATED_MUDA_CODIGO);
-        assertThat(testTerminal.getNumeroTelefoneProvedor()).isEqualTo(UPDATED_NUMERO_TELEFONE_PROVEDOR);
         assertThat(testTerminal.getDataEntrada()).isEqualTo(UPDATED_DATA_ENTRADA);
         assertThat(testTerminal.getNumeroFonte()).isEqualTo(UPDATED_NUMERO_FONTE);
         assertThat(testTerminal.getCodigoAutorizacao()).isEqualTo(UPDATED_CODIGO_AUTORIZACAO);
-        assertThat(testTerminal.getSerialTerminal()).isEqualTo(UPDATED_SERIAL_TERMINAL);
+        assertThat(testTerminal.getImei()).isEqualTo(UPDATED_IMEI);
         assertThat(testTerminal.getEmail()).isEqualTo(UPDATED_EMAIL);
         assertThat(testTerminal.getCodigoBanca()).isEqualTo(UPDATED_CODIGO_BANCA);
     }

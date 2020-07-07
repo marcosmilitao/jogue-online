@@ -17,7 +17,7 @@ export class ModalidadeUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    codigo: [null, [Validators.required]],
+    codigoModalidade: [null, [Validators.required]],
     nome: [null, [Validators.required]],
     menorPalpite: [null, [Validators.required]],
     maiorPalpite: [null, [Validators.required]],
@@ -47,7 +47,7 @@ export class ModalidadeUpdateComponent implements OnInit {
   updateForm(modalidade: IModalidade): void {
     this.editForm.patchValue({
       id: modalidade.id,
-      codigo: modalidade.codigo,
+      codigoModalidade: modalidade.codigoModalidade,
       nome: modalidade.nome,
       menorPalpite: modalidade.menorPalpite,
       maiorPalpite: modalidade.maiorPalpite,
@@ -85,7 +85,7 @@ export class ModalidadeUpdateComponent implements OnInit {
     return {
       ...new Modalidade(),
       id: this.editForm.get(['id'])!.value,
-      codigo: this.editForm.get(['codigo'])!.value,
+      codigoModalidade: this.editForm.get(['codigoModalidade'])!.value,
       nome: this.editForm.get(['nome'])!.value,
       menorPalpite: this.editForm.get(['menorPalpite'])!.value,
       maiorPalpite: this.editForm.get(['maiorPalpite'])!.value,

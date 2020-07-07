@@ -8,10 +8,6 @@
             <jhi-alert-error></jhi-alert-error>
 
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="jogueOnlineApp.promotor.codigo">Codigo</span></dt>
-                <dd>
-                    <span>{{ promotor.codigo }}</span>
-                </dd>
                 <dt><span jhiTranslate="jogueOnlineApp.promotor.nome">Nome</span></dt>
                 <dd>
                     <span>{{ promotor.nome }}</span>
@@ -39,7 +35,7 @@
                 <dt><span jhiTranslate="jogueOnlineApp.promotor.banca">Banca</span></dt>
                 <dd>
                     <div *ngIf="promotor.banca">
-                        <a [routerLink]="['/banca', promotor.banca?.id, 'view']">{{ promotor.banca?.id }}</a>
+                        <a [routerLink]="['/banca', promotor.banca?.id, 'view']">{{ promotor.banca?.nome }}</a>
                     </div>
                 </dd>
             </dl>

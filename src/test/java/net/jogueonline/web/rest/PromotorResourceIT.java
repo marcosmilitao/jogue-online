@@ -32,9 +32,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class PromotorResourceIT {
 
-    private static final Long DEFAULT_CODIGO = 1L;
-    private static final Long UPDATED_CODIGO = 2L;
-
     private static final String DEFAULT_NOME = "AAAAAAAAAA";
     private static final String UPDATED_NOME = "BBBBBBBBBB";
 
@@ -72,7 +69,6 @@ public class PromotorResourceIT {
      */
     public static Promotor createEntity(EntityManager em) {
         Promotor promotor = new Promotor()
-            .codigo(DEFAULT_CODIGO)
             .nome(DEFAULT_NOME)
             .cidade(DEFAULT_CIDADE)
             .estado(DEFAULT_ESTADO)
@@ -89,7 +85,6 @@ public class PromotorResourceIT {
      */
     public static Promotor createUpdatedEntity(EntityManager em) {
         Promotor promotor = new Promotor()
-            .codigo(UPDATED_CODIGO)
             .nome(UPDATED_NOME)
             .cidade(UPDATED_CIDADE)
             .estado(UPDATED_ESTADO)
@@ -119,7 +114,6 @@ public class PromotorResourceIT {
         List<Promotor> promotorList = promotorRepository.findAll();
         assertThat(promotorList).hasSize(databaseSizeBeforeCreate + 1);
         Promotor testPromotor = promotorList.get(promotorList.size() - 1);
-        assertThat(testPromotor.getCodigo()).isEqualTo(DEFAULT_CODIGO);
         assertThat(testPromotor.getNome()).isEqualTo(DEFAULT_NOME);
         assertThat(testPromotor.getCidade()).isEqualTo(DEFAULT_CIDADE);
         assertThat(testPromotor.getEstado()).isEqualTo(DEFAULT_ESTADO);
@@ -147,24 +141,6 @@ public class PromotorResourceIT {
         assertThat(promotorList).hasSize(databaseSizeBeforeCreate);
     }
 
-
-    @Test
-    @Transactional
-    public void checkCodigoIsRequired() throws Exception {
-        int databaseSizeBeforeTest = promotorRepository.findAll().size();
-        // set the field null
-        promotor.setCodigo(null);
-
-        // Create the Promotor, which fails.
-
-        restPromotorMockMvc.perform(post("/api/promotors")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(promotor)))
-            .andExpect(status().isBadRequest());
-
-        List<Promotor> promotorList = promotorRepository.findAll();
-        assertThat(promotorList).hasSize(databaseSizeBeforeTest);
-    }
 
     @Test
     @Transactional
@@ -213,7 +189,6 @@ public class PromotorResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(promotor.getId().intValue())))
-            .andExpect(jsonPath("$.[*].codigo").value(hasItem(DEFAULT_CODIGO.intValue())))
             .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME)))
             .andExpect(jsonPath("$.[*].cidade").value(hasItem(DEFAULT_CIDADE)))
             .andExpect(jsonPath("$.[*].estado").value(hasItem(DEFAULT_ESTADO)))
@@ -233,7 +208,6 @@ public class PromotorResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(promotor.getId().intValue()))
-            .andExpect(jsonPath("$.codigo").value(DEFAULT_CODIGO.intValue()))
             .andExpect(jsonPath("$.nome").value(DEFAULT_NOME))
             .andExpect(jsonPath("$.cidade").value(DEFAULT_CIDADE))
             .andExpect(jsonPath("$.estado").value(DEFAULT_ESTADO))
@@ -263,7 +237,6 @@ public class PromotorResourceIT {
         // Disconnect from session so that the updates on updatedPromotor are not directly saved in db
         em.detach(updatedPromotor);
         updatedPromotor
-            .codigo(UPDATED_CODIGO)
             .nome(UPDATED_NOME)
             .cidade(UPDATED_CIDADE)
             .estado(UPDATED_ESTADO)
@@ -280,7 +253,6 @@ public class PromotorResourceIT {
         List<Promotor> promotorList = promotorRepository.findAll();
         assertThat(promotorList).hasSize(databaseSizeBeforeUpdate);
         Promotor testPromotor = promotorList.get(promotorList.size() - 1);
-        assertThat(testPromotor.getCodigo()).isEqualTo(UPDATED_CODIGO);
         assertThat(testPromotor.getNome()).isEqualTo(UPDATED_NOME);
         assertThat(testPromotor.getCidade()).isEqualTo(UPDATED_CIDADE);
         assertThat(testPromotor.getEstado()).isEqualTo(UPDATED_ESTADO);

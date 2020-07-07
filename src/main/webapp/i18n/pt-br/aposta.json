@@ -16,9 +16,8 @@
       "detail": {
         "title": "Aposta"
       },
-      "codigoJogo": "Codigo Jogo",
+      "numeroBilhete": "Numero Bilhete",
       "dataAposta": "Data Aposta",
-      "loteriaNome": "Loteria Nome",
       "loteriaCodigo": "Loteria Codigo",
       "modalide": "Modalide",
       "codigoModalidade": "Codigo Modalidade",
@@ -27,7 +26,7 @@
       "valorJogo": "Valor Jogo",
       "codigoBanca": "Codigo Banca",
       "numeroAposta": "Numero Aposta",
-      "banca": "Banca"
+      "bilhete": "Bilhete"
     }
   }
 }

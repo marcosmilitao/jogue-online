@@ -16,24 +16,21 @@
       "detail": {
         "title": "Terminal"
       },
-      "codigoTerminal": "Codigo Terminal",
       "telefoneChipe": "Telefone Chipe",
-      "revendedor": "Revendedor",
-      "serialChip": "Serial Chip",
+      "serial": "Serial",
       "menssagem": "Menssagem",
       "senhaComunicacao": "Senha Comunicacao",
       "dataInicio": "Data Inicio",
       "situacao": "Situacao",
       "versaoTerminal": "Versao Terminal",
       "mudaCodigo": "Muda Codigo",
-      "numeroTelefoneProvedor": "Numero Telefone Provedor",
       "dataEntrada": "Data Entrada",
       "numeroFonte": "Numero Fonte",
       "codigoAutorizacao": "Codigo Autorizacao",
-      "serialTerminal": "Serial Terminal",
+      "imei": "Imei",
       "email": "Email",
       "codigoBanca": "Codigo Banca",
-      "banca": "Banca"
+      "revendedor": "Revendedor"
     }
   }
 }

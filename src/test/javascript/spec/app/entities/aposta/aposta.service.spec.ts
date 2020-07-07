@@ -24,7 +24,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new Aposta(0, 0, currentDate, 'AAAAAAA', 0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 0, 0, 0, 0);
+      elemDefault = new Aposta(0, 0, currentDate, 0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 0, 0, 0, 0);
     });
 
     describe('Service methods', () => {
@@ -69,9 +69,8 @@ describe('Service Tests', () => {
       it('should update a Aposta', () => {
         const returnedFromService = Object.assign(
           {
-            codigoJogo: 1,
+            numeroBilhete: 1,
             dataAposta: currentDate.format(DATE_TIME_FORMAT),
-            loteriaNome: 'BBBBBB',
             loteriaCodigo: 1,
             modalide: 'BBBBBB',
             codigoModalidade: 'BBBBBB',
@@ -101,9 +100,8 @@ describe('Service Tests', () => {
       it('should return a list of Aposta', () => {
         const returnedFromService = Object.assign(
           {
-            codigoJogo: 1,
+            numeroBilhete: 1,
             dataAposta: currentDate.format(DATE_TIME_FORMAT),
-            loteriaNome: 'BBBBBB',
             loteriaCodigo: 1,
             modalide: 'BBBBBB',
             codigoModalidade: 'BBBBBB',

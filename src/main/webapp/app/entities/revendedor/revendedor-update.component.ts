@@ -34,6 +34,7 @@ export class RevendedorUpdateComponent implements OnInit {
     saldo: [],
     senha: [],
     data: [],
+    comissao: [],
     promotor: []
   });
 
@@ -72,6 +73,7 @@ export class RevendedorUpdateComponent implements OnInit {
       saldo: revendedor.saldo,
       senha: revendedor.senha,
       data: revendedor.data ? revendedor.data.format(DATE_TIME_FORMAT) : null,
+      comissao: revendedor.comissao,
       promotor: revendedor.promotor
     });
   }
@@ -106,6 +108,7 @@ export class RevendedorUpdateComponent implements OnInit {
       saldo: this.editForm.get(['saldo'])!.value,
       senha: this.editForm.get(['senha'])!.value,
       data: this.editForm.get(['data'])!.value ? moment(this.editForm.get(['data'])!.value, DATE_TIME_FORMAT) : undefined,
+      comissao: this.editForm.get(['comissao'])!.value,
       promotor: this.editForm.get(['promotor'])!.value
     };
   }

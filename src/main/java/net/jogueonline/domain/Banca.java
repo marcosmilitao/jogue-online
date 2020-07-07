@@ -28,10 +28,6 @@ public class Banca implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "codigo", nullable = false)
-    private Long codigo;
-
-    @NotNull
     @Column(name = "nome", nullable = false)
     private String nome;
 
@@ -68,14 +64,14 @@ public class Banca implements Serializable {
     @Column(name = "data")
     private Instant data;
 
+    @Column(name = "bonus")
+    private Long bonus;
+
     @OneToMany(mappedBy = "banca")
     private Set<Promotor> promotors = new HashSet<>();
 
     @OneToMany(mappedBy = "banca")
-    private Set<Terminal> cadastroTerminals = new HashSet<>();
-
-    @OneToMany(mappedBy = "banca")
-    private Set<Aposta> apostas = new HashSet<>();
+    private Set<Bilhete> bilhetes = new HashSet<>();
 
     @ManyToMany
     @JoinTable(name = "banca_modalidade",
@@ -102,19 +98,6 @@ public class Banca implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getCodigo() {
-        return codigo;
-    }
-
-    public Banca codigo(Long codigo) {
-        this.codigo = codigo;
-        return this;
-    }
-
-    public void setCodigo(Long codigo) {
-        this.codigo = codigo;
     }
 
     public String getNome() {
@@ -273,6 +256,19 @@ public class Banca implements Serializable {
         this.data = data;
     }
 
+    public Long getBonus() {
+        return bonus;
+    }
+
+    public Banca bonus(Long bonus) {
+        this.bonus = bonus;
+        return this;
+    }
+
+    public void setBonus(Long bonus) {
+        this.bonus = bonus;
+    }
+
     public Set<Promotor> getPromotors() {
         return promotors;
     }
@@ -298,54 +294,29 @@ public class Banca implements Serializable {
         this.promotors = promotors;
     }
 
-    public Set<Terminal> getCadastroTerminals() {
-        return cadastroTerminals;
+    public Set<Bilhete> getBilhetes() {
+        return bilhetes;
     }
 
-    public Banca cadastroTerminals(Set<Terminal> terminals) {
-        this.cadastroTerminals = terminals;
+    public Banca bilhetes(Set<Bilhete> bilhetes) {
+        this.bilhetes = bilhetes;
         return this;
     }
 
-    public Banca addCadastroTerminal(Terminal terminal) {
-        this.cadastroTerminals.add(terminal);
-        terminal.setBanca(this);
+    public Banca addBilhete(Bilhete bilhete) {
+        this.bilhetes.add(bilhete);
+        bilhete.setBanca(this);
         return this;
     }
 
-    public Banca removeCadastroTerminal(Terminal terminal) {
-        this.cadastroTerminals.remove(terminal);
-        terminal.setBanca(null);
+    public Banca removeBilhete(Bilhete bilhete) {
+        this.bilhetes.remove(bilhete);
+        bilhete.setBanca(null);
         return this;
     }
 
-    public void setCadastroTerminals(Set<Terminal> terminals) {
-        this.cadastroTerminals = terminals;
-    }
-
-    public Set<Aposta> getApostas() {
-        return apostas;
-    }
-
-    public Banca apostas(Set<Aposta> apostas) {
-        this.apostas = apostas;
-        return this;
-    }
-
-    public Banca addAposta(Aposta aposta) {
-        this.apostas.add(aposta);
-        aposta.setBanca(this);
-        return this;
-    }
-
-    public Banca removeAposta(Aposta aposta) {
-        this.apostas.remove(aposta);
-        aposta.setBanca(null);
-        return this;
-    }
-
-    public void setApostas(Set<Aposta> apostas) {
-        this.apostas = apostas;
+    public void setBilhetes(Set<Bilhete> bilhetes) {
+        this.bilhetes = bilhetes;
     }
 
     public Set<Modalidade> getModalidades() {
@@ -444,7 +415,6 @@ public class Banca implements Serializable {
     public String toString() {
         return "Banca{" +
             "id=" + getId() +
-            ", codigo=" + getCodigo() +
             ", nome='" + getNome() + "'" +
             ", cidade='" + getCidade() + "'" +
             ", telefone='" + getTelefone() + "'" +
@@ -457,6 +427,7 @@ public class Banca implements Serializable {
             ", mensagemPule2='" + getMensagemPule2() + "'" +
             ", mensagemPule3='" + getMensagemPule3() + "'" +
             ", data='" + getData() + "'" +
+            ", bonus=" + getBonus() +
             "}";
     }
 }

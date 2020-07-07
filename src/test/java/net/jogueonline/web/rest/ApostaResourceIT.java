@@ -33,14 +33,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class ApostaResourceIT {
 
-    private static final Long DEFAULT_CODIGO_JOGO = 1L;
-    private static final Long UPDATED_CODIGO_JOGO = 2L;
+    private static final Long DEFAULT_NUMERO_BILHETE = 1L;
+    private static final Long UPDATED_NUMERO_BILHETE = 2L;
 
     private static final Instant DEFAULT_DATA_APOSTA = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_DATA_APOSTA = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-
-    private static final String DEFAULT_LOTERIA_NOME = "AAAAAAAAAA";
-    private static final String UPDATED_LOTERIA_NOME = "BBBBBBBBBB";
 
     private static final Integer DEFAULT_LOTERIA_CODIGO = 1;
     private static final Integer UPDATED_LOTERIA_CODIGO = 2;
@@ -85,9 +82,8 @@ public class ApostaResourceIT {
      */
     public static Aposta createEntity(EntityManager em) {
         Aposta aposta = new Aposta()
-            .codigoJogo(DEFAULT_CODIGO_JOGO)
+            .numeroBilhete(DEFAULT_NUMERO_BILHETE)
             .dataAposta(DEFAULT_DATA_APOSTA)
-            .loteriaNome(DEFAULT_LOTERIA_NOME)
             .loteriaCodigo(DEFAULT_LOTERIA_CODIGO)
             .modalide(DEFAULT_MODALIDE)
             .codigoModalidade(DEFAULT_CODIGO_MODALIDADE)
@@ -106,9 +102,8 @@ public class ApostaResourceIT {
      */
     public static Aposta createUpdatedEntity(EntityManager em) {
         Aposta aposta = new Aposta()
-            .codigoJogo(UPDATED_CODIGO_JOGO)
+            .numeroBilhete(UPDATED_NUMERO_BILHETE)
             .dataAposta(UPDATED_DATA_APOSTA)
-            .loteriaNome(UPDATED_LOTERIA_NOME)
             .loteriaCodigo(UPDATED_LOTERIA_CODIGO)
             .modalide(UPDATED_MODALIDE)
             .codigoModalidade(UPDATED_CODIGO_MODALIDADE)
@@ -140,9 +135,8 @@ public class ApostaResourceIT {
         List<Aposta> apostaList = apostaRepository.findAll();
         assertThat(apostaList).hasSize(databaseSizeBeforeCreate + 1);
         Aposta testAposta = apostaList.get(apostaList.size() - 1);
-        assertThat(testAposta.getCodigoJogo()).isEqualTo(DEFAULT_CODIGO_JOGO);
+        assertThat(testAposta.getNumeroBilhete()).isEqualTo(DEFAULT_NUMERO_BILHETE);
         assertThat(testAposta.getDataAposta()).isEqualTo(DEFAULT_DATA_APOSTA);
-        assertThat(testAposta.getLoteriaNome()).isEqualTo(DEFAULT_LOTERIA_NOME);
         assertThat(testAposta.getLoteriaCodigo()).isEqualTo(DEFAULT_LOTERIA_CODIGO);
         assertThat(testAposta.getModalide()).isEqualTo(DEFAULT_MODALIDE);
         assertThat(testAposta.getCodigoModalidade()).isEqualTo(DEFAULT_CODIGO_MODALIDADE);
@@ -175,10 +169,10 @@ public class ApostaResourceIT {
 
     @Test
     @Transactional
-    public void checkCodigoJogoIsRequired() throws Exception {
+    public void checkNumeroBilheteIsRequired() throws Exception {
         int databaseSizeBeforeTest = apostaRepository.findAll().size();
         // set the field null
-        aposta.setCodigoJogo(null);
+        aposta.setNumeroBilhete(null);
 
         // Create the Aposta, which fails.
 
@@ -292,9 +286,8 @@ public class ApostaResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(aposta.getId().intValue())))
-            .andExpect(jsonPath("$.[*].codigoJogo").value(hasItem(DEFAULT_CODIGO_JOGO.intValue())))
+            .andExpect(jsonPath("$.[*].numeroBilhete").value(hasItem(DEFAULT_NUMERO_BILHETE.intValue())))
             .andExpect(jsonPath("$.[*].dataAposta").value(hasItem(DEFAULT_DATA_APOSTA.toString())))
-            .andExpect(jsonPath("$.[*].loteriaNome").value(hasItem(DEFAULT_LOTERIA_NOME)))
             .andExpect(jsonPath("$.[*].loteriaCodigo").value(hasItem(DEFAULT_LOTERIA_CODIGO)))
             .andExpect(jsonPath("$.[*].modalide").value(hasItem(DEFAULT_MODALIDE)))
             .andExpect(jsonPath("$.[*].codigoModalidade").value(hasItem(DEFAULT_CODIGO_MODALIDADE)))
@@ -316,9 +309,8 @@ public class ApostaResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(aposta.getId().intValue()))
-            .andExpect(jsonPath("$.codigoJogo").value(DEFAULT_CODIGO_JOGO.intValue()))
+            .andExpect(jsonPath("$.numeroBilhete").value(DEFAULT_NUMERO_BILHETE.intValue()))
             .andExpect(jsonPath("$.dataAposta").value(DEFAULT_DATA_APOSTA.toString()))
-            .andExpect(jsonPath("$.loteriaNome").value(DEFAULT_LOTERIA_NOME))
             .andExpect(jsonPath("$.loteriaCodigo").value(DEFAULT_LOTERIA_CODIGO))
             .andExpect(jsonPath("$.modalide").value(DEFAULT_MODALIDE))
             .andExpect(jsonPath("$.codigoModalidade").value(DEFAULT_CODIGO_MODALIDADE))
@@ -350,9 +342,8 @@ public class ApostaResourceIT {
         // Disconnect from session so that the updates on updatedAposta are not directly saved in db
         em.detach(updatedAposta);
         updatedAposta
-            .codigoJogo(UPDATED_CODIGO_JOGO)
+            .numeroBilhete(UPDATED_NUMERO_BILHETE)
             .dataAposta(UPDATED_DATA_APOSTA)
-            .loteriaNome(UPDATED_LOTERIA_NOME)
             .loteriaCodigo(UPDATED_LOTERIA_CODIGO)
             .modalide(UPDATED_MODALIDE)
             .codigoModalidade(UPDATED_CODIGO_MODALIDADE)
@@ -371,9 +362,8 @@ public class ApostaResourceIT {
         List<Aposta> apostaList = apostaRepository.findAll();
         assertThat(apostaList).hasSize(databaseSizeBeforeUpdate);
         Aposta testAposta = apostaList.get(apostaList.size() - 1);
-        assertThat(testAposta.getCodigoJogo()).isEqualTo(UPDATED_CODIGO_JOGO);
+        assertThat(testAposta.getNumeroBilhete()).isEqualTo(UPDATED_NUMERO_BILHETE);
         assertThat(testAposta.getDataAposta()).isEqualTo(UPDATED_DATA_APOSTA);
-        assertThat(testAposta.getLoteriaNome()).isEqualTo(UPDATED_LOTERIA_NOME);
         assertThat(testAposta.getLoteriaCodigo()).isEqualTo(UPDATED_LOTERIA_CODIGO);
         assertThat(testAposta.getModalide()).isEqualTo(UPDATED_MODALIDE);
         assertThat(testAposta.getCodigoModalidade()).isEqualTo(UPDATED_CODIGO_MODALIDADE);

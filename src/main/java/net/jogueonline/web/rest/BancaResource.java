@@ -123,11 +123,10 @@ public class BancaResource {
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
 
-
     @GetMapping("/terminal/login/{serial}/{telefone}")
-    public ResponseEntity<Banca> getTerminalUserInfo(@PathVariable String serial, @PathVariable Long telefone){
+    public ResponseEntity<Banca> getTerminalUserInfo(@PathVariable String serial, @PathVariable Long telefone) {
         // log.debug("REST request to delete Banca : {}", bancaRepository.loginTerminal(serial,telefone));
-        Optional<Banca> banca = bancaRepository.loginTerminal(serial,telefone);
+        Optional<Banca> banca = bancaRepository.loginTerminal(serial, telefone);
         return ResponseUtil.wrapOrNotFound(banca);
     }
 }

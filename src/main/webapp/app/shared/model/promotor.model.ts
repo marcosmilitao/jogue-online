@@ -4,7 +4,6 @@ import { IBanca } from 'app/shared/model/banca.model';
 
 export interface IPromotor {
   id?: number;
-  codigo?: number;
   nome?: string;
   cidade?: string;
   estado?: string;
@@ -18,7 +17,6 @@ export interface IPromotor {
 export class Promotor implements IPromotor {
   constructor(
     public id?: number,
-    public codigo?: number,
     public nome?: string,
     public cidade?: string,
     public estado?: string,

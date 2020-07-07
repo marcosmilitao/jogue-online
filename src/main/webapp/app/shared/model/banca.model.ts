@@ -1,14 +1,12 @@
 import { Moment } from 'moment';
 import { IPromotor } from 'app/shared/model/promotor.model';
-import { ITerminal } from 'app/shared/model/terminal.model';
-import { IAposta } from 'app/shared/model/aposta.model';
+import { IBilhete } from 'app/shared/model/bilhete.model';
 import { IModalidade } from 'app/shared/model/modalidade.model';
 import { ILoteria } from 'app/shared/model/loteria.model';
 import { ICustomUser } from 'app/shared/model/custom-user.model';
 
 export interface IBanca {
   id?: number;
-  codigo?: number;
   nome?: string;
   cidade?: string;
   telefone?: string;
@@ -21,9 +19,9 @@ export interface IBanca {
   mensagemPule2?: string;
   mensagemPule3?: string;
   data?: Moment;
+  bonus?: number;
   promotors?: IPromotor[];
-  cadastroTerminals?: ITerminal[];
-  apostas?: IAposta[];
+  bilhetes?: IBilhete[];
   modalidades?: IModalidade[];
   loterias?: ILoteria[];
   customUsers?: ICustomUser[];
@@ -32,7 +30,6 @@ export interface IBanca {
 export class Banca implements IBanca {
   constructor(
     public id?: number,
-    public codigo?: number,
     public nome?: string,
     public cidade?: string,
     public telefone?: string,
@@ -45,9 +42,9 @@ export class Banca implements IBanca {
     public mensagemPule2?: string,
     public mensagemPule3?: string,
     public data?: Moment,
+    public bonus?: number,
     public promotors?: IPromotor[],
-    public cadastroTerminals?: ITerminal[],
-    public apostas?: IAposta[],
+    public bilhetes?: IBilhete[],
     public modalidades?: IModalidade[],
     public loterias?: ILoteria[],
     public customUsers?: ICustomUser[]

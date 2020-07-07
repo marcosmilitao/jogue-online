@@ -30,7 +30,6 @@ export class BancaUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    codigo: [null, [Validators.required]],
     nome: [null, [Validators.required]],
     cidade: [],
     telefone: [],
@@ -43,6 +42,7 @@ export class BancaUpdateComponent implements OnInit {
     mensagemPule2: [],
     mensagemPule3: [],
     data: [],
+    bonus: [],
     modalidades: [],
     loterias: [],
     customUsers: []
@@ -77,7 +77,6 @@ export class BancaUpdateComponent implements OnInit {
   updateForm(banca: IBanca): void {
     this.editForm.patchValue({
       id: banca.id,
-      codigo: banca.codigo,
       nome: banca.nome,
       cidade: banca.cidade,
       telefone: banca.telefone,
@@ -90,6 +89,7 @@ export class BancaUpdateComponent implements OnInit {
       mensagemPule2: banca.mensagemPule2,
       mensagemPule3: banca.mensagemPule3,
       data: banca.data ? banca.data.format(DATE_TIME_FORMAT) : null,
+      bonus: banca.bonus,
       modalidades: banca.modalidades,
       loterias: banca.loterias,
       customUsers: banca.customUsers
@@ -114,7 +114,6 @@ export class BancaUpdateComponent implements OnInit {
     return {
       ...new Banca(),
       id: this.editForm.get(['id'])!.value,
-      codigo: this.editForm.get(['codigo'])!.value,
       nome: this.editForm.get(['nome'])!.value,
       cidade: this.editForm.get(['cidade'])!.value,
       telefone: this.editForm.get(['telefone'])!.value,
@@ -127,6 +126,7 @@ export class BancaUpdateComponent implements OnInit {
       mensagemPule2: this.editForm.get(['mensagemPule2'])!.value,
       mensagemPule3: this.editForm.get(['mensagemPule3'])!.value,
       data: this.editForm.get(['data'])!.value ? moment(this.editForm.get(['data'])!.value, DATE_TIME_FORMAT) : undefined,
+      bonus: this.editForm.get(['bonus'])!.value,
       modalidades: this.editForm.get(['modalidades'])!.value,
       loterias: this.editForm.get(['loterias'])!.value,
       customUsers: this.editForm.get(['customUsers'])!.value

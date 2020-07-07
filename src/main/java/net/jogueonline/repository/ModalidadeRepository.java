@@ -14,7 +14,6 @@ import java.util.List;
 @SuppressWarnings("unused")
 @Repository
 public interface ModalidadeRepository extends JpaRepository<Modalidade, Long> {
-
     @Query("select distinct modalidade from Modalidade modalidade left join fetch modalidade.bancas b where b.id =:id")
     List<Modalidade> findByBancaPremio(@Param("id") Long id);
 }

@@ -27,15 +27,12 @@ describe('Service Tests', () => {
       elemDefault = new Terminal(
         0,
         0,
-        0,
-        'AAAAAAA',
         'AAAAAAA',
         'AAAAAAA',
         'AAAAAAA',
         currentDate,
         false,
         'AAAAAAA',
-        0,
         0,
         currentDate,
         0,
@@ -91,21 +88,18 @@ describe('Service Tests', () => {
       it('should update a Terminal', () => {
         const returnedFromService = Object.assign(
           {
-            codigoTerminal: 1,
             telefoneChipe: 1,
-            revendedor: 'BBBBBB',
-            serialChip: 'BBBBBB',
+            serial: 'BBBBBB',
             menssagem: 'BBBBBB',
             senhaComunicacao: 'BBBBBB',
             dataInicio: currentDate.format(DATE_TIME_FORMAT),
             situacao: true,
             versaoTerminal: 'BBBBBB',
             mudaCodigo: 1,
-            numeroTelefoneProvedor: 1,
             dataEntrada: currentDate.format(DATE_TIME_FORMAT),
             numeroFonte: 1,
             codigoAutorizacao: 1,
-            serialTerminal: 'BBBBBB',
+            imei: 'BBBBBB',
             email: 'BBBBBB',
             codigoBanca: 1
           },
@@ -130,21 +124,18 @@ describe('Service Tests', () => {
       it('should return a list of Terminal', () => {
         const returnedFromService = Object.assign(
           {
-            codigoTerminal: 1,
             telefoneChipe: 1,
-            revendedor: 'BBBBBB',
-            serialChip: 'BBBBBB',
+            serial: 'BBBBBB',
             menssagem: 'BBBBBB',
             senhaComunicacao: 'BBBBBB',
             dataInicio: currentDate.format(DATE_TIME_FORMAT),
             situacao: true,
             versaoTerminal: 'BBBBBB',
             mudaCodigo: 1,
-            numeroTelefoneProvedor: 1,
             dataEntrada: currentDate.format(DATE_TIME_FORMAT),
             numeroFonte: 1,
             codigoAutorizacao: 1,
-            serialTerminal: 'BBBBBB',
+            imei: 'BBBBBB',
             email: 'BBBBBB',
             codigoBanca: 1
           },

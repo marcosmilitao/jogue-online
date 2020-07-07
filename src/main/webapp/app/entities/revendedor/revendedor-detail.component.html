@@ -56,10 +56,14 @@
                 <dd>
                     <span>{{ revendedor.data }}</span>
                 </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.revendedor.comissao">Comissao</span></dt>
+                <dd>
+                    <span>{{ revendedor.comissao }}</span>
+                </dd>
                 <dt><span jhiTranslate="jogueOnlineApp.revendedor.promotor">Promotor</span></dt>
                 <dd>
                     <div *ngIf="revendedor.promotor">
-                        <a [routerLink]="['/promotor', revendedor.promotor?.id, 'view']">{{ revendedor.promotor?.id }}</a>
+                        <a [routerLink]="['/promotor', revendedor.promotor?.id, 'view']">{{ revendedor.promotor?.nome }}</a>
                     </div>
                 </dd>
             </dl>

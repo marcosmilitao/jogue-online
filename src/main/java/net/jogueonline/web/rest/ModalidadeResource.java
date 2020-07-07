@@ -117,7 +117,6 @@ public class ModalidadeResource {
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
 
-
     @GetMapping("/modalidade/banca/{id}")
     public List<Modalidade> getModalidadeBanca(@PathVariable Long id){
         return modalidadeRepository.findByBancaPremio(id);

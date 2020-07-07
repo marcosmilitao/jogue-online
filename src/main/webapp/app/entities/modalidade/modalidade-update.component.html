@@ -12,12 +12,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.modalidade.codigo" for="field_codigo">Codigo</label>
-                    <input type="text" class="form-control" name="codigo" id="field_codigo"
-                           formControlName="codigo"/>
-                    <div *ngIf="editForm.get('codigo')!.invalid && (editForm.get('codigo')!.dirty || editForm.get('codigo')!.touched)">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.modalidade.codigoModalidade" for="field_codigoModalidade">Codigo Modalidade</label>
+                    <input type="text" class="form-control" name="codigoModalidade" id="field_codigoModalidade"
+                           formControlName="codigoModalidade"/>
+                    <div *ngIf="editForm.get('codigoModalidade')!.invalid && (editForm.get('codigoModalidade')!.dirty || editForm.get('codigoModalidade')!.touched)">
                         <small class="form-text text-danger"
-                               *ngIf="editForm.get('codigo')?.errors?.required" jhiTranslate="entity.validation.required">
+                               *ngIf="editForm.get('codigoModalidade')?.errors?.required" jhiTranslate="entity.validation.required">
                         This field is required.
                         </small>
                     </div>

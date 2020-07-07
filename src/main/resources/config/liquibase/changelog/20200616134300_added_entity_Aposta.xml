@@ -11,18 +11,15 @@
         Added the entity Aposta.
     -->
     <changeSet id="20200616134300-1" author="jhipster">
-        <createTable tableName="aposta" remarks="entity MovimentoGeral {\ndataMovimentacao Instant,\nvalor BigDecimal,\ntipo String,\nidDadosEntrada Long,\nidDadosSaida Long,\nidBanca Long,\nidCliente Long,\ndescricao String,\ntipoMovimentacao TipoMovimento\n}">
+        <createTable tableName="aposta">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="codigo_jogo" type="bigint">
+            <column name="numero_bilhete" type="bigint">
                 <constraints nullable="false" />
             </column>
             <column name="data_aposta" type="datetime">
                 <constraints nullable="false" />
-            </column>
-            <column name="loteria_nome" type="varchar(255)">
-                <constraints nullable="true" />
             </column>
             <column name="loteria_codigo" type="integer">
                 <constraints nullable="false" />
@@ -48,7 +45,7 @@
             <column name="numero_aposta" type="bigint">
                 <constraints nullable="false" />
             </column>
-            <column name="banca_id" type="bigint">
+            <column name="bilhete_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
@@ -75,9 +72,8 @@
                   separator=";"
                   tableName="aposta">
             <column name="id" type="numeric"/>
-            <column name="codigo_jogo" type="numeric"/>
+            <column name="numero_bilhete" type="numeric"/>
             <column name="data_aposta" type="datetime"/>
-            <column name="loteria_nome" type="string"/>
             <column name="loteria_codigo" type="numeric"/>
             <column name="modalide" type="string"/>
             <column name="codigo_modalidade" type="string"/>

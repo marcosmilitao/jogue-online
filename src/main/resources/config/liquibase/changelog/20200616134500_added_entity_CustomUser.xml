@@ -11,7 +11,7 @@
         Added the entity CustomUser.
     -->
     <changeSet id="20200616134500-1" author="jhipster">
-        <createTable tableName="custom_user">
+        <createTable tableName="custom_user" remarks="entity LimiteVenda{\ncodigoRevendedor Long,\nvendaDia BigDecimal,\ndebitoAtual BigDecimal,\nlimite BigDecimal\n}">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>

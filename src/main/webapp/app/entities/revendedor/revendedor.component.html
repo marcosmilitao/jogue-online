@@ -35,6 +35,7 @@
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.revendedor.saldo">Saldo</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.revendedor.senha">Senha</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.revendedor.data">Data</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.revendedor.comissao">Comissao</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.revendedor.promotor">Promotor</span></th>
                     <th scope="col"></th>
                 </tr>
@@ -54,9 +55,10 @@
                     <td>{{ revendedor.saldo }}</td>
                     <td>{{ revendedor.senha }}</td>
                     <td>{{ revendedor.data | date:'medium' }}</td>
+                    <td>{{ revendedor.comissao }}</td>
                     <td>
                         <div *ngIf="revendedor.promotor">
-                            <a [routerLink]="['/promotor', revendedor.promotor?.id, 'view']" >{{ revendedor.promotor?.id }}</a>
+                            <a [routerLink]="['/promotor', revendedor.promotor?.id, 'view']" >{{ revendedor.promotor?.nome }}</a>
                         </div>
                     </td>
                     <td class="text-right">

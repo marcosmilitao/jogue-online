@@ -37,7 +37,8 @@ describe('Service Tests', () => {
         false,
         0,
         'AAAAAAA',
-        currentDate
+        currentDate,
+        0
       );
     });
 
@@ -94,7 +95,8 @@ describe('Service Tests', () => {
             situacao: true,
             saldo: 1,
             senha: 'BBBBBB',
-            data: currentDate.format(DATE_TIME_FORMAT)
+            data: currentDate.format(DATE_TIME_FORMAT),
+            comissao: 1
           },
           elemDefault
         );
@@ -127,7 +129,8 @@ describe('Service Tests', () => {
             situacao: true,
             saldo: 1,
             senha: 'BBBBBB',
-            data: currentDate.format(DATE_TIME_FORMAT)
+            data: currentDate.format(DATE_TIME_FORMAT),
+            comissao: 1
           },
           elemDefault
         );

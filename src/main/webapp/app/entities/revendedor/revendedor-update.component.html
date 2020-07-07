@@ -97,10 +97,16 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.revendedor.comissao" for="field_comissao">Comissao</label>
+                    <input type="number" class="form-control" name="comissao" id="field_comissao"
+                           formControlName="comissao"/>
+                </div>
+
+                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="jogueOnlineApp.revendedor.promotor" for="field_promotor">Promotor</label>
                     <select class="form-control" id="field_promotor" name="promotor" formControlName="promotor">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="promotorOption.id === editForm.get('promotor')!.value?.id ? editForm.get('promotor')!.value : promotorOption" *ngFor="let promotorOption of promotors; trackBy: trackById">{{ promotorOption.id }}</option>
+                        <option [ngValue]="promotorOption.id === editForm.get('promotor')!.value?.id ? editForm.get('promotor')!.value : promotorOption" *ngFor="let promotorOption of promotors; trackBy: trackById">{{ promotorOption.nome }}</option>
                     </select>
                 </div>
             </div>

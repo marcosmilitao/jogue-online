@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.util.Objects;
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A Revendedor.
@@ -61,6 +63,12 @@ public class Revendedor implements Serializable {
 
     @Column(name = "data")
     private Instant data;
+
+    @Column(name = "comissao")
+    private Long comissao;
+
+    @OneToMany(mappedBy = "revendedor")
+    private Set<Terminal> terminals = new HashSet<>();
 
     @ManyToOne
     @JsonIgnoreProperties("revendedors")
@@ -231,6 +239,44 @@ public class Revendedor implements Serializable {
         this.data = data;
     }
 
+    public Long getComissao() {
+        return comissao;
+    }
+
+    public Revendedor comissao(Long comissao) {
+        this.comissao = comissao;
+        return this;
+    }
+
+    public void setComissao(Long comissao) {
+        this.comissao = comissao;
+    }
+
+    public Set<Terminal> getTerminals() {
+        return terminals;
+    }
+
+    public Revendedor terminals(Set<Terminal> terminals) {
+        this.terminals = terminals;
+        return this;
+    }
+
+    public Revendedor addTerminal(Terminal terminal) {
+        this.terminals.add(terminal);
+        terminal.setRevendedor(this);
+        return this;
+    }
+
+    public Revendedor removeTerminal(Terminal terminal) {
+        this.terminals.remove(terminal);
+        terminal.setRevendedor(null);
+        return this;
+    }
+
+    public void setTerminals(Set<Terminal> terminals) {
+        this.terminals = terminals;
+    }
+
     public Promotor getPromotor() {
         return promotor;
     }
@@ -277,6 +323,7 @@ public class Revendedor implements Serializable {
             ", saldo=" + getSaldo() +
             ", senha='" + getSenha() + "'" +
             ", data='" + getData() + "'" +
+            ", comissao=" + getComissao() +
             "}";
     }
 }

@@ -2,13 +2,6 @@
     "name": "Banca",
     "fields": [
         {
-            "fieldName": "codigo",
-            "fieldType": "Long",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
             "fieldName": "nome",
             "fieldType": "String",
             "fieldValidateRules": [
@@ -58,6 +51,10 @@
         {
             "fieldName": "data",
             "fieldType": "Instant"
+        },
+        {
+            "fieldName": "bonus",
+            "fieldType": "Long"
         }
     ],
     "relationships": [
@@ -69,15 +66,9 @@
         },
         {
             "relationshipType": "one-to-many",
-            "otherEntityName": "terminal",
+            "otherEntityName": "bilhete",
             "otherEntityRelationshipName": "banca",
-            "relationshipName": "cadastroTerminal"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "aposta",
-            "otherEntityRelationshipName": "banca",
-            "relationshipName": "aposta"
+            "relationshipName": "bilhete"
         },
         {
             "relationshipType": "many-to-many",

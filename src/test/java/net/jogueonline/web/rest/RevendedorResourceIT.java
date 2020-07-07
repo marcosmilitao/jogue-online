@@ -69,6 +69,9 @@ public class RevendedorResourceIT {
     private static final Instant DEFAULT_DATA = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_DATA = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
+    private static final Long DEFAULT_COMISSAO = 1L;
+    private static final Long UPDATED_COMISSAO = 2L;
+
     @Autowired
     private RevendedorRepository revendedorRepository;
 
@@ -99,7 +102,8 @@ public class RevendedorResourceIT {
             .situacao(DEFAULT_SITUACAO)
             .saldo(DEFAULT_SALDO)
             .senha(DEFAULT_SENHA)
-            .data(DEFAULT_DATA);
+            .data(DEFAULT_DATA)
+            .comissao(DEFAULT_COMISSAO);
         return revendedor;
     }
     /**
@@ -121,7 +125,8 @@ public class RevendedorResourceIT {
             .situacao(UPDATED_SITUACAO)
             .saldo(UPDATED_SALDO)
             .senha(UPDATED_SENHA)
-            .data(UPDATED_DATA);
+            .data(UPDATED_DATA)
+            .comissao(UPDATED_COMISSAO);
         return revendedor;
     }
 
@@ -157,6 +162,7 @@ public class RevendedorResourceIT {
         assertThat(testRevendedor.getSaldo()).isEqualTo(DEFAULT_SALDO);
         assertThat(testRevendedor.getSenha()).isEqualTo(DEFAULT_SENHA);
         assertThat(testRevendedor.getData()).isEqualTo(DEFAULT_DATA);
+        assertThat(testRevendedor.getComissao()).isEqualTo(DEFAULT_COMISSAO);
     }
 
     @Test
@@ -237,7 +243,8 @@ public class RevendedorResourceIT {
             .andExpect(jsonPath("$.[*].situacao").value(hasItem(DEFAULT_SITUACAO.booleanValue())))
             .andExpect(jsonPath("$.[*].saldo").value(hasItem(DEFAULT_SALDO.intValue())))
             .andExpect(jsonPath("$.[*].senha").value(hasItem(DEFAULT_SENHA)))
-            .andExpect(jsonPath("$.[*].data").value(hasItem(DEFAULT_DATA.toString())));
+            .andExpect(jsonPath("$.[*].data").value(hasItem(DEFAULT_DATA.toString())))
+            .andExpect(jsonPath("$.[*].comissao").value(hasItem(DEFAULT_COMISSAO.intValue())));
     }
     
     @Test
@@ -262,7 +269,8 @@ public class RevendedorResourceIT {
             .andExpect(jsonPath("$.situacao").value(DEFAULT_SITUACAO.booleanValue()))
             .andExpect(jsonPath("$.saldo").value(DEFAULT_SALDO.intValue()))
             .andExpect(jsonPath("$.senha").value(DEFAULT_SENHA))
-            .andExpect(jsonPath("$.data").value(DEFAULT_DATA.toString()));
+            .andExpect(jsonPath("$.data").value(DEFAULT_DATA.toString()))
+            .andExpect(jsonPath("$.comissao").value(DEFAULT_COMISSAO.intValue()));
     }
 
     @Test
@@ -297,7 +305,8 @@ public class RevendedorResourceIT {
             .situacao(UPDATED_SITUACAO)
             .saldo(UPDATED_SALDO)
             .senha(UPDATED_SENHA)
-            .data(UPDATED_DATA);
+            .data(UPDATED_DATA)
+            .comissao(UPDATED_COMISSAO);
 
         restRevendedorMockMvc.perform(put("/api/revendedors")
             .contentType(MediaType.APPLICATION_JSON)
@@ -320,6 +329,7 @@ public class RevendedorResourceIT {
         assertThat(testRevendedor.getSaldo()).isEqualTo(UPDATED_SALDO);
         assertThat(testRevendedor.getSenha()).isEqualTo(UPDATED_SENHA);
         assertThat(testRevendedor.getData()).isEqualTo(UPDATED_DATA);
+        assertThat(testRevendedor.getComissao()).isEqualTo(UPDATED_COMISSAO);
     }
 
     @Test

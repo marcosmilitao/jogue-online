@@ -1,6 +1,7 @@
 package net.jogueonline.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModel;
 
 import javax.persistence.*;
 
@@ -10,8 +11,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * A CustomUser.
+ * entity LimiteVenda{\ncodigoRevendedor Long,\nvendaDia BigDecimal,\ndebitoAtual BigDecimal,\nlimite BigDecimal\n}
  */
+@ApiModel(description = "entity LimiteVenda{\ncodigoRevendedor Long,\nvendaDia BigDecimal,\ndebitoAtual BigDecimal,\nlimite BigDecimal\n}")
 @Entity
 @Table(name = "custom_user")
 public class CustomUser implements Serializable {

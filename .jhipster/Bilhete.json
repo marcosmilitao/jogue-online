@@ -1,0 +1,101 @@
+{
+    "name": "Bilhete",
+    "fields": [
+        {
+            "fieldName": "numeroBilhete",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "codigoBanca",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "codigoLoteria",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "loteriaNome",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "valorTotalAposta",
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "bonusBanca",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "bonusIndividual",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "comicao",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "valorBilhete",
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dataHoraAposta",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "qrcode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "codigoTerminal",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "aposta",
+            "otherEntityRelationshipName": "bilhete",
+            "relationshipName": "aposta"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "banca",
+            "otherEntityRelationshipName": "bilhete",
+            "relationshipName": "banca",
+            "otherEntityField": "nome"
+        }
+    ],
+    "changelogDate": "20200706170700",
+    "javadoc": "entity MovimentoGeral {\\ndataMovimentacao Instant,\\nvalor BigDecimal,\\ntipo String,\\nidDadosEntrada Long,\\nidDadosSaida Long,\\nidBanca Long,\\nidCliente Long,\\ndescricao String,\\ntipoMovimentacao TipoMovimento\\n}",
+    "entityTableName": "bilhete",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -9,8 +9,8 @@ import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 
 import { ITerminal, Terminal } from 'app/shared/model/terminal.model';
 import { TerminalService } from './terminal.service';
-import { IBanca } from 'app/shared/model/banca.model';
-import { BancaService } from 'app/entities/banca/banca.service';
+import { IRevendedor } from 'app/shared/model/revendedor.model';
+import { RevendedorService } from 'app/entities/revendedor/revendedor.service';
 
 @Component({
   selector: 'jhi-terminal-update',
@@ -18,33 +18,30 @@ import { BancaService } from 'app/entities/banca/banca.service';
 })
 export class TerminalUpdateComponent implements OnInit {
   isSaving = false;
-  bancas: IBanca[] = [];
+  revendedors: IRevendedor[] = [];
 
   editForm = this.fb.group({
     id: [],
-    codigoTerminal: [null, [Validators.required]],
     telefoneChipe: [],
-    revendedor: [],
-    serialChip: [null, [Validators.required]],
+    serial: [null, [Validators.required]],
     menssagem: [],
     senhaComunicacao: [],
     dataInicio: [],
     situacao: [],
     versaoTerminal: [],
     mudaCodigo: [],
-    numeroTelefoneProvedor: [],
     dataEntrada: [],
     numeroFonte: [],
     codigoAutorizacao: [],
-    serialTerminal: [null, [Validators.required]],
+    imei: [null, [Validators.required]],
     email: [],
     codigoBanca: [],
-    banca: []
+    revendedor: []
   });
 
   constructor(
     protected terminalService: TerminalService,
-    protected bancaService: BancaService,
+    protected revendedorService: RevendedorService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -59,31 +56,28 @@ export class TerminalUpdateComponent implements OnInit {
 
       this.updateForm(terminal);
 
-      this.bancaService.query().subscribe((res: HttpResponse<IBanca[]>) => (this.bancas = res.body || []));
+      this.revendedorService.query().subscribe((res: HttpResponse<IRevendedor[]>) => (this.revendedors = res.body || []));
     });
   }
 
   updateForm(terminal: ITerminal): void {
     this.editForm.patchValue({
       id: terminal.id,
-      codigoTerminal: terminal.codigoTerminal,
       telefoneChipe: terminal.telefoneChipe,
-      revendedor: terminal.revendedor,
-      serialChip: terminal.serialChip,
+      serial: terminal.serial,
       menssagem: terminal.menssagem,
       senhaComunicacao: terminal.senhaComunicacao,
       dataInicio: terminal.dataInicio ? terminal.dataInicio.format(DATE_TIME_FORMAT) : null,
       situacao: terminal.situacao,
       versaoTerminal: terminal.versaoTerminal,
       mudaCodigo: terminal.mudaCodigo,
-      numeroTelefoneProvedor: terminal.numeroTelefoneProvedor,
       dataEntrada: terminal.dataEntrada ? terminal.dataEntrada.format(DATE_TIME_FORMAT) : null,
       numeroFonte: terminal.numeroFonte,
       codigoAutorizacao: terminal.codigoAutorizacao,
-      serialTerminal: terminal.serialTerminal,
+      imei: terminal.imei,
       email: terminal.email,
       codigoBanca: terminal.codigoBanca,
-      banca: terminal.banca
+      revendedor: terminal.revendedor
     });
   }
 
@@ -105,26 +99,23 @@ export class TerminalUpdateComponent implements OnInit {
     return {
       ...new Terminal(),
       id: this.editForm.get(['id'])!.value,
-      codigoTerminal: this.editForm.get(['codigoTerminal'])!.value,
       telefoneChipe: this.editForm.get(['telefoneChipe'])!.value,
-      revendedor: this.editForm.get(['revendedor'])!.value,
-      serialChip: this.editForm.get(['serialChip'])!.value,
+      serial: this.editForm.get(['serial'])!.value,
       menssagem: this.editForm.get(['menssagem'])!.value,
       senhaComunicacao: this.editForm.get(['senhaComunicacao'])!.value,
       dataInicio: this.editForm.get(['dataInicio'])!.value ? moment(this.editForm.get(['dataInicio'])!.value, DATE_TIME_FORMAT) : undefined,
       situacao: this.editForm.get(['situacao'])!.value,
       versaoTerminal: this.editForm.get(['versaoTerminal'])!.value,
       mudaCodigo: this.editForm.get(['mudaCodigo'])!.value,
-      numeroTelefoneProvedor: this.editForm.get(['numeroTelefoneProvedor'])!.value,
       dataEntrada: this.editForm.get(['dataEntrada'])!.value
         ? moment(this.editForm.get(['dataEntrada'])!.value, DATE_TIME_FORMAT)
         : undefined,
       numeroFonte: this.editForm.get(['numeroFonte'])!.value,
       codigoAutorizacao: this.editForm.get(['codigoAutorizacao'])!.value,
-      serialTerminal: this.editForm.get(['serialTerminal'])!.value,
+      imei: this.editForm.get(['imei'])!.value,
       email: this.editForm.get(['email'])!.value,
       codigoBanca: this.editForm.get(['codigoBanca'])!.value,
-      banca: this.editForm.get(['banca'])!.value
+      revendedor: this.editForm.get(['revendedor'])!.value
     };
   }
 
@@ -144,7 +135,7 @@ export class TerminalUpdateComponent implements OnInit {
     this.isSaving = false;
   }
 
-  trackById(index: number, item: IBanca): any {
+  trackById(index: number, item: IRevendedor): any {
     return item.id;
   }
 }

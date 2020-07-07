@@ -2,22 +2,11 @@
     "name": "Terminal",
     "fields": [
         {
-            "fieldName": "codigoTerminal",
-            "fieldType": "Long",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
             "fieldName": "telefoneChipe",
             "fieldType": "Long"
         },
         {
-            "fieldName": "revendedor",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "serialChip",
+            "fieldName": "serial",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required"
@@ -48,10 +37,6 @@
             "fieldType": "Long"
         },
         {
-            "fieldName": "numeroTelefoneProvedor",
-            "fieldType": "Long"
-        },
-        {
             "fieldName": "dataEntrada",
             "fieldType": "Instant"
         },
@@ -64,7 +49,7 @@
             "fieldType": "Long"
         },
         {
-            "fieldName": "serialTerminal",
+            "fieldName": "imei",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required"
@@ -82,10 +67,10 @@
     "relationships": [
         {
             "relationshipType": "many-to-one",
-            "otherEntityName": "banca",
-            "otherEntityRelationshipName": "cadastroTerminal",
-            "relationshipName": "banca",
-            "otherEntityField": "id"
+            "otherEntityName": "revendedor",
+            "otherEntityRelationshipName": "terminal",
+            "relationshipName": "revendedor",
+            "otherEntityField": "nome"
         }
     ],
     "changelogDate": "20200616133800",

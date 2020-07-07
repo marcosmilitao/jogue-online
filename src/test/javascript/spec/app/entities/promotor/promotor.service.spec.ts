@@ -24,7 +24,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new Promotor(0, 0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 0, currentDate);
+      elemDefault = new Promotor(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 0, currentDate);
     });
 
     describe('Service methods', () => {
@@ -69,7 +69,6 @@ describe('Service Tests', () => {
       it('should update a Promotor', () => {
         const returnedFromService = Object.assign(
           {
-            codigo: 1,
             nome: 'BBBBBB',
             cidade: 'BBBBBB',
             estado: 'BBBBBB',
@@ -97,7 +96,6 @@ describe('Service Tests', () => {
       it('should return a list of Promotor', () => {
         const returnedFromService = Object.assign(
           {
-            codigo: 1,
             nome: 'BBBBBB',
             cidade: 'BBBBBB',
             estado: 'BBBBBB',

@@ -15,16 +15,10 @@
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="codigo_terminal" type="bigint">
-                <constraints nullable="false" />
-            </column>
             <column name="telefone_chipe" type="bigint">
                 <constraints nullable="true" />
             </column>
-            <column name="revendedor" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="serial_chip" type="varchar(255)">
+            <column name="serial" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
             <column name="menssagem" type="varchar(255)">
@@ -45,9 +39,6 @@
             <column name="muda_codigo" type="bigint">
                 <constraints nullable="true" />
             </column>
-            <column name="numero_telefone_provedor" type="bigint">
-                <constraints nullable="true" />
-            </column>
             <column name="data_entrada" type="datetime">
                 <constraints nullable="true" />
             </column>
@@ -57,7 +48,7 @@
             <column name="codigo_autorizacao" type="bigint">
                 <constraints nullable="true" />
             </column>
-            <column name="serial_terminal" type="varchar(255)">
+            <column name="imei" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
             <column name="email" type="varchar(255)">
@@ -66,7 +57,7 @@
             <column name="codigo_banca" type="bigint">
                 <constraints nullable="true" />
             </column>
-            <column name="banca_id" type="bigint">
+            <column name="revendedor_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
@@ -94,21 +85,18 @@
                   separator=";"
                   tableName="terminal">
             <column name="id" type="numeric"/>
-            <column name="codigo_terminal" type="numeric"/>
             <column name="telefone_chipe" type="numeric"/>
-            <column name="revendedor" type="string"/>
-            <column name="serial_chip" type="string"/>
+            <column name="serial" type="string"/>
             <column name="menssagem" type="string"/>
             <column name="senha_comunicacao" type="string"/>
             <column name="data_inicio" type="datetime"/>
             <column name="situacao" type="boolean"/>
             <column name="versao_terminal" type="string"/>
             <column name="muda_codigo" type="numeric"/>
-            <column name="numero_telefone_provedor" type="numeric"/>
             <column name="data_entrada" type="datetime"/>
             <column name="numero_fonte" type="numeric"/>
             <column name="codigo_autorizacao" type="numeric"/>
-            <column name="serial_terminal" type="string"/>
+            <column name="imei" type="string"/>
             <column name="email" type="string"/>
             <column name="codigo_banca" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->

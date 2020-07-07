@@ -2,7 +2,7 @@
     "name": "Aposta",
     "fields": [
         {
-            "fieldName": "codigoJogo",
+            "fieldName": "numeroBilhete",
             "fieldType": "Long",
             "fieldValidateRules": [
                 "required"
@@ -14,10 +14,6 @@
             "fieldValidateRules": [
                 "required"
             ]
-        },
-        {
-            "fieldName": "loteriaNome",
-            "fieldType": "String"
         },
         {
             "fieldName": "loteriaCodigo",
@@ -67,14 +63,13 @@
     "relationships": [
         {
             "relationshipType": "many-to-one",
-            "otherEntityName": "banca",
+            "otherEntityName": "bilhete",
             "otherEntityRelationshipName": "aposta",
-            "relationshipName": "banca",
-            "otherEntityField": "id"
+            "relationshipName": "bilhete",
+            "otherEntityField": "numeroBilhete"
         }
     ],
     "changelogDate": "20200616134300",
-    "javadoc": "entity MovimentoGeral {\\ndataMovimentacao Instant,\\nvalor BigDecimal,\\ntipo String,\\nidDadosEntrada Long,\\nidDadosSaida Long,\\nidBanca Long,\\nidCliente Long,\\ndescricao String,\\ntipoMovimentacao TipoMovimento\\n}",
     "entityTableName": "aposta",
     "dto": "no",
     "pagination": "no",

@@ -1,0 +1,80 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="bilhete">
+            <h2><span jhiTranslate="jogueOnlineApp.bilhete.detail.title">Bilhete</span> {{ bilhete.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jogueOnlineApp.bilhete.numeroBilhete">Numero Bilhete</span></dt>
+                <dd>
+                    <span>{{ bilhete.numeroBilhete }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.bilhete.codigoBanca">Codigo Banca</span></dt>
+                <dd>
+                    <span>{{ bilhete.codigoBanca }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.bilhete.codigoLoteria">Codigo Loteria</span></dt>
+                <dd>
+                    <span>{{ bilhete.codigoLoteria }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.bilhete.loteriaNome">Loteria Nome</span></dt>
+                <dd>
+                    <span>{{ bilhete.loteriaNome }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.bilhete.valorTotalAposta">Valor Total Aposta</span></dt>
+                <dd>
+                    <span>{{ bilhete.valorTotalAposta }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.bilhete.bonusBanca">Bonus Banca</span></dt>
+                <dd>
+                    <span>{{ bilhete.bonusBanca }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.bilhete.bonusIndividual">Bonus Individual</span></dt>
+                <dd>
+                    <span>{{ bilhete.bonusIndividual }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.bilhete.comicao">Comicao</span></dt>
+                <dd>
+                    <span>{{ bilhete.comicao }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.bilhete.valorBilhete">Valor Bilhete</span></dt>
+                <dd>
+                    <span>{{ bilhete.valorBilhete }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.bilhete.dataHoraAposta">Data Hora Aposta</span></dt>
+                <dd>
+                    <span>{{ bilhete.dataHoraAposta }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.bilhete.qrcode">Qrcode</span></dt>
+                <dd>
+                    <span>{{ bilhete.qrcode }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.bilhete.codigoTerminal">Codigo Terminal</span></dt>
+                <dd>
+                    <span>{{ bilhete.codigoTerminal }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.bilhete.banca">Banca</span></dt>
+                <dd>
+                    <div *ngIf="bilhete.banca">
+                        <a [routerLink]="['/banca', bilhete.banca?.id, 'view']">{{ bilhete.banca?.nome }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/bilhete', bilhete.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

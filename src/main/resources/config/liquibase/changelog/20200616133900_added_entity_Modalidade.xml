@@ -15,7 +15,7 @@
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="codigo" type="varchar(255)">
+            <column name="codigo_modalidade" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
             <column name="nome" type="varchar(255)">
@@ -89,7 +89,7 @@
                   separator=";"
                   tableName="modalidade">
             <column name="id" type="numeric"/>
-            <column name="codigo" type="string"/>
+            <column name="codigo_modalidade" type="string"/>
             <column name="nome" type="string"/>
             <column name="menor_palpite" type="numeric"/>
             <column name="maior_palpite" type="numeric"/>

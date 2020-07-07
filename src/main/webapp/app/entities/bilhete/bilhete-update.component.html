@@ -1,0 +1,177 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-bilhete-heading" jhiTranslate="jogueOnlineApp.bilhete.home.createOrEditLabel">Create or edit a Bilhete</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.bilhete.numeroBilhete" for="field_numeroBilhete">Numero Bilhete</label>
+                    <input type="number" class="form-control" name="numeroBilhete" id="field_numeroBilhete"
+                           formControlName="numeroBilhete"/>
+                    <div *ngIf="editForm.get('numeroBilhete')!.invalid && (editForm.get('numeroBilhete')!.dirty || editForm.get('numeroBilhete')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('numeroBilhete')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('numeroBilhete')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.bilhete.codigoBanca" for="field_codigoBanca">Codigo Banca</label>
+                    <input type="number" class="form-control" name="codigoBanca" id="field_codigoBanca"
+                           formControlName="codigoBanca"/>
+                    <div *ngIf="editForm.get('codigoBanca')!.invalid && (editForm.get('codigoBanca')!.dirty || editForm.get('codigoBanca')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('codigoBanca')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('codigoBanca')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.bilhete.codigoLoteria" for="field_codigoLoteria">Codigo Loteria</label>
+                    <input type="number" class="form-control" name="codigoLoteria" id="field_codigoLoteria"
+                           formControlName="codigoLoteria"/>
+                    <div *ngIf="editForm.get('codigoLoteria')!.invalid && (editForm.get('codigoLoteria')!.dirty || editForm.get('codigoLoteria')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('codigoLoteria')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('codigoLoteria')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.bilhete.loteriaNome" for="field_loteriaNome">Loteria Nome</label>
+                    <input type="text" class="form-control" name="loteriaNome" id="field_loteriaNome"
+                           formControlName="loteriaNome"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.bilhete.valorTotalAposta" for="field_valorTotalAposta">Valor Total Aposta</label>
+                    <input type="number" class="form-control" name="valorTotalAposta" id="field_valorTotalAposta"
+                           formControlName="valorTotalAposta"/>
+                    <div *ngIf="editForm.get('valorTotalAposta')!.invalid && (editForm.get('valorTotalAposta')!.dirty || editForm.get('valorTotalAposta')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('valorTotalAposta')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('valorTotalAposta')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.bilhete.bonusBanca" for="field_bonusBanca">Bonus Banca</label>
+                    <input type="number" class="form-control" name="bonusBanca" id="field_bonusBanca"
+                           formControlName="bonusBanca"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.bilhete.bonusIndividual" for="field_bonusIndividual">Bonus Individual</label>
+                    <input type="number" class="form-control" name="bonusIndividual" id="field_bonusIndividual"
+                           formControlName="bonusIndividual"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.bilhete.comicao" for="field_comicao">Comicao</label>
+                    <input type="number" class="form-control" name="comicao" id="field_comicao"
+                           formControlName="comicao"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.bilhete.valorBilhete" for="field_valorBilhete">Valor Bilhete</label>
+                    <input type="number" class="form-control" name="valorBilhete" id="field_valorBilhete"
+                           formControlName="valorBilhete"/>
+                    <div *ngIf="editForm.get('valorBilhete')!.invalid && (editForm.get('valorBilhete')!.dirty || editForm.get('valorBilhete')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('valorBilhete')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('valorBilhete')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.bilhete.dataHoraAposta" for="field_dataHoraAposta">Data Hora Aposta</label>
+                    <div class="d-flex">
+                        <input id="field_dataHoraAposta" type="datetime-local" class="form-control" name="dataHoraAposta" formControlName="dataHoraAposta" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('dataHoraAposta')!.invalid && (editForm.get('dataHoraAposta')!.dirty || editForm.get('dataHoraAposta')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('dataHoraAposta')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('dataHoraAposta')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.bilhete.qrcode" for="field_qrcode">Qrcode</label>
+                    <input type="text" class="form-control" name="qrcode" id="field_qrcode"
+                           formControlName="qrcode"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.bilhete.codigoTerminal" for="field_codigoTerminal">Codigo Terminal</label>
+                    <input type="number" class="form-control" name="codigoTerminal" id="field_codigoTerminal"
+                           formControlName="codigoTerminal"/>
+                    <div *ngIf="editForm.get('codigoTerminal')!.invalid && (editForm.get('codigoTerminal')!.dirty || editForm.get('codigoTerminal')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('codigoTerminal')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('codigoTerminal')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.bilhete.banca" for="field_banca">Banca</label>
+                    <select class="form-control" id="field_banca" name="banca" formControlName="banca">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="bancaOption.id === editForm.get('banca')!.value?.id ? editForm.get('banca')!.value : bancaOption" *ngFor="let bancaOption of bancas; trackBy: trackById">{{ bancaOption.nome }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+{
+  "jogueOnlineApp": {
+    "bilhete": {
+      "home": {
+        "title": "Bilhetes",
+        "createLabel": "Criar novo Bilhete",
+        "createOrEditLabel": "Criar ou editar Bilhete",
+        "notFound": "Nenhum Bilhete encontrado"
+      },
+      "created": "Um novo Bilhete foi criado com o identificador {{ param }}",
+      "updated": "Um Bilhete foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Bilhete foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Bilhete {{ id }}?"
+      },
+      "detail": {
+        "title": "Bilhete"
+      },
+      "numeroBilhete": "Numero Bilhete",
+      "codigoBanca": "Codigo Banca",
+      "codigoLoteria": "Codigo Loteria",
+      "loteriaNome": "Loteria Nome",
+      "valorTotalAposta": "Valor Total Aposta",
+      "bonusBanca": "Bonus Banca",
+      "bonusIndividual": "Bonus Individual",
+      "comicao": "Comicao",
+      "valorBilhete": "Valor Bilhete",
+      "dataHoraAposta": "Data Hora Aposta",
+      "qrcode": "Qrcode",
+      "codigoTerminal": "Codigo Terminal",
+      "aposta": "Aposta",
+      "banca": "Banca"
+    }
+  }
+}

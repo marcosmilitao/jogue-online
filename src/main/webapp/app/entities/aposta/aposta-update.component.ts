@@ -9,8 +9,8 @@ import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 
 import { IAposta, Aposta } from 'app/shared/model/aposta.model';
 import { ApostaService } from './aposta.service';
-import { IBanca } from 'app/shared/model/banca.model';
-import { BancaService } from 'app/entities/banca/banca.service';
+import { IBilhete } from 'app/shared/model/bilhete.model';
+import { BilheteService } from 'app/entities/bilhete/bilhete.service';
 
 @Component({
   selector: 'jhi-aposta-update',
@@ -18,13 +18,12 @@ import { BancaService } from 'app/entities/banca/banca.service';
 })
 export class ApostaUpdateComponent implements OnInit {
   isSaving = false;
-  bancas: IBanca[] = [];
+  bilhetes: IBilhete[] = [];
 
   editForm = this.fb.group({
     id: [],
-    codigoJogo: [null, [Validators.required]],
+    numeroBilhete: [null, [Validators.required]],
     dataAposta: [null, [Validators.required]],
-    loteriaNome: [],
     loteriaCodigo: [null, [Validators.required]],
     modalide: [],
     codigoModalidade: [null, [Validators.required]],
@@ -33,12 +32,12 @@ export class ApostaUpdateComponent implements OnInit {
     valorJogo: [],
     codigoBanca: [],
     numeroAposta: [null, [Validators.required]],
-    banca: []
+    bilhete: []
   });
 
   constructor(
     protected apostaService: ApostaService,
-    protected bancaService: BancaService,
+    protected bilheteService: BilheteService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -52,16 +51,15 @@ export class ApostaUpdateComponent implements OnInit {
 
       this.updateForm(aposta);
 
-      this.bancaService.query().subscribe((res: HttpResponse<IBanca[]>) => (this.bancas = res.body || []));
+      this.bilheteService.query().subscribe((res: HttpResponse<IBilhete[]>) => (this.bilhetes = res.body || []));
     });
   }
 
   updateForm(aposta: IAposta): void {
     this.editForm.patchValue({
       id: aposta.id,
-      codigoJogo: aposta.codigoJogo,
+      numeroBilhete: aposta.numeroBilhete,
       dataAposta: aposta.dataAposta ? aposta.dataAposta.format(DATE_TIME_FORMAT) : null,
-      loteriaNome: aposta.loteriaNome,
       loteriaCodigo: aposta.loteriaCodigo,
       modalide: aposta.modalide,
       codigoModalidade: aposta.codigoModalidade,
@@ -70,7 +68,7 @@ export class ApostaUpdateComponent implements OnInit {
       valorJogo: aposta.valorJogo,
       codigoBanca: aposta.codigoBanca,
       numeroAposta: aposta.numeroAposta,
-      banca: aposta.banca
+      bilhete: aposta.bilhete
     });
   }
 
@@ -92,9 +90,8 @@ export class ApostaUpdateComponent implements OnInit {
     return {
       ...new Aposta(),
       id: this.editForm.get(['id'])!.value,
-      codigoJogo: this.editForm.get(['codigoJogo'])!.value,
+      numeroBilhete: this.editForm.get(['numeroBilhete'])!.value,
       dataAposta: this.editForm.get(['dataAposta'])!.value ? moment(this.editForm.get(['dataAposta'])!.value, DATE_TIME_FORMAT) : undefined,
-      loteriaNome: this.editForm.get(['loteriaNome'])!.value,
       loteriaCodigo: this.editForm.get(['loteriaCodigo'])!.value,
       modalide: this.editForm.get(['modalide'])!.value,
       codigoModalidade: this.editForm.get(['codigoModalidade'])!.value,
@@ -103,7 +100,7 @@ export class ApostaUpdateComponent implements OnInit {
       valorJogo: this.editForm.get(['valorJogo'])!.value,
       codigoBanca: this.editForm.get(['codigoBanca'])!.value,
       numeroAposta: this.editForm.get(['numeroAposta'])!.value,
-      banca: this.editForm.get(['banca'])!.value
+      bilhete: this.editForm.get(['bilhete'])!.value
     };
   }
 
@@ -123,7 +120,7 @@ export class ApostaUpdateComponent implements OnInit {
     this.isSaving = false;
   }
 
-  trackById(index: number, item: IBanca): any {
+  trackById(index: number, item: IBilhete): any {
     return item.id;
   }
 }

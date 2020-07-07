@@ -16,7 +16,7 @@
       "detail": {
         "title": "Modalidade"
       },
-      "codigo": "Codigo",
+      "codigoModalidade": "Codigo Modalidade",
       "nome": "Nome",
       "menorPalpite": "Menor Palpite",
       "maiorPalpite": "Maior Palpite",

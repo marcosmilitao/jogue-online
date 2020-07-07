@@ -1,4 +1,5 @@
 import { Moment } from 'moment';
+import { ITerminal } from 'app/shared/model/terminal.model';
 import { IPromotor } from 'app/shared/model/promotor.model';
 
 export interface IRevendedor {
@@ -15,6 +16,8 @@ export interface IRevendedor {
   saldo?: number;
   senha?: string;
   data?: Moment;
+  comissao?: number;
+  terminals?: ITerminal[];
   promotor?: IPromotor;
 }
 
@@ -33,6 +36,8 @@ export class Revendedor implements IRevendedor {
     public saldo?: number,
     public senha?: string,
     public data?: Moment,
+    public comissao?: number,
+    public terminals?: ITerminal[],
     public promotor?: IPromotor
   ) {
     this.situacao = this.situacao || false;

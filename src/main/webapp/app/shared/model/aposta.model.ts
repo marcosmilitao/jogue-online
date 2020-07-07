@@ -1,11 +1,10 @@
 import { Moment } from 'moment';
-import { IBanca } from 'app/shared/model/banca.model';
+import { IBilhete } from 'app/shared/model/bilhete.model';
 
 export interface IAposta {
   id?: number;
-  codigoJogo?: number;
+  numeroBilhete?: number;
   dataAposta?: Moment;
-  loteriaNome?: string;
   loteriaCodigo?: number;
   modalide?: string;
   codigoModalidade?: string;
@@ -14,15 +13,14 @@ export interface IAposta {
   valorJogo?: number;
   codigoBanca?: number;
   numeroAposta?: number;
-  banca?: IBanca;
+  bilhete?: IBilhete;
 }
 
 export class Aposta implements IAposta {
   constructor(
     public id?: number,
-    public codigoJogo?: number,
+    public numeroBilhete?: number,
     public dataAposta?: Moment,
-    public loteriaNome?: string,
     public loteriaCodigo?: number,
     public modalide?: string,
     public codigoModalidade?: string,
@@ -31,6 +29,6 @@ export class Aposta implements IAposta {
     public valorJogo?: number,
     public codigoBanca?: number,
     public numeroAposta?: number,
-    public banca?: IBanca
+    public bilhete?: IBilhete
   ) {}
 }

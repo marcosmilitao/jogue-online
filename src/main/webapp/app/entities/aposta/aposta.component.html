@@ -23,9 +23,8 @@
             <thead>
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.aposta.codigoJogo">Codigo Jogo</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.aposta.numeroBilhete">Numero Bilhete</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.aposta.dataAposta">Data Aposta</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.aposta.loteriaNome">Loteria Nome</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.aposta.loteriaCodigo">Loteria Codigo</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.aposta.modalide">Modalide</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.aposta.codigoModalidade">Codigo Modalidade</span></th>
@@ -34,16 +33,15 @@
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.aposta.valorJogo">Valor Jogo</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.aposta.codigoBanca">Codigo Banca</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.aposta.numeroAposta">Numero Aposta</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.aposta.banca">Banca</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.aposta.bilhete">Bilhete</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let aposta of apostas ;trackBy: trackId">
                     <td><a [routerLink]="['/aposta', aposta.id, 'view']">{{ aposta.id }}</a></td>
-                    <td>{{ aposta.codigoJogo }}</td>
+                    <td>{{ aposta.numeroBilhete }}</td>
                     <td>{{ aposta.dataAposta | date:'medium' }}</td>
-                    <td>{{ aposta.loteriaNome }}</td>
                     <td>{{ aposta.loteriaCodigo }}</td>
                     <td>{{ aposta.modalide }}</td>
                     <td>{{ aposta.codigoModalidade }}</td>
@@ -53,8 +51,8 @@
                     <td>{{ aposta.codigoBanca }}</td>
                     <td>{{ aposta.numeroAposta }}</td>
                     <td>
-                        <div *ngIf="aposta.banca">
-                            <a [routerLink]="['/banca', aposta.banca?.id, 'view']" >{{ aposta.banca?.id }}</a>
+                        <div *ngIf="aposta.bilhete">
+                            <a [routerLink]="['/bilhete', aposta.bilhete?.id, 'view']" >{{ aposta.bilhete?.numeroBilhete }}</a>
                         </div>
                     </td>
                     <td class="text-right">

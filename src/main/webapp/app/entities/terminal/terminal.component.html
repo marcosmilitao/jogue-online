@@ -23,50 +23,44 @@
             <thead>
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.terminal.codigoTerminal">Codigo Terminal</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.terminal.telefoneChipe">Telefone Chipe</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.terminal.revendedor">Revendedor</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.terminal.serialChip">Serial Chip</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.terminal.serial">Serial</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.terminal.menssagem">Menssagem</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.terminal.senhaComunicacao">Senha Comunicacao</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.terminal.dataInicio">Data Inicio</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.terminal.situacao">Situacao</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.terminal.versaoTerminal">Versao Terminal</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.terminal.mudaCodigo">Muda Codigo</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.terminal.numeroTelefoneProvedor">Numero Telefone Provedor</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.terminal.dataEntrada">Data Entrada</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.terminal.numeroFonte">Numero Fonte</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.terminal.codigoAutorizacao">Codigo Autorizacao</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.terminal.serialTerminal">Serial Terminal</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.terminal.imei">Imei</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.terminal.email">Email</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.terminal.codigoBanca">Codigo Banca</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.terminal.banca">Banca</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.terminal.revendedor">Revendedor</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let terminal of terminals ;trackBy: trackId">
                     <td><a [routerLink]="['/terminal', terminal.id, 'view']">{{ terminal.id }}</a></td>
-                    <td>{{ terminal.codigoTerminal }}</td>
                     <td>{{ terminal.telefoneChipe }}</td>
-                    <td>{{ terminal.revendedor }}</td>
-                    <td>{{ terminal.serialChip }}</td>
+                    <td>{{ terminal.serial }}</td>
                     <td>{{ terminal.menssagem }}</td>
                     <td>{{ terminal.senhaComunicacao }}</td>
                     <td>{{ terminal.dataInicio | date:'medium' }}</td>
                     <td>{{ terminal.situacao }}</td>
                     <td>{{ terminal.versaoTerminal }}</td>
                     <td>{{ terminal.mudaCodigo }}</td>
-                    <td>{{ terminal.numeroTelefoneProvedor }}</td>
                     <td>{{ terminal.dataEntrada | date:'medium' }}</td>
                     <td>{{ terminal.numeroFonte }}</td>
                     <td>{{ terminal.codigoAutorizacao }}</td>
-                    <td>{{ terminal.serialTerminal }}</td>
+                    <td>{{ terminal.imei }}</td>
                     <td>{{ terminal.email }}</td>
                     <td>{{ terminal.codigoBanca }}</td>
                     <td>
-                        <div *ngIf="terminal.banca">
-                            <a [routerLink]="['/banca', terminal.banca?.id, 'view']" >{{ terminal.banca?.id }}</a>
+                        <div *ngIf="terminal.revendedor">
+                            <a [routerLink]="['/revendedor', terminal.revendedor?.id, 'view']" >{{ terminal.revendedor?.nome }}</a>
                         </div>
                     </td>
                     <td class="text-right">

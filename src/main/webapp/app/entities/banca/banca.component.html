@@ -23,7 +23,6 @@
             <thead>
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.banca.codigo">Codigo</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.banca.nome">Nome</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.banca.cidade">Cidade</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.banca.telefone">Telefone</span></th>
@@ -36,6 +35,7 @@
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.banca.mensagemPule2">Mensagem Pule 2</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.banca.mensagemPule3">Mensagem Pule 3</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.banca.data">Data</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.banca.bonus">Bonus</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.banca.modalidade">Modalidade</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.banca.loteria">Loteria</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.banca.customUser">Custom User</span></th>
@@ -45,7 +45,6 @@
             <tbody>
                 <tr *ngFor="let banca of bancas ;trackBy: trackId">
                     <td><a [routerLink]="['/banca', banca.id, 'view']">{{ banca.id }}</a></td>
-                    <td>{{ banca.codigo }}</td>
                     <td>{{ banca.nome }}</td>
                     <td>{{ banca.cidade }}</td>
                     <td>{{ banca.telefone }}</td>
@@ -58,6 +57,7 @@
                     <td>{{ banca.mensagemPule2 }}</td>
                     <td>{{ banca.mensagemPule3 }}</td>
                     <td>{{ banca.data | date:'medium' }}</td>
+                    <td>{{ banca.bonus }}</td>
                     <td>
                         <span *ngFor="let modalidade of banca.modalidades; let last = last">
                             <a class="form-control-static" [routerLink]="['/modalidade', modalidade?.id, 'view']">{{ modalidade.nome }}</a>{{ last ? '' : ', ' }}

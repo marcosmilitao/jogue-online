@@ -8,21 +8,13 @@
             <jhi-alert-error></jhi-alert-error>
 
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="jogueOnlineApp.terminal.codigoTerminal">Codigo Terminal</span></dt>
-                <dd>
-                    <span>{{ terminal.codigoTerminal }}</span>
-                </dd>
                 <dt><span jhiTranslate="jogueOnlineApp.terminal.telefoneChipe">Telefone Chipe</span></dt>
                 <dd>
                     <span>{{ terminal.telefoneChipe }}</span>
                 </dd>
-                <dt><span jhiTranslate="jogueOnlineApp.terminal.revendedor">Revendedor</span></dt>
+                <dt><span jhiTranslate="jogueOnlineApp.terminal.serial">Serial</span></dt>
                 <dd>
-                    <span>{{ terminal.revendedor }}</span>
-                </dd>
-                <dt><span jhiTranslate="jogueOnlineApp.terminal.serialChip">Serial Chip</span></dt>
-                <dd>
-                    <span>{{ terminal.serialChip }}</span>
+                    <span>{{ terminal.serial }}</span>
                 </dd>
                 <dt><span jhiTranslate="jogueOnlineApp.terminal.menssagem">Menssagem</span></dt>
                 <dd>
@@ -48,10 +40,6 @@
                 <dd>
                     <span>{{ terminal.mudaCodigo }}</span>
                 </dd>
-                <dt><span jhiTranslate="jogueOnlineApp.terminal.numeroTelefoneProvedor">Numero Telefone Provedor</span></dt>
-                <dd>
-                    <span>{{ terminal.numeroTelefoneProvedor }}</span>
-                </dd>
                 <dt><span jhiTranslate="jogueOnlineApp.terminal.dataEntrada">Data Entrada</span></dt>
                 <dd>
                     <span>{{ terminal.dataEntrada }}</span>
@@ -64,9 +52,9 @@
                 <dd>
                     <span>{{ terminal.codigoAutorizacao }}</span>
                 </dd>
-                <dt><span jhiTranslate="jogueOnlineApp.terminal.serialTerminal">Serial Terminal</span></dt>
+                <dt><span jhiTranslate="jogueOnlineApp.terminal.imei">Imei</span></dt>
                 <dd>
-                    <span>{{ terminal.serialTerminal }}</span>
+                    <span>{{ terminal.imei }}</span>
                 </dd>
                 <dt><span jhiTranslate="jogueOnlineApp.terminal.email">Email</span></dt>
                 <dd>
@@ -76,10 +64,10 @@
                 <dd>
                     <span>{{ terminal.codigoBanca }}</span>
                 </dd>
-                <dt><span jhiTranslate="jogueOnlineApp.terminal.banca">Banca</span></dt>
+                <dt><span jhiTranslate="jogueOnlineApp.terminal.revendedor">Revendedor</span></dt>
                 <dd>
-                    <div *ngIf="terminal.banca">
-                        <a [routerLink]="['/banca', terminal.banca?.id, 'view']">{{ terminal.banca?.id }}</a>
+                    <div *ngIf="terminal.revendedor">
+                        <a [routerLink]="['/revendedor', terminal.revendedor?.id, 'view']">{{ terminal.revendedor?.nome }}</a>
                     </div>
                 </dd>
             </dl>

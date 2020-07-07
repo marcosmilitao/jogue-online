@@ -35,7 +35,6 @@
 *}
 **/
 entity Banca{
-	codigo Long required,
     nome String required,
     cidade String,
     telefone String,
@@ -47,11 +46,11 @@ entity Banca{
     mensagemPule1 String,
     mensagemPule2 String,
     mensagemPule3 String,
-    data Instant
+    data Instant,
+    bonus Long
 }
 
 entity Promotor{
-	codigo Long required,
     nome String required,
     cidade String,
     estado String,
@@ -72,8 +71,8 @@ entity Revendedor{
     situacao Boolean, //ativo ou inativo
     saldo BigDecimal,
     senha String,
-    data Instant
-    
+    data Instant,
+    comissao Long 
 }
 
 /**entity Cliente{
@@ -96,27 +95,23 @@ entity Revendedor{
 *}
 **/
 entity Terminal{
-	codigoTerminal Long required,
     telefoneChipe Long ,
-    revendedor String,
-    serialChip String required,
+    serial String required,
     menssagem String,
     senhaComunicacao String,
     dataInicio Instant,
     situacao Boolean,
     versaoTerminal String,
     mudaCodigo Long,
-    numeroTelefoneProvedor Long,
     dataEntrada Instant,
     numeroFonte Long,
     codigoAutorizacao Long,
-    serialTerminal String required,
+    imei String required,
     email String,
     codigoBanca Long
-    
 }
 entity Modalidade{        
-   codigo String required, //:"M",
+   codigoModalidade String required, //:"M",
    nome String required, //:"Milhar",
    menorPalpite Integer required, //:0,
    maiorPalpite Integer required, //:9999,
@@ -172,11 +167,23 @@ entity DiasFuncionamento{
 *    tipoMovimentacao TipoMovimento
 *}
 **/
-
+entity Bilhete {
+	numeroBilhete Long required,
+    codigoBanca Long required,
+    codigoLoteria Long required,
+    loteriaNome String,
+    valorTotalAposta BigDecimal required,
+    bonusBanca Long,
+    bonusIndividual Long,
+    comicao Long,
+    valorBilhete BigDecimal required,
+    dataHoraAposta Instant required,
+    qrcode String,
+    codigoTerminal Long required
+}
 entity Aposta{
-	codigoJogo Long required,
+	numeroBilhete Long required,
     dataAposta Instant required,
-    loteriaNome String ,
     loteriaCodigo Integer required,
     modalide String,
     codigoModalidade String required,
@@ -187,12 +194,15 @@ entity Aposta{
     numeroAposta Long required
 }
 
-entity LimiteVenda{
-	codigoRevendedor Integer,
-    vendaDia BigDecimal,
-    debitoAtual BigDecimal,
-    limite BigDecimal
-}
+
+
+/**entity LimiteVenda{
+	*codigoRevendedor Long,
+    *vendaDia BigDecimal,
+    *debitoAtual BigDecimal,
+    *limite BigDecimal
+*}
+**/
 entity CustomUser{
 	
 	login String,
@@ -208,17 +218,17 @@ entity CustomUser{
 
 
 relationship OneToMany {
-
-   Promotor{revendedor} to Revendedor
-   Banca{promotor} to Promotor
-   Banca{cadastroTerminal} to Terminal
-   Banca{aposta} to Aposta
+   Banca{promotor(nome)} to Promotor{banca(nome)}
+   Promotor{revendedor(nome)} to Revendedor{promotor(nome)}
+   Revendedor{terminal(nome)} to Terminal{revendedor(nome)}
+   Banca{bilhete} to Bilhete{banca(nome)}
+   Bilhete{aposta} to Aposta{bilhete(numeroBilhete)}
 }
 
 relationship OneToOne{
 
-    CustomUser{user(login)} to User
-    LimiteVenda{revendedor(nome)} to Revendedor
+    CustomUser{user(login)} to User 
+    //LimiteVenda{revendedor(nome)} to Revendedor
 }
 
 

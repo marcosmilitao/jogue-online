@@ -23,7 +23,7 @@
             <thead>
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.modalidade.codigo">Codigo</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.modalidade.codigoModalidade">Codigo Modalidade</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.modalidade.nome">Nome</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.modalidade.menorPalpite">Menor Palpite</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.modalidade.maiorPalpite">Maior Palpite</span></th>
@@ -46,7 +46,7 @@
             <tbody>
                 <tr *ngFor="let modalidade of modalidades ;trackBy: trackId">
                     <td><a [routerLink]="['/modalidade', modalidade.id, 'view']">{{ modalidade.id }}</a></td>
-                    <td>{{ modalidade.codigo }}</td>
+                    <td>{{ modalidade.codigoModalidade }}</td>
                     <td>{{ modalidade.nome }}</td>
                     <td>{{ modalidade.menorPalpite }}</td>
                     <td>{{ modalidade.maiorPalpite }}</td>

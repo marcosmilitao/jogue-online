@@ -2,13 +2,6 @@
     "name": "Promotor",
     "fields": [
         {
-            "fieldName": "codigo",
-            "fieldType": "Long",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
             "fieldName": "nome",
             "fieldType": "String",
             "fieldValidateRules": [
@@ -51,7 +44,7 @@
             "otherEntityName": "banca",
             "otherEntityRelationshipName": "promotor",
             "relationshipName": "banca",
-            "otherEntityField": "id"
+            "otherEntityField": "nome"
         }
     ],
     "changelogDate": "20200616133600",

@@ -25,19 +25,12 @@ public class Terminal implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @NotNull
-    @Column(name = "codigo_terminal", nullable = false)
-    private Long codigoTerminal;
-
     @Column(name = "telefone_chipe")
     private Long telefoneChipe;
 
-    @Column(name = "revendedor")
-    private String revendedor;
-
     @NotNull
-    @Column(name = "serial_chip", nullable = false)
-    private String serialChip;
+    @Column(name = "serial", nullable = false)
+    private String serial;
 
     @Column(name = "menssagem")
     private String menssagem;
@@ -57,9 +50,6 @@ public class Terminal implements Serializable {
     @Column(name = "muda_codigo")
     private Long mudaCodigo;
 
-    @Column(name = "numero_telefone_provedor")
-    private Long numeroTelefoneProvedor;
-
     @Column(name = "data_entrada")
     private Instant dataEntrada;
 
@@ -70,8 +60,8 @@ public class Terminal implements Serializable {
     private Long codigoAutorizacao;
 
     @NotNull
-    @Column(name = "serial_terminal", nullable = false)
-    private String serialTerminal;
+    @Column(name = "imei", nullable = false)
+    private String imei;
 
     @Column(name = "email")
     private String email;
@@ -80,8 +70,8 @@ public class Terminal implements Serializable {
     private Long codigoBanca;
 
     @ManyToOne
-    @JsonIgnoreProperties("cadastroTerminals")
-    private Banca banca;
+    @JsonIgnoreProperties("terminals")
+    private Revendedor revendedor;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -90,19 +80,6 @@ public class Terminal implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getCodigoTerminal() {
-        return codigoTerminal;
-    }
-
-    public Terminal codigoTerminal(Long codigoTerminal) {
-        this.codigoTerminal = codigoTerminal;
-        return this;
-    }
-
-    public void setCodigoTerminal(Long codigoTerminal) {
-        this.codigoTerminal = codigoTerminal;
     }
 
     public Long getTelefoneChipe() {
@@ -118,30 +95,17 @@ public class Terminal implements Serializable {
         this.telefoneChipe = telefoneChipe;
     }
 
-    public String getRevendedor() {
-        return revendedor;
+    public String getSerial() {
+        return serial;
     }
 
-    public Terminal revendedor(String revendedor) {
-        this.revendedor = revendedor;
+    public Terminal serial(String serial) {
+        this.serial = serial;
         return this;
     }
 
-    public void setRevendedor(String revendedor) {
-        this.revendedor = revendedor;
-    }
-
-    public String getSerialChip() {
-        return serialChip;
-    }
-
-    public Terminal serialChip(String serialChip) {
-        this.serialChip = serialChip;
-        return this;
-    }
-
-    public void setSerialChip(String serialChip) {
-        this.serialChip = serialChip;
+    public void setSerial(String serial) {
+        this.serial = serial;
     }
 
     public String getMenssagem() {
@@ -222,19 +186,6 @@ public class Terminal implements Serializable {
         this.mudaCodigo = mudaCodigo;
     }
 
-    public Long getNumeroTelefoneProvedor() {
-        return numeroTelefoneProvedor;
-    }
-
-    public Terminal numeroTelefoneProvedor(Long numeroTelefoneProvedor) {
-        this.numeroTelefoneProvedor = numeroTelefoneProvedor;
-        return this;
-    }
-
-    public void setNumeroTelefoneProvedor(Long numeroTelefoneProvedor) {
-        this.numeroTelefoneProvedor = numeroTelefoneProvedor;
-    }
-
     public Instant getDataEntrada() {
         return dataEntrada;
     }
@@ -274,17 +225,17 @@ public class Terminal implements Serializable {
         this.codigoAutorizacao = codigoAutorizacao;
     }
 
-    public String getSerialTerminal() {
-        return serialTerminal;
+    public String getImei() {
+        return imei;
     }
 
-    public Terminal serialTerminal(String serialTerminal) {
-        this.serialTerminal = serialTerminal;
+    public Terminal imei(String imei) {
+        this.imei = imei;
         return this;
     }
 
-    public void setSerialTerminal(String serialTerminal) {
-        this.serialTerminal = serialTerminal;
+    public void setImei(String imei) {
+        this.imei = imei;
     }
 
     public String getEmail() {
@@ -313,17 +264,17 @@ public class Terminal implements Serializable {
         this.codigoBanca = codigoBanca;
     }
 
-    public Banca getBanca() {
-        return banca;
+    public Revendedor getRevendedor() {
+        return revendedor;
     }
 
-    public Terminal banca(Banca banca) {
-        this.banca = banca;
+    public Terminal revendedor(Revendedor revendedor) {
+        this.revendedor = revendedor;
         return this;
     }
 
-    public void setBanca(Banca banca) {
-        this.banca = banca;
+    public void setRevendedor(Revendedor revendedor) {
+        this.revendedor = revendedor;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -347,21 +298,18 @@ public class Terminal implements Serializable {
     public String toString() {
         return "Terminal{" +
             "id=" + getId() +
-            ", codigoTerminal=" + getCodigoTerminal() +
             ", telefoneChipe=" + getTelefoneChipe() +
-            ", revendedor='" + getRevendedor() + "'" +
-            ", serialChip='" + getSerialChip() + "'" +
+            ", serial='" + getSerial() + "'" +
             ", menssagem='" + getMenssagem() + "'" +
             ", senhaComunicacao='" + getSenhaComunicacao() + "'" +
             ", dataInicio='" + getDataInicio() + "'" +
             ", situacao='" + isSituacao() + "'" +
             ", versaoTerminal='" + getVersaoTerminal() + "'" +
             ", mudaCodigo=" + getMudaCodigo() +
-            ", numeroTelefoneProvedor=" + getNumeroTelefoneProvedor() +
             ", dataEntrada='" + getDataEntrada() + "'" +
             ", numeroFonte=" + getNumeroFonte() +
             ", codigoAutorizacao=" + getCodigoAutorizacao() +
-            ", serialTerminal='" + getSerialTerminal() + "'" +
+            ", imei='" + getImei() + "'" +
             ", email='" + getEmail() + "'" +
             ", codigoBanca=" + getCodigoBanca() +
             "}";

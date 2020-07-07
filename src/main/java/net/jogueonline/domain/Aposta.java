@@ -1,22 +1,18 @@
 package net.jogueonline.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import io.swagger.annotations.ApiModel;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.Objects;
 import java.math.BigDecimal;
 import java.time.Instant;
 
 /**
- * entity MovimentoGeral {\ndataMovimentacao Instant,\nvalor BigDecimal,\ntipo String,\nidDadosEntrada Long,\nidDadosSaida Long,\nidBanca Long,\nidCliente Long,\ndescricao String,\ntipoMovimentacao TipoMovimento\n}
+ * A Aposta.
  */
-@ApiModel(description = "entity MovimentoGeral {\ndataMovimentacao Instant,\nvalor BigDecimal,\ntipo String,\nidDadosEntrada Long,\nidDadosSaida Long,\nidBanca Long,\nidCliente Long,\ndescricao String,\ntipoMovimentacao TipoMovimento\n}")
 @Entity
 @Table(name = "aposta")
 public class Aposta implements Serializable {
@@ -29,15 +25,12 @@ public class Aposta implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "codigo_jogo", nullable = false)
-    private Long codigoJogo;
+    @Column(name = "numero_bilhete", nullable = false)
+    private Long numeroBilhete;
 
     @NotNull
     @Column(name = "data_aposta", nullable = false)
     private Instant dataAposta;
-
-    @Column(name = "loteria_nome")
-    private String loteriaNome;
 
     @NotNull
     @Column(name = "loteria_codigo", nullable = false)
@@ -69,7 +62,7 @@ public class Aposta implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties("apostas")
-    private Banca banca;
+    private Bilhete bilhete;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -80,17 +73,17 @@ public class Aposta implements Serializable {
         this.id = id;
     }
 
-    public Long getCodigoJogo() {
-        return codigoJogo;
+    public Long getNumeroBilhete() {
+        return numeroBilhete;
     }
 
-    public Aposta codigoJogo(Long codigoJogo) {
-        this.codigoJogo = codigoJogo;
+    public Aposta numeroBilhete(Long numeroBilhete) {
+        this.numeroBilhete = numeroBilhete;
         return this;
     }
 
-    public void setCodigoJogo(Long codigoJogo) {
-        this.codigoJogo = codigoJogo;
+    public void setNumeroBilhete(Long numeroBilhete) {
+        this.numeroBilhete = numeroBilhete;
     }
 
     public Instant getDataAposta() {
@@ -104,29 +97,6 @@ public class Aposta implements Serializable {
 
     public void setDataAposta(Instant dataAposta) {
         this.dataAposta = dataAposta;
-    }
-
-    @PrePersist
-    protected void prePersist() {
-        if (this.dataAposta == null){
-            Instant nowUtc = Instant.now();
-            ZoneId brasilSaoPaulo = ZoneId.of("America/Sao_Paulo");
-            ZonedDateTime nowBrasil = ZonedDateTime.ofInstant(nowUtc,brasilSaoPaulo);
-            this.dataAposta = nowBrasil.toInstant();
-        }
-    }
-
-    public String getLoteriaNome() {
-        return loteriaNome;
-    }
-
-    public Aposta loteriaNome(String loteriaNome) {
-        this.loteriaNome = loteriaNome;
-        return this;
-    }
-
-    public void setLoteriaNome(String loteriaNome) {
-        this.loteriaNome = loteriaNome;
     }
 
     public Integer getLoteriaCodigo() {
@@ -233,17 +203,17 @@ public class Aposta implements Serializable {
         this.numeroAposta = numeroAposta;
     }
 
-    public Banca getBanca() {
-        return banca;
+    public Bilhete getBilhete() {
+        return bilhete;
     }
 
-    public Aposta banca(Banca banca) {
-        this.banca = banca;
+    public Aposta bilhete(Bilhete bilhete) {
+        this.bilhete = bilhete;
         return this;
     }
 
-    public void setBanca(Banca banca) {
-        this.banca = banca;
+    public void setBilhete(Bilhete bilhete) {
+        this.bilhete = bilhete;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -267,9 +237,8 @@ public class Aposta implements Serializable {
     public String toString() {
         return "Aposta{" +
             "id=" + getId() +
-            ", codigoJogo=" + getCodigoJogo() +
+            ", numeroBilhete=" + getNumeroBilhete() +
             ", dataAposta='" + getDataAposta() + "'" +
-            ", loteriaNome='" + getLoteriaNome() + "'" +
             ", loteriaCodigo=" + getLoteriaCodigo() +
             ", modalide='" + getModalide() + "'" +
             ", codigoModalidade='" + getCodigoModalidade() + "'" +

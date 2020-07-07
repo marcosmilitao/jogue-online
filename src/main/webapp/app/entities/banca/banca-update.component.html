@@ -12,22 +12,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.banca.codigo" for="field_codigo">Codigo</label>
-                    <input type="number" class="form-control" name="codigo" id="field_codigo"
-                           formControlName="codigo"/>
-                    <div *ngIf="editForm.get('codigo')!.invalid && (editForm.get('codigo')!.dirty || editForm.get('codigo')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('codigo')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
-                        <small class="form-text text-danger"
-                            [hidden]="!editForm.get('codigo')?.errors?.number" jhiTranslate="entity.validation.number">
-                            This field should be a number.
-                        </small>
-                    </div>
-                </div>
-
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="jogueOnlineApp.banca.nome" for="field_nome">Nome</label>
                     <input type="text" class="form-control" name="nome" id="field_nome"
                            formControlName="nome"/>
@@ -104,6 +88,12 @@
                     <div class="d-flex">
                         <input id="field_data" type="datetime-local" class="form-control" name="data" formControlName="data" placeholder="YYYY-MM-DD HH:mm"/>
                     </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.banca.bonus" for="field_bonus">Bonus</label>
+                    <input type="number" class="form-control" name="bonus" id="field_bonus"
+                           formControlName="bonus"/>
                 </div>
 
                 <div class="form-group">

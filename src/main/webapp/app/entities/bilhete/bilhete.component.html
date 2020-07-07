@@ -1,0 +1,89 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jogueOnlineApp.bilhete.home.title">Bilhetes</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-bilhete" [routerLink]="['/bilhete/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="jogueOnlineApp.bilhete.home.createLabel">
+            Create a new Bilhete
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="bilhetes?.length === 0">
+        <span jhiTranslate="jogueOnlineApp.bilhete.home.notFound">No bilhetes found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="bilhetes?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.bilhete.numeroBilhete">Numero Bilhete</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.bilhete.codigoBanca">Codigo Banca</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.bilhete.codigoLoteria">Codigo Loteria</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.bilhete.loteriaNome">Loteria Nome</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.bilhete.valorTotalAposta">Valor Total Aposta</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.bilhete.bonusBanca">Bonus Banca</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.bilhete.bonusIndividual">Bonus Individual</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.bilhete.comicao">Comicao</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.bilhete.valorBilhete">Valor Bilhete</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.bilhete.dataHoraAposta">Data Hora Aposta</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.bilhete.qrcode">Qrcode</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.bilhete.codigoTerminal">Codigo Terminal</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.bilhete.banca">Banca</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let bilhete of bilhetes ;trackBy: trackId">
+                    <td><a [routerLink]="['/bilhete', bilhete.id, 'view']">{{ bilhete.id }}</a></td>
+                    <td>{{ bilhete.numeroBilhete }}</td>
+                    <td>{{ bilhete.codigoBanca }}</td>
+                    <td>{{ bilhete.codigoLoteria }}</td>
+                    <td>{{ bilhete.loteriaNome }}</td>
+                    <td>{{ bilhete.valorTotalAposta }}</td>
+                    <td>{{ bilhete.bonusBanca }}</td>
+                    <td>{{ bilhete.bonusIndividual }}</td>
+                    <td>{{ bilhete.comicao }}</td>
+                    <td>{{ bilhete.valorBilhete }}</td>
+                    <td>{{ bilhete.dataHoraAposta | date:'medium' }}</td>
+                    <td>{{ bilhete.qrcode }}</td>
+                    <td>{{ bilhete.codigoTerminal }}</td>
+                    <td>
+                        <div *ngIf="bilhete.banca">
+                            <a [routerLink]="['/banca', bilhete.banca?.id, 'view']" >{{ bilhete.banca?.nome }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/bilhete', bilhete.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/bilhete', bilhete.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(bilhete)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

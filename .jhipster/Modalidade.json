@@ -2,7 +2,7 @@
     "name": "Modalidade",
     "fields": [
         {
-            "fieldName": "codigo",
+            "fieldName": "codigoModalidade",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required"

@@ -1,4 +1,4 @@
-id;codigo;nome;menor_palpite;maior_palpite;qtde_palpites;qtde_minima_palpites;qtde_caracteres;qtde_minima_caracteres;menor_valor;maior_valor;maior_valor_excessao;repeticao;mascara;palpite_multiplo;palpite_multiplo_terminal;ordenar;permite_palpite_aleatorio
+id;codigo_modalidade;nome;menor_palpite;maior_palpite;qtde_palpites;qtde_minima_palpites;qtde_caracteres;qtde_minima_caracteres;menor_valor;maior_valor;maior_valor_excessao;repeticao;mascara;palpite_multiplo;palpite_multiplo_terminal;ordenar;permite_palpite_aleatorio
 1;auxiliary West Virginia;Lake Gabon;28914;82926;54403;62339;98459;45675;42293;29672;true;true;Global;false;false;false;true
 2;Dynamic;Rubber Technician parse;10939;24977;42061;52794;4705;61427;53197;43211;true;false;plug-and-play Alabama Berkshire;false;false;false;true
 3;fresh-thinking Clothing;Keyboard Auto Loan Account;37090;92716;47660;894;50241;9577;81274;35558;true;true;Configurable Home channels;false;false;false;false

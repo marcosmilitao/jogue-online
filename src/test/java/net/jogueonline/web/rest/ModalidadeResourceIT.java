@@ -31,8 +31,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class ModalidadeResourceIT {
 
-    private static final String DEFAULT_CODIGO = "AAAAAAAAAA";
-    private static final String UPDATED_CODIGO = "BBBBBBBBBB";
+    private static final String DEFAULT_CODIGO_MODALIDADE = "AAAAAAAAAA";
+    private static final String UPDATED_CODIGO_MODALIDADE = "BBBBBBBBBB";
 
     private static final String DEFAULT_NOME = "AAAAAAAAAA";
     private static final String UPDATED_NOME = "BBBBBBBBBB";
@@ -101,7 +101,7 @@ public class ModalidadeResourceIT {
      */
     public static Modalidade createEntity(EntityManager em) {
         Modalidade modalidade = new Modalidade()
-            .codigo(DEFAULT_CODIGO)
+            .codigoModalidade(DEFAULT_CODIGO_MODALIDADE)
             .nome(DEFAULT_NOME)
             .menorPalpite(DEFAULT_MENOR_PALPITE)
             .maiorPalpite(DEFAULT_MAIOR_PALPITE)
@@ -128,7 +128,7 @@ public class ModalidadeResourceIT {
      */
     public static Modalidade createUpdatedEntity(EntityManager em) {
         Modalidade modalidade = new Modalidade()
-            .codigo(UPDATED_CODIGO)
+            .codigoModalidade(UPDATED_CODIGO_MODALIDADE)
             .nome(UPDATED_NOME)
             .menorPalpite(UPDATED_MENOR_PALPITE)
             .maiorPalpite(UPDATED_MAIOR_PALPITE)
@@ -168,7 +168,7 @@ public class ModalidadeResourceIT {
         List<Modalidade> modalidadeList = modalidadeRepository.findAll();
         assertThat(modalidadeList).hasSize(databaseSizeBeforeCreate + 1);
         Modalidade testModalidade = modalidadeList.get(modalidadeList.size() - 1);
-        assertThat(testModalidade.getCodigo()).isEqualTo(DEFAULT_CODIGO);
+        assertThat(testModalidade.getCodigoModalidade()).isEqualTo(DEFAULT_CODIGO_MODALIDADE);
         assertThat(testModalidade.getNome()).isEqualTo(DEFAULT_NOME);
         assertThat(testModalidade.getMenorPalpite()).isEqualTo(DEFAULT_MENOR_PALPITE);
         assertThat(testModalidade.getMaiorPalpite()).isEqualTo(DEFAULT_MAIOR_PALPITE);
@@ -209,10 +209,10 @@ public class ModalidadeResourceIT {
 
     @Test
     @Transactional
-    public void checkCodigoIsRequired() throws Exception {
+    public void checkCodigoModalidadeIsRequired() throws Exception {
         int databaseSizeBeforeTest = modalidadeRepository.findAll().size();
         // set the field null
-        modalidade.setCodigo(null);
+        modalidade.setCodigoModalidade(null);
 
         // Create the Modalidade, which fails.
 
@@ -380,7 +380,7 @@ public class ModalidadeResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(modalidade.getId().intValue())))
-            .andExpect(jsonPath("$.[*].codigo").value(hasItem(DEFAULT_CODIGO)))
+            .andExpect(jsonPath("$.[*].codigoModalidade").value(hasItem(DEFAULT_CODIGO_MODALIDADE)))
             .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME)))
             .andExpect(jsonPath("$.[*].menorPalpite").value(hasItem(DEFAULT_MENOR_PALPITE)))
             .andExpect(jsonPath("$.[*].maiorPalpite").value(hasItem(DEFAULT_MAIOR_PALPITE)))
@@ -410,7 +410,7 @@ public class ModalidadeResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(modalidade.getId().intValue()))
-            .andExpect(jsonPath("$.codigo").value(DEFAULT_CODIGO))
+            .andExpect(jsonPath("$.codigoModalidade").value(DEFAULT_CODIGO_MODALIDADE))
             .andExpect(jsonPath("$.nome").value(DEFAULT_NOME))
             .andExpect(jsonPath("$.menorPalpite").value(DEFAULT_MENOR_PALPITE))
             .andExpect(jsonPath("$.maiorPalpite").value(DEFAULT_MAIOR_PALPITE))
@@ -450,7 +450,7 @@ public class ModalidadeResourceIT {
         // Disconnect from session so that the updates on updatedModalidade are not directly saved in db
         em.detach(updatedModalidade);
         updatedModalidade
-            .codigo(UPDATED_CODIGO)
+            .codigoModalidade(UPDATED_CODIGO_MODALIDADE)
             .nome(UPDATED_NOME)
             .menorPalpite(UPDATED_MENOR_PALPITE)
             .maiorPalpite(UPDATED_MAIOR_PALPITE)
@@ -477,7 +477,7 @@ public class ModalidadeResourceIT {
         List<Modalidade> modalidadeList = modalidadeRepository.findAll();
         assertThat(modalidadeList).hasSize(databaseSizeBeforeUpdate);
         Modalidade testModalidade = modalidadeList.get(modalidadeList.size() - 1);
-        assertThat(testModalidade.getCodigo()).isEqualTo(UPDATED_CODIGO);
+        assertThat(testModalidade.getCodigoModalidade()).isEqualTo(UPDATED_CODIGO_MODALIDADE);
         assertThat(testModalidade.getNome()).isEqualTo(UPDATED_NOME);
         assertThat(testModalidade.getMenorPalpite()).isEqualTo(UPDATED_MENOR_PALPITE);
         assertThat(testModalidade.getMaiorPalpite()).isEqualTo(UPDATED_MAIOR_PALPITE);

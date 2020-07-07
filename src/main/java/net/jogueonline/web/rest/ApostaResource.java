@@ -116,15 +116,4 @@ public class ApostaResource {
         apostaRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
-
-    //apostas/mobile
-    @PostMapping("/apostas/mobile")
-    public ResponseEntity<Void> createAposta2(@Valid @RequestBody List<Aposta> aposta) throws URISyntaxException {
-        log.debug("REST request to save Aposta : {}", aposta);
-//         if (aposta.getId() != null) {
-//             throw new BadRequestAlertException("A new aposta cannot already have an ID", ENTITY_NAME, "idexists");
-//         }
-        apostaRepository.saveAll(aposta);
-        return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, "1")).build();
-    }
 }

@@ -15,9 +15,6 @@
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="codigo" type="bigint">
-                <constraints nullable="false" />
-            </column>
             <column name="nome" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
@@ -63,7 +60,6 @@
                   separator=";"
                   tableName="promotor">
             <column name="id" type="numeric"/>
-            <column name="codigo" type="numeric"/>
             <column name="nome" type="string"/>
             <column name="cidade" type="string"/>
             <column name="estado" type="string"/>

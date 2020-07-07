@@ -6,7 +6,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.query.Param;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -36,7 +35,8 @@ public interface BancaRepository extends JpaRepository<Banca, Long> {
 
     @Query(value = "select * from banca ba\n" +
         "left join terminal te on te.codigo_banca = ba.id\n" +
-        "where te.serial_terminal =:serial and te.telefone_chipe =:telefone and te.situacao = true",
+        "where te.imei =:imei and te.telefone_chipe =:telefone and te.situacao = true",
         nativeQuery = true)
-    Optional<Banca> loginTerminal(@Param("serial") String serial, @Param("telefone") Long telefone);
+    Optional<Banca> loginTerminal(@Param("imei") String imei, @Param("telefone") Long telefone);
+
 }

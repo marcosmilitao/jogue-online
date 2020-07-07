@@ -16,7 +16,6 @@
       "detail": {
         "title": "Banca"
       },
-      "codigo": "Codigo",
       "nome": "Nome",
       "cidade": "Cidade",
       "telefone": "Telefone",
@@ -29,9 +28,9 @@
       "mensagemPule2": "Mensagem Pule 2",
       "mensagemPule3": "Mensagem Pule 3",
       "data": "Data",
+      "bonus": "Bonus",
       "promotor": "Promotor",
-      "cadastroTerminal": "Cadastro Terminal",
-      "aposta": "Aposta",
+      "bilhete": "Bilhete",
       "modalidade": "Modalidade",
       "loteria": "Loteria",
       "customUser": "Custom User"

@@ -26,10 +26,6 @@ public class Promotor implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "codigo", nullable = false)
-    private Long codigo;
-
-    @NotNull
     @Column(name = "nome", nullable = false)
     private String nome;
 
@@ -63,19 +59,6 @@ public class Promotor implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getCodigo() {
-        return codigo;
-    }
-
-    public Promotor codigo(Long codigo) {
-        this.codigo = codigo;
-        return this;
-    }
-
-    public void setCodigo(Long codigo) {
-        this.codigo = codigo;
     }
 
     public String getNome() {
@@ -215,7 +198,6 @@ public class Promotor implements Serializable {
     public String toString() {
         return "Promotor{" +
             "id=" + getId() +
-            ", codigo=" + getCodigo() +
             ", nome='" + getNome() + "'" +
             ", cidade='" + getCidade() + "'" +
             ", estado='" + getEstado() + "'" +

@@ -54,15 +54,25 @@
         {
             "fieldName": "data",
             "fieldType": "Instant"
+        },
+        {
+            "fieldName": "comissao",
+            "fieldType": "Long"
         }
     ],
     "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "terminal",
+            "otherEntityRelationshipName": "revendedor",
+            "relationshipName": "terminal"
+        },
         {
             "relationshipType": "many-to-one",
             "otherEntityName": "promotor",
             "otherEntityRelationshipName": "revendedor",
             "relationshipName": "promotor",
-            "otherEntityField": "id"
+            "otherEntityField": "nome"
         }
     ],
     "changelogDate": "20200616133700",

@@ -1,8 +1,6 @@
 package net.jogueonline.web.rest;
 
-import net.jogueonline.domain.Banca;
 import net.jogueonline.domain.Terminal;
-import net.jogueonline.domain.TerminalUserInfo;
 import net.jogueonline.repository.TerminalRepository;
 import net.jogueonline.web.rest.errors.BadRequestAlertException;
 
@@ -15,9 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;

@@ -38,5 +38,6 @@
     "readOnly": false,
     "embedded": false,
     "clientRootFolder": "",
-    "applications": "*"
+    "applications": "*",
+    "javadoc": "entity LimiteVenda{\\ncodigoRevendedor Long,\\nvendaDia BigDecimal,\\ndebitoAtual BigDecimal,\\nlimite BigDecimal\\n}"
 }

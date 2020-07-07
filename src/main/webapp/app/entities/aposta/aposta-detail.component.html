@@ -8,17 +8,13 @@
             <jhi-alert-error></jhi-alert-error>
 
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="jogueOnlineApp.aposta.codigoJogo">Codigo Jogo</span></dt>
+                <dt><span jhiTranslate="jogueOnlineApp.aposta.numeroBilhete">Numero Bilhete</span></dt>
                 <dd>
-                    <span>{{ aposta.codigoJogo }}</span>
+                    <span>{{ aposta.numeroBilhete }}</span>
                 </dd>
                 <dt><span jhiTranslate="jogueOnlineApp.aposta.dataAposta">Data Aposta</span></dt>
                 <dd>
                     <span>{{ aposta.dataAposta }}</span>
-                </dd>
-                <dt><span jhiTranslate="jogueOnlineApp.aposta.loteriaNome">Loteria Nome</span></dt>
-                <dd>
-                    <span>{{ aposta.loteriaNome }}</span>
                 </dd>
                 <dt><span jhiTranslate="jogueOnlineApp.aposta.loteriaCodigo">Loteria Codigo</span></dt>
                 <dd>
@@ -52,10 +48,10 @@
                 <dd>
                     <span>{{ aposta.numeroAposta }}</span>
                 </dd>
-                <dt><span jhiTranslate="jogueOnlineApp.aposta.banca">Banca</span></dt>
+                <dt><span jhiTranslate="jogueOnlineApp.aposta.bilhete">Bilhete</span></dt>
                 <dd>
-                    <div *ngIf="aposta.banca">
-                        <a [routerLink]="['/banca', aposta.banca?.id, 'view']">{{ aposta.banca?.id }}</a>
+                    <div *ngIf="aposta.bilhete">
+                        <a [routerLink]="['/bilhete', aposta.bilhete?.id, 'view']">{{ aposta.bilhete?.numeroBilhete }}</a>
                     </div>
                 </dd>
             </dl>

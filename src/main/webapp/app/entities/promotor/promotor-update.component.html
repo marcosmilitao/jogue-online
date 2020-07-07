@@ -12,22 +12,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.promotor.codigo" for="field_codigo">Codigo</label>
-                    <input type="number" class="form-control" name="codigo" id="field_codigo"
-                           formControlName="codigo"/>
-                    <div *ngIf="editForm.get('codigo')!.invalid && (editForm.get('codigo')!.dirty || editForm.get('codigo')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('codigo')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
-                        <small class="form-text text-danger"
-                            [hidden]="!editForm.get('codigo')?.errors?.number" jhiTranslate="entity.validation.number">
-                            This field should be a number.
-                        </small>
-                    </div>
-                </div>
-
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="jogueOnlineApp.promotor.nome" for="field_nome">Nome</label>
                     <input type="text" class="form-control" name="nome" id="field_nome"
                            formControlName="nome"/>
@@ -80,7 +64,7 @@
                     <label class="form-control-label" jhiTranslate="jogueOnlineApp.promotor.banca" for="field_banca">Banca</label>
                     <select class="form-control" id="field_banca" name="banca" formControlName="banca">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="bancaOption.id === editForm.get('banca')!.value?.id ? editForm.get('banca')!.value : bancaOption" *ngFor="let bancaOption of bancas; trackBy: trackById">{{ bancaOption.id }}</option>
+                        <option [ngValue]="bancaOption.id === editForm.get('banca')!.value?.id ? editForm.get('banca')!.value : bancaOption" *ngFor="let bancaOption of bancas; trackBy: trackById">{{ bancaOption.nome }}</option>
                     </select>
                 </div>
             </div>

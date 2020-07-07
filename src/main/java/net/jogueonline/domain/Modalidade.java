@@ -26,8 +26,8 @@ public class Modalidade implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "codigo", nullable = false)
-    private String codigo;
+    @Column(name = "codigo_modalidade", nullable = false)
+    private String codigoModalidade;
 
     @NotNull
     @Column(name = "nome", nullable = false)
@@ -98,17 +98,17 @@ public class Modalidade implements Serializable {
         this.id = id;
     }
 
-    public String getCodigo() {
-        return codigo;
+    public String getCodigoModalidade() {
+        return codigoModalidade;
     }
 
-    public Modalidade codigo(String codigo) {
-        this.codigo = codigo;
+    public Modalidade codigoModalidade(String codigoModalidade) {
+        this.codigoModalidade = codigoModalidade;
         return this;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setCodigoModalidade(String codigoModalidade) {
+        this.codigoModalidade = codigoModalidade;
     }
 
     public String getNome() {
@@ -365,7 +365,7 @@ public class Modalidade implements Serializable {
     public String toString() {
         return "Modalidade{" +
             "id=" + getId() +
-            ", codigo='" + getCodigo() + "'" +
+            ", codigoModalidade='" + getCodigoModalidade() + "'" +
             ", nome='" + getNome() + "'" +
             ", menorPalpite=" + getMenorPalpite() +
             ", maiorPalpite=" + getMaiorPalpite() +

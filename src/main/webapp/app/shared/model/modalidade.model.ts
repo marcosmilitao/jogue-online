@@ -2,7 +2,7 @@ import { IBanca } from 'app/shared/model/banca.model';
 
 export interface IModalidade {
   id?: number;
-  codigo?: string;
+  codigoModalidade?: string;
   nome?: string;
   menorPalpite?: number;
   maiorPalpite?: number;
@@ -25,7 +25,7 @@ export interface IModalidade {
 export class Modalidade implements IModalidade {
   constructor(
     public id?: number,
-    public codigo?: string,
+    public codigoModalidade?: string,
     public nome?: string,
     public menorPalpite?: number,
     public maiorPalpite?: number,

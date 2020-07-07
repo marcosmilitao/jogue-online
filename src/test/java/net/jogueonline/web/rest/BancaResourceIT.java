@@ -40,9 +40,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class BancaResourceIT {
 
-    private static final Long DEFAULT_CODIGO = 1L;
-    private static final Long UPDATED_CODIGO = 2L;
-
     private static final String DEFAULT_NOME = "AAAAAAAAAA";
     private static final String UPDATED_NOME = "BBBBBBBBBB";
 
@@ -79,6 +76,9 @@ public class BancaResourceIT {
     private static final Instant DEFAULT_DATA = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_DATA = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
+    private static final Long DEFAULT_BONUS = 1L;
+    private static final Long UPDATED_BONUS = 2L;
+
     @Autowired
     private BancaRepository bancaRepository;
 
@@ -101,7 +101,6 @@ public class BancaResourceIT {
      */
     public static Banca createEntity(EntityManager em) {
         Banca banca = new Banca()
-            .codigo(DEFAULT_CODIGO)
             .nome(DEFAULT_NOME)
             .cidade(DEFAULT_CIDADE)
             .telefone(DEFAULT_TELEFONE)
@@ -113,7 +112,8 @@ public class BancaResourceIT {
             .mensagemPule1(DEFAULT_MENSAGEM_PULE_1)
             .mensagemPule2(DEFAULT_MENSAGEM_PULE_2)
             .mensagemPule3(DEFAULT_MENSAGEM_PULE_3)
-            .data(DEFAULT_DATA);
+            .data(DEFAULT_DATA)
+            .bonus(DEFAULT_BONUS);
         return banca;
     }
     /**
@@ -124,7 +124,6 @@ public class BancaResourceIT {
      */
     public static Banca createUpdatedEntity(EntityManager em) {
         Banca banca = new Banca()
-            .codigo(UPDATED_CODIGO)
             .nome(UPDATED_NOME)
             .cidade(UPDATED_CIDADE)
             .telefone(UPDATED_TELEFONE)
@@ -136,7 +135,8 @@ public class BancaResourceIT {
             .mensagemPule1(UPDATED_MENSAGEM_PULE_1)
             .mensagemPule2(UPDATED_MENSAGEM_PULE_2)
             .mensagemPule3(UPDATED_MENSAGEM_PULE_3)
-            .data(UPDATED_DATA);
+            .data(UPDATED_DATA)
+            .bonus(UPDATED_BONUS);
         return banca;
     }
 
@@ -160,7 +160,6 @@ public class BancaResourceIT {
         List<Banca> bancaList = bancaRepository.findAll();
         assertThat(bancaList).hasSize(databaseSizeBeforeCreate + 1);
         Banca testBanca = bancaList.get(bancaList.size() - 1);
-        assertThat(testBanca.getCodigo()).isEqualTo(DEFAULT_CODIGO);
         assertThat(testBanca.getNome()).isEqualTo(DEFAULT_NOME);
         assertThat(testBanca.getCidade()).isEqualTo(DEFAULT_CIDADE);
         assertThat(testBanca.getTelefone()).isEqualTo(DEFAULT_TELEFONE);
@@ -173,6 +172,7 @@ public class BancaResourceIT {
         assertThat(testBanca.getMensagemPule2()).isEqualTo(DEFAULT_MENSAGEM_PULE_2);
         assertThat(testBanca.getMensagemPule3()).isEqualTo(DEFAULT_MENSAGEM_PULE_3);
         assertThat(testBanca.getData()).isEqualTo(DEFAULT_DATA);
+        assertThat(testBanca.getBonus()).isEqualTo(DEFAULT_BONUS);
     }
 
     @Test
@@ -194,24 +194,6 @@ public class BancaResourceIT {
         assertThat(bancaList).hasSize(databaseSizeBeforeCreate);
     }
 
-
-    @Test
-    @Transactional
-    public void checkCodigoIsRequired() throws Exception {
-        int databaseSizeBeforeTest = bancaRepository.findAll().size();
-        // set the field null
-        banca.setCodigo(null);
-
-        // Create the Banca, which fails.
-
-        restBancaMockMvc.perform(post("/api/bancas")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(banca)))
-            .andExpect(status().isBadRequest());
-
-        List<Banca> bancaList = bancaRepository.findAll();
-        assertThat(bancaList).hasSize(databaseSizeBeforeTest);
-    }
 
     @Test
     @Transactional
@@ -242,7 +224,6 @@ public class BancaResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(banca.getId().intValue())))
-            .andExpect(jsonPath("$.[*].codigo").value(hasItem(DEFAULT_CODIGO.intValue())))
             .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME)))
             .andExpect(jsonPath("$.[*].cidade").value(hasItem(DEFAULT_CIDADE)))
             .andExpect(jsonPath("$.[*].telefone").value(hasItem(DEFAULT_TELEFONE)))
@@ -254,7 +235,8 @@ public class BancaResourceIT {
             .andExpect(jsonPath("$.[*].mensagemPule1").value(hasItem(DEFAULT_MENSAGEM_PULE_1)))
             .andExpect(jsonPath("$.[*].mensagemPule2").value(hasItem(DEFAULT_MENSAGEM_PULE_2)))
             .andExpect(jsonPath("$.[*].mensagemPule3").value(hasItem(DEFAULT_MENSAGEM_PULE_3)))
-            .andExpect(jsonPath("$.[*].data").value(hasItem(DEFAULT_DATA.toString())));
+            .andExpect(jsonPath("$.[*].data").value(hasItem(DEFAULT_DATA.toString())))
+            .andExpect(jsonPath("$.[*].bonus").value(hasItem(DEFAULT_BONUS.intValue())));
     }
     
     @SuppressWarnings({"unchecked"})
@@ -290,7 +272,6 @@ public class BancaResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(banca.getId().intValue()))
-            .andExpect(jsonPath("$.codigo").value(DEFAULT_CODIGO.intValue()))
             .andExpect(jsonPath("$.nome").value(DEFAULT_NOME))
             .andExpect(jsonPath("$.cidade").value(DEFAULT_CIDADE))
             .andExpect(jsonPath("$.telefone").value(DEFAULT_TELEFONE))
@@ -302,7 +283,8 @@ public class BancaResourceIT {
             .andExpect(jsonPath("$.mensagemPule1").value(DEFAULT_MENSAGEM_PULE_1))
             .andExpect(jsonPath("$.mensagemPule2").value(DEFAULT_MENSAGEM_PULE_2))
             .andExpect(jsonPath("$.mensagemPule3").value(DEFAULT_MENSAGEM_PULE_3))
-            .andExpect(jsonPath("$.data").value(DEFAULT_DATA.toString()));
+            .andExpect(jsonPath("$.data").value(DEFAULT_DATA.toString()))
+            .andExpect(jsonPath("$.bonus").value(DEFAULT_BONUS.intValue()));
     }
 
     @Test
@@ -326,7 +308,6 @@ public class BancaResourceIT {
         // Disconnect from session so that the updates on updatedBanca are not directly saved in db
         em.detach(updatedBanca);
         updatedBanca
-            .codigo(UPDATED_CODIGO)
             .nome(UPDATED_NOME)
             .cidade(UPDATED_CIDADE)
             .telefone(UPDATED_TELEFONE)
@@ -338,7 +319,8 @@ public class BancaResourceIT {
             .mensagemPule1(UPDATED_MENSAGEM_PULE_1)
             .mensagemPule2(UPDATED_MENSAGEM_PULE_2)
             .mensagemPule3(UPDATED_MENSAGEM_PULE_3)
-            .data(UPDATED_DATA);
+            .data(UPDATED_DATA)
+            .bonus(UPDATED_BONUS);
 
         restBancaMockMvc.perform(put("/api/bancas")
             .contentType(MediaType.APPLICATION_JSON)
@@ -349,7 +331,6 @@ public class BancaResourceIT {
         List<Banca> bancaList = bancaRepository.findAll();
         assertThat(bancaList).hasSize(databaseSizeBeforeUpdate);
         Banca testBanca = bancaList.get(bancaList.size() - 1);
-        assertThat(testBanca.getCodigo()).isEqualTo(UPDATED_CODIGO);
         assertThat(testBanca.getNome()).isEqualTo(UPDATED_NOME);
         assertThat(testBanca.getCidade()).isEqualTo(UPDATED_CIDADE);
         assertThat(testBanca.getTelefone()).isEqualTo(UPDATED_TELEFONE);
@@ -362,6 +343,7 @@ public class BancaResourceIT {
         assertThat(testBanca.getMensagemPule2()).isEqualTo(UPDATED_MENSAGEM_PULE_2);
         assertThat(testBanca.getMensagemPule3()).isEqualTo(UPDATED_MENSAGEM_PULE_3);
         assertThat(testBanca.getData()).isEqualTo(UPDATED_DATA);
+        assertThat(testBanca.getBonus()).isEqualTo(UPDATED_BONUS);
     }
 
     @Test
