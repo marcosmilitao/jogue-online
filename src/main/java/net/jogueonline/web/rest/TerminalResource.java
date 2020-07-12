@@ -116,4 +116,18 @@ public class TerminalResource {
         terminalRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
+
+
+    /**
+     * {@code GET  /terminals/:emei} : get the "emei" terminal.
+     *
+     * @param imei the imei of the terminal to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the terminal, or with status {@code 404 (Not Found)}.
+     */
+    @GetMapping("/terminal/login2/{imei}/{telefone}")
+    public ResponseEntity<Terminal> getTerminalbyImei(@PathVariable String imei, @PathVariable Long telefone) {
+        log.debug("REST request to get Terminal : {}", imei);
+        Optional<Terminal> terminal = terminalRepository.findOneByImei(imei,telefone);
+        return ResponseUtil.wrapOrNotFound(terminal);
+    }
 }

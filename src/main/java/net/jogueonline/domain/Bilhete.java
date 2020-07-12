@@ -2,6 +2,7 @@ package net.jogueonline.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
+import net.jogueonline.util.DateTimeInstantUtil;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -77,6 +78,9 @@ public class Bilhete implements Serializable {
     @ManyToOne
     @JsonIgnoreProperties("bilhetes")
     private Banca banca;
+
+
+
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -281,6 +285,17 @@ public class Bilhete implements Serializable {
         this.banca = banca;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+
+    @PrePersist
+    protected void prePersist() {
+        if(this.dataHoraAposta == null){
+            this.dataHoraAposta = DateTimeInstantUtil.getDataTimeNowBr();
+        }
+        if (this.numeroBilhete == null){
+            this.numeroBilhete = 0L;
+        }
+    }
+
 
     @Override
     public boolean equals(Object o) {

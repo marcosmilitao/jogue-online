@@ -91,6 +91,9 @@ public class Banca implements Serializable {
                inverseJoinColumns = @JoinColumn(name = "custom_user_id", referencedColumnName = "id"))
     private Set<CustomUser> customUsers = new HashSet<>();
 
+    @Transient
+    private Terminal terminal;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -429,5 +432,13 @@ public class Banca implements Serializable {
             ", data='" + getData() + "'" +
             ", bonus=" + getBonus() +
             "}";
+    }
+
+    public Terminal getTerminal() {
+        return terminal;
+    }
+
+    public void setTerminal(Terminal terminal) {
+        this.terminal = terminal;
     }
 }

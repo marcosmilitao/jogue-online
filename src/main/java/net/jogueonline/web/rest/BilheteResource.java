@@ -1,7 +1,10 @@
 package net.jogueonline.web.rest;
 
+import net.jogueonline.domain.Aposta;
 import net.jogueonline.domain.Bilhete;
+import net.jogueonline.repository.ApostaRepository;
 import net.jogueonline.repository.BilheteRepository;
+import net.jogueonline.service.BilheteService;
 import net.jogueonline.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -12,10 +15,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.spring.web.json.Json;
 
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,8 +41,11 @@ public class BilheteResource {
 
     private final BilheteRepository bilheteRepository;
 
-    public BilheteResource(BilheteRepository bilheteRepository) {
+    private final ApostaRepository apostaRepository;
+
+    public BilheteResource(BilheteRepository bilheteRepository, ApostaRepository apostaRepository) {
         this.bilheteRepository = bilheteRepository;
+        this.apostaRepository = apostaRepository;
     }
 
     /**
@@ -115,5 +123,40 @@ public class BilheteResource {
         log.debug("REST request to delete Bilhete : {}", id);
         bilheteRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
+    }
+
+    /**
+     * {@code POST  /bilhetes} : Create a new bilhete.
+     *
+     * @param bilhete the bilhete to create.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new bilhete, or with status {@code 400 (Bad Request)} if the bilhete has already an ID.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     */
+    @PostMapping("/bilhetes/aposta/mobile")
+    public ResponseEntity<Bilhete> addBilhete(@RequestBody Bilhete bilhete) throws URISyntaxException {
+        log.debug("REST request to save Bilhete : {}>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",  bilhete.getApostas());
+        List<Aposta> apostas = new ArrayList<Aposta>();
+
+        bilhete.getApostas().forEach(data ->{
+            log.debug("APOSTA: {}", data);
+            apostas.add(data);
+        });
+
+        log.debug("APOSTAs: {}", apostas);
+        BilheteService bilheteService = new BilheteService(apostaRepository,bilheteRepository);
+        if (bilhete.getId() != null) {
+            throw new BadRequestAlertException("A new bilhete cannot already have an ID", ENTITY_NAME, "idexists");
+        }
+//
+//        if(bilheteService.validarBilhete(bilhete) == null){
+//            throw new  BadRequestAlertException("bilhete cannot null", ENTITY_NAME, "null");
+//        }
+        Bilhete result = bilheteRepository.save(bilhete);
+        Bilhete b = bilheteService.gerarNumQrcBilhete(result);
+        bilheteService.salvarListaApostas(apostas,b);
+
+        return ResponseEntity.created(new URI("/api/bilhetes/" + result.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
+            .body(result);
     }
 }

@@ -1,6 +1,7 @@
 package net.jogueonline.web.rest;
 
 import net.jogueonline.domain.Revendedor;
+import net.jogueonline.domain.Terminal;
 import net.jogueonline.repository.RevendedorRepository;
 import net.jogueonline.web.rest.errors.BadRequestAlertException;
 
