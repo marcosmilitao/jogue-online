@@ -38,5 +38,4 @@ public interface BancaRepository extends JpaRepository<Banca, Long> {
         "where te.imei =:imei and te.telefone_chipe =:telefone and te.situacao = true",
         nativeQuery = true)
     Optional<Banca> loginTerminal(@Param("imei") String imei, @Param("telefone") Long telefone);
-
 }

@@ -79,9 +79,6 @@ public class Bilhete implements Serializable {
     @JsonIgnoreProperties("bilhetes")
     private Banca banca;
 
-
-
-
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -295,7 +292,6 @@ public class Bilhete implements Serializable {
             this.numeroBilhete = 0L;
         }
     }
-
 
     @Override
     public boolean equals(Object o) {

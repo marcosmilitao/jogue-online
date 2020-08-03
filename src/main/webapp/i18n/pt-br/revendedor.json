@@ -25,10 +25,10 @@
       "serialColetor": "Serial Coletor",
       "nomeComercial": "Nome Comercial",
       "situacao": "Situacao",
-      "saldo": "Saldo",
       "senha": "Senha",
       "data": "Data",
       "comissao": "Comissao",
+      "saldo": "Saldo",
       "terminal": "Terminal",
       "promotor": "Promotor"
     }

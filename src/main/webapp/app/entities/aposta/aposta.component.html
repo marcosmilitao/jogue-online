@@ -21,19 +21,19 @@
     <div class="table-responsive" id="entities" *ngIf="apostas?.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-                <tr>
-                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.aposta.numeroBilhete">Numero Bilhete</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.aposta.dataAposta">Data Aposta</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.aposta.loteriaCodigo">Loteria Codigo</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.aposta.modalide">Modalide</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.aposta.codigoModalidade">Codigo Modalidade</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.aposta.premio">Premio</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.aposta.codigoPremio">Codigo Premio</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.aposta.valorJogo">Valor Jogo</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.aposta.codigoBanca">Codigo Banca</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.aposta.numeroAposta">Numero Aposta</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.aposta.bilhete">Bilhete</span></th>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="numeroBilhete"><span jhiTranslate="jogueOnlineApp.aposta.numeroBilhete">Numero Bilhete</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dataAposta"><span jhiTranslate="jogueOnlineApp.aposta.dataAposta">Data Aposta</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="loteriaCodigo"><span jhiTranslate="jogueOnlineApp.aposta.loteriaCodigo">Loteria Codigo</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="modalide"><span jhiTranslate="jogueOnlineApp.aposta.modalide">Modalide</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="codigoModalidade"><span jhiTranslate="jogueOnlineApp.aposta.codigoModalidade">Codigo Modalidade</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="premio"><span jhiTranslate="jogueOnlineApp.aposta.premio">Premio</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="codigoPremio"><span jhiTranslate="jogueOnlineApp.aposta.codigoPremio">Codigo Premio</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="valorJogo"><span jhiTranslate="jogueOnlineApp.aposta.valorJogo">Valor Jogo</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="codigoBanca"><span jhiTranslate="jogueOnlineApp.aposta.codigoBanca">Codigo Banca</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="numeroAposta"><span jhiTranslate="jogueOnlineApp.aposta.numeroAposta">Numero Aposta</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="bilhete.numeroBilhete"><span jhiTranslate="jogueOnlineApp.aposta.bilhete">Bilhete</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -81,5 +81,15 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <div *ngIf="apostas?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
     </div>
 </div>

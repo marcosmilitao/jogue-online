@@ -19,6 +19,8 @@
         "limiteVenda": "Limite Venda",
         "customUser": "Custom User",
         "bilhete": "Bilhete",
+        "saldo": "Saldo",
+        "movimentacao": "Movimentacao",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

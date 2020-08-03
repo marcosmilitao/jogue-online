@@ -35,7 +35,6 @@ describe('Service Tests', () => {
         'AAAAAAA',
         'AAAAAAA',
         false,
-        0,
         'AAAAAAA',
         currentDate,
         0
@@ -93,7 +92,6 @@ describe('Service Tests', () => {
             serialColetor: 'BBBBBB',
             nomeComercial: 'BBBBBB',
             situacao: true,
-            saldo: 1,
             senha: 'BBBBBB',
             data: currentDate.format(DATE_TIME_FORMAT),
             comissao: 1
@@ -127,7 +125,6 @@ describe('Service Tests', () => {
             serialColetor: 'BBBBBB',
             nomeComercial: 'BBBBBB',
             situacao: true,
-            saldo: 1,
             senha: 'BBBBBB',
             data: currentDate.format(DATE_TIME_FORMAT),
             comissao: 1

@@ -67,6 +67,10 @@ public class Banca implements Serializable {
     @Column(name = "bonus")
     private Long bonus;
 
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Saldo saldo;
+
     @OneToMany(mappedBy = "banca")
     private Set<Promotor> promotors = new HashSet<>();
 
@@ -90,9 +94,6 @@ public class Banca implements Serializable {
                joinColumns = @JoinColumn(name = "banca_id", referencedColumnName = "id"),
                inverseJoinColumns = @JoinColumn(name = "custom_user_id", referencedColumnName = "id"))
     private Set<CustomUser> customUsers = new HashSet<>();
-
-    @Transient
-    private Terminal terminal;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -272,6 +273,19 @@ public class Banca implements Serializable {
         this.bonus = bonus;
     }
 
+    public Saldo getSaldo() {
+        return saldo;
+    }
+
+    public Banca saldo(Saldo saldo) {
+        this.saldo = saldo;
+        return this;
+    }
+
+    public void setSaldo(Saldo saldo) {
+        this.saldo = saldo;
+    }
+
     public Set<Promotor> getPromotors() {
         return promotors;
     }
@@ -432,13 +446,5 @@ public class Banca implements Serializable {
             ", data='" + getData() + "'" +
             ", bonus=" + getBonus() +
             "}";
-    }
-
-    public Terminal getTerminal() {
-        return terminal;
-    }
-
-    public void setTerminal(Terminal terminal) {
-        this.terminal = terminal;
     }
 }

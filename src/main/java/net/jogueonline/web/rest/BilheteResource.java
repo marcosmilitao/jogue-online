@@ -2,20 +2,26 @@ package net.jogueonline.web.rest;
 
 import net.jogueonline.domain.Aposta;
 import net.jogueonline.domain.Bilhete;
+import net.jogueonline.domain.Saldo;
 import net.jogueonline.repository.ApostaRepository;
 import net.jogueonline.repository.BilheteRepository;
 import net.jogueonline.service.BilheteService;
+import net.jogueonline.service.SaldoService;
 import net.jogueonline.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
+import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-import springfox.documentation.spring.web.json.Json;
 
 import javax.validation.Valid;
 import java.net.URI;
@@ -40,12 +46,14 @@ public class BilheteResource {
     private String applicationName;
 
     private final BilheteRepository bilheteRepository;
-
     private final ApostaRepository apostaRepository;
 
-    public BilheteResource(BilheteRepository bilheteRepository, ApostaRepository apostaRepository) {
+    private final SaldoService saldoService;
+
+    public BilheteResource(BilheteRepository bilheteRepository, ApostaRepository apostaRepository, SaldoService saldoService) {
         this.bilheteRepository = bilheteRepository;
         this.apostaRepository = apostaRepository;
+        this.saldoService = saldoService;
     }
 
     /**
@@ -91,12 +99,15 @@ public class BilheteResource {
     /**
      * {@code GET  /bilhetes} : get all the bilhetes.
      *
+     * @param pageable the pagination information.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of bilhetes in body.
      */
     @GetMapping("/bilhetes")
-    public List<Bilhete> getAllBilhetes() {
-        log.debug("REST request to get all Bilhetes");
-        return bilheteRepository.findAll();
+    public ResponseEntity<List<Bilhete>> getAllBilhetes(Pageable pageable) {
+        log.debug("REST request to get a page of Bilhetes");
+        Page<Bilhete> page = bilheteRepository.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
     /**
@@ -125,6 +136,7 @@ public class BilheteResource {
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
 
+
     /**
      * {@code POST  /bilhetes} : Create a new bilhete.
      *
@@ -134,7 +146,7 @@ public class BilheteResource {
      */
     @PostMapping("/bilhetes/aposta/mobile")
     public ResponseEntity<Bilhete> addBilhete(@RequestBody Bilhete bilhete) throws URISyntaxException {
-        log.debug("REST request to save Bilhete : {}>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",  bilhete.getApostas());
+        log.debug("REST request to save Bilhete : {}",  bilhete.getApostas());
         List<Aposta> apostas = new ArrayList<Aposta>();
 
         bilhete.getApostas().forEach(data ->{
@@ -147,12 +159,10 @@ public class BilheteResource {
         if (bilhete.getId() != null) {
             throw new BadRequestAlertException("A new bilhete cannot already have an ID", ENTITY_NAME, "idexists");
         }
-//
-//        if(bilheteService.validarBilhete(bilhete) == null){
-//            throw new  BadRequestAlertException("bilhete cannot null", ENTITY_NAME, "null");
-//        }
+
         Bilhete result = bilheteRepository.save(bilhete);
         Bilhete b = bilheteService.gerarNumQrcBilhete(result);
+        saldoService.atualizaSaldo(b);
         bilheteService.salvarListaApostas(apostas,b);
 
         return ResponseEntity.created(new URI("/api/bilhetes/" + result.getId()))

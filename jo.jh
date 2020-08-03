@@ -69,7 +69,6 @@ entity Revendedor{
     serialColetor String,
     nomeComercial String,
     situacao Boolean, //ativo ou inativo
-    saldo BigDecimal,
     senha String,
     data Instant,
     comissao Long 
@@ -194,6 +193,17 @@ entity Aposta{
     numeroAposta Long required
 }
 
+entity Saldo{
+	valor BigDecimal required,
+    dataAtualizacao Instant,
+}
+
+entity Movimentacao{
+	valor BigDecimal required,
+    data Instant,
+    tipoMovimento TipoMovimento,
+    
+}
 
 
 /**entity LimiteVenda{
@@ -209,11 +219,11 @@ entity CustomUser{
     banca String
 }
 
-/**enum TipoMovimento {
-*    ENTRADA,
-*    SAIDA
-*}
-**/
+enum TipoMovimento {
+    ENTRADA,
+    SAIDA
+}
+
 
 
 
@@ -223,12 +233,14 @@ relationship OneToMany {
    Revendedor{terminal(nome)} to Terminal{revendedor(nome)}
    Banca{bilhete} to Bilhete{banca(nome)}
    Bilhete{aposta} to Aposta{bilhete(numeroBilhete)}
+   Saldo{movimentacao} to Movimentacao
 }
 
 relationship OneToOne{
 
     CustomUser{user(login)} to User 
-    //LimiteVenda{revendedor(nome)} to Revendedor
+    Revendedor{saldo} to Saldo
+    Banca{saldo} to Saldo
 }
 
 
@@ -240,3 +252,7 @@ relationship ManyToMany {
    Loteria{diasFuncionamento(dia)} to DiasFuncionamento{loteria(nome)}
    Loteria{premio(nome)} to Premio {loteria(nome)}
 }
+
+
+paginate Aposta with pagination
+paginate Bilhete with pagination

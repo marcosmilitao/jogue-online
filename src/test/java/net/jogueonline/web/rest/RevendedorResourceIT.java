@@ -14,7 +14,6 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
-import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
@@ -60,9 +59,6 @@ public class RevendedorResourceIT {
     private static final Boolean DEFAULT_SITUACAO = false;
     private static final Boolean UPDATED_SITUACAO = true;
 
-    private static final BigDecimal DEFAULT_SALDO = new BigDecimal(1);
-    private static final BigDecimal UPDATED_SALDO = new BigDecimal(2);
-
     private static final String DEFAULT_SENHA = "AAAAAAAAAA";
     private static final String UPDATED_SENHA = "BBBBBBBBBB";
 
@@ -100,7 +96,6 @@ public class RevendedorResourceIT {
             .serialColetor(DEFAULT_SERIAL_COLETOR)
             .nomeComercial(DEFAULT_NOME_COMERCIAL)
             .situacao(DEFAULT_SITUACAO)
-            .saldo(DEFAULT_SALDO)
             .senha(DEFAULT_SENHA)
             .data(DEFAULT_DATA)
             .comissao(DEFAULT_COMISSAO);
@@ -123,7 +118,6 @@ public class RevendedorResourceIT {
             .serialColetor(UPDATED_SERIAL_COLETOR)
             .nomeComercial(UPDATED_NOME_COMERCIAL)
             .situacao(UPDATED_SITUACAO)
-            .saldo(UPDATED_SALDO)
             .senha(UPDATED_SENHA)
             .data(UPDATED_DATA)
             .comissao(UPDATED_COMISSAO);
@@ -159,7 +153,6 @@ public class RevendedorResourceIT {
         assertThat(testRevendedor.getSerialColetor()).isEqualTo(DEFAULT_SERIAL_COLETOR);
         assertThat(testRevendedor.getNomeComercial()).isEqualTo(DEFAULT_NOME_COMERCIAL);
         assertThat(testRevendedor.isSituacao()).isEqualTo(DEFAULT_SITUACAO);
-        assertThat(testRevendedor.getSaldo()).isEqualTo(DEFAULT_SALDO);
         assertThat(testRevendedor.getSenha()).isEqualTo(DEFAULT_SENHA);
         assertThat(testRevendedor.getData()).isEqualTo(DEFAULT_DATA);
         assertThat(testRevendedor.getComissao()).isEqualTo(DEFAULT_COMISSAO);
@@ -241,7 +234,6 @@ public class RevendedorResourceIT {
             .andExpect(jsonPath("$.[*].serialColetor").value(hasItem(DEFAULT_SERIAL_COLETOR)))
             .andExpect(jsonPath("$.[*].nomeComercial").value(hasItem(DEFAULT_NOME_COMERCIAL)))
             .andExpect(jsonPath("$.[*].situacao").value(hasItem(DEFAULT_SITUACAO.booleanValue())))
-            .andExpect(jsonPath("$.[*].saldo").value(hasItem(DEFAULT_SALDO.intValue())))
             .andExpect(jsonPath("$.[*].senha").value(hasItem(DEFAULT_SENHA)))
             .andExpect(jsonPath("$.[*].data").value(hasItem(DEFAULT_DATA.toString())))
             .andExpect(jsonPath("$.[*].comissao").value(hasItem(DEFAULT_COMISSAO.intValue())));
@@ -267,7 +259,6 @@ public class RevendedorResourceIT {
             .andExpect(jsonPath("$.serialColetor").value(DEFAULT_SERIAL_COLETOR))
             .andExpect(jsonPath("$.nomeComercial").value(DEFAULT_NOME_COMERCIAL))
             .andExpect(jsonPath("$.situacao").value(DEFAULT_SITUACAO.booleanValue()))
-            .andExpect(jsonPath("$.saldo").value(DEFAULT_SALDO.intValue()))
             .andExpect(jsonPath("$.senha").value(DEFAULT_SENHA))
             .andExpect(jsonPath("$.data").value(DEFAULT_DATA.toString()))
             .andExpect(jsonPath("$.comissao").value(DEFAULT_COMISSAO.intValue()));
@@ -303,7 +294,6 @@ public class RevendedorResourceIT {
             .serialColetor(UPDATED_SERIAL_COLETOR)
             .nomeComercial(UPDATED_NOME_COMERCIAL)
             .situacao(UPDATED_SITUACAO)
-            .saldo(UPDATED_SALDO)
             .senha(UPDATED_SENHA)
             .data(UPDATED_DATA)
             .comissao(UPDATED_COMISSAO);
@@ -326,7 +316,6 @@ public class RevendedorResourceIT {
         assertThat(testRevendedor.getSerialColetor()).isEqualTo(UPDATED_SERIAL_COLETOR);
         assertThat(testRevendedor.getNomeComercial()).isEqualTo(UPDATED_NOME_COMERCIAL);
         assertThat(testRevendedor.isSituacao()).isEqualTo(UPDATED_SITUACAO);
-        assertThat(testRevendedor.getSaldo()).isEqualTo(UPDATED_SALDO);
         assertThat(testRevendedor.getSenha()).isEqualTo(UPDATED_SENHA);
         assertThat(testRevendedor.getData()).isEqualTo(UPDATED_DATA);
         assertThat(testRevendedor.getComissao()).isEqualTo(UPDATED_COMISSAO);

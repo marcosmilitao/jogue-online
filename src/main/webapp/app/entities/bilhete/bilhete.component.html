@@ -21,21 +21,21 @@
     <div class="table-responsive" id="entities" *ngIf="bilhetes?.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-                <tr>
-                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.bilhete.numeroBilhete">Numero Bilhete</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.bilhete.codigoBanca">Codigo Banca</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.bilhete.codigoLoteria">Codigo Loteria</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.bilhete.loteriaNome">Loteria Nome</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.bilhete.valorTotalAposta">Valor Total Aposta</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.bilhete.bonusBanca">Bonus Banca</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.bilhete.bonusIndividual">Bonus Individual</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.bilhete.comicao">Comicao</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.bilhete.valorBilhete">Valor Bilhete</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.bilhete.dataHoraAposta">Data Hora Aposta</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.bilhete.qrcode">Qrcode</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.bilhete.codigoTerminal">Codigo Terminal</span></th>
-                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.bilhete.banca">Banca</span></th>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="numeroBilhete"><span jhiTranslate="jogueOnlineApp.bilhete.numeroBilhete">Numero Bilhete</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="codigoBanca"><span jhiTranslate="jogueOnlineApp.bilhete.codigoBanca">Codigo Banca</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="codigoLoteria"><span jhiTranslate="jogueOnlineApp.bilhete.codigoLoteria">Codigo Loteria</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="loteriaNome"><span jhiTranslate="jogueOnlineApp.bilhete.loteriaNome">Loteria Nome</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="valorTotalAposta"><span jhiTranslate="jogueOnlineApp.bilhete.valorTotalAposta">Valor Total Aposta</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="bonusBanca"><span jhiTranslate="jogueOnlineApp.bilhete.bonusBanca">Bonus Banca</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="bonusIndividual"><span jhiTranslate="jogueOnlineApp.bilhete.bonusIndividual">Bonus Individual</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="comicao"><span jhiTranslate="jogueOnlineApp.bilhete.comicao">Comicao</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="valorBilhete"><span jhiTranslate="jogueOnlineApp.bilhete.valorBilhete">Valor Bilhete</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dataHoraAposta"><span jhiTranslate="jogueOnlineApp.bilhete.dataHoraAposta">Data Hora Aposta</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="qrcode"><span jhiTranslate="jogueOnlineApp.bilhete.qrcode">Qrcode</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="codigoTerminal"><span jhiTranslate="jogueOnlineApp.bilhete.codigoTerminal">Codigo Terminal</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="banca.nome"><span jhiTranslate="jogueOnlineApp.bilhete.banca">Banca</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -85,5 +85,15 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <div *ngIf="bilhetes?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
     </div>
 </div>

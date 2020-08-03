@@ -4,11 +4,14 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 
 import { IBanca, Banca } from 'app/shared/model/banca.model';
 import { BancaService } from './banca.service';
+import { ISaldo } from 'app/shared/model/saldo.model';
+import { SaldoService } from 'app/entities/saldo/saldo.service';
 import { IModalidade } from 'app/shared/model/modalidade.model';
 import { ModalidadeService } from 'app/entities/modalidade/modalidade.service';
 import { ILoteria } from 'app/shared/model/loteria.model';
@@ -16,7 +19,9 @@ import { LoteriaService } from 'app/entities/loteria/loteria.service';
 import { ICustomUser } from 'app/shared/model/custom-user.model';
 import { CustomUserService } from 'app/entities/custom-user/custom-user.service';
 
-type SelectableEntity = IModalidade | ILoteria | ICustomUser;
+type SelectableEntity = ISaldo | IModalidade | ILoteria | ICustomUser;
+
+type SelectableManyToManyEntity = IModalidade | ILoteria | ICustomUser;
 
 @Component({
   selector: 'jhi-banca-update',
@@ -24,6 +29,7 @@ type SelectableEntity = IModalidade | ILoteria | ICustomUser;
 })
 export class BancaUpdateComponent implements OnInit {
   isSaving = false;
+  saldos: ISaldo[] = [];
   modalidades: IModalidade[] = [];
   loterias: ILoteria[] = [];
   customusers: ICustomUser[] = [];
@@ -43,6 +49,7 @@ export class BancaUpdateComponent implements OnInit {
     mensagemPule3: [],
     data: [],
     bonus: [],
+    saldo: [],
     modalidades: [],
     loterias: [],
     customUsers: []
@@ -50,6 +57,7 @@ export class BancaUpdateComponent implements OnInit {
 
   constructor(
     protected bancaService: BancaService,
+    protected saldoService: SaldoService,
     protected modalidadeService: ModalidadeService,
     protected loteriaService: LoteriaService,
     protected customUserService: CustomUserService,
@@ -65,6 +73,28 @@ export class BancaUpdateComponent implements OnInit {
       }
 
       this.updateForm(banca);
+
+      this.saldoService
+        .query({ filter: 'banca-is-null' })
+        .pipe(
+          map((res: HttpResponse<ISaldo[]>) => {
+            return res.body || [];
+          })
+        )
+        .subscribe((resBody: ISaldo[]) => {
+          if (!banca.saldo || !banca.saldo.id) {
+            this.saldos = resBody;
+          } else {
+            this.saldoService
+              .find(banca.saldo.id)
+              .pipe(
+                map((subRes: HttpResponse<ISaldo>) => {
+                  return subRes.body ? [subRes.body].concat(resBody) : resBody;
+                })
+              )
+              .subscribe((concatRes: ISaldo[]) => (this.saldos = concatRes));
+          }
+        });
 
       this.modalidadeService.query().subscribe((res: HttpResponse<IModalidade[]>) => (this.modalidades = res.body || []));
 
@@ -90,6 +120,7 @@ export class BancaUpdateComponent implements OnInit {
       mensagemPule3: banca.mensagemPule3,
       data: banca.data ? banca.data.format(DATE_TIME_FORMAT) : null,
       bonus: banca.bonus,
+      saldo: banca.saldo,
       modalidades: banca.modalidades,
       loterias: banca.loterias,
       customUsers: banca.customUsers
@@ -127,6 +158,7 @@ export class BancaUpdateComponent implements OnInit {
       mensagemPule3: this.editForm.get(['mensagemPule3'])!.value,
       data: this.editForm.get(['data'])!.value ? moment(this.editForm.get(['data'])!.value, DATE_TIME_FORMAT) : undefined,
       bonus: this.editForm.get(['bonus'])!.value,
+      saldo: this.editForm.get(['saldo'])!.value,
       modalidades: this.editForm.get(['modalidades'])!.value,
       loterias: this.editForm.get(['loterias'])!.value,
       customUsers: this.editForm.get(['customUsers'])!.value
@@ -153,7 +185,7 @@ export class BancaUpdateComponent implements OnInit {
     return item.id;
   }
 
-  getSelected(selectedVals: SelectableEntity[], option: SelectableEntity): SelectableEntity {
+  getSelected(selectedVals: SelectableManyToManyEntity[], option: SelectableManyToManyEntity): SelectableManyToManyEntity {
     if (selectedVals) {
       for (let i = 0; i < selectedVals.length; i++) {
         if (option.id === selectedVals[i].id) {

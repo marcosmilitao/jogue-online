@@ -1,0 +1,9 @@
+{
+  "jogueOnlineApp": {
+    "TipoMovimento": {
+      "null": "",
+      "ENTRADA": "ENTRADA",
+      "SAIDA": "SAIDA"
+    }
+  }
+}

@@ -78,12 +78,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.revendedor.saldo" for="field_saldo">Saldo</label>
-                    <input type="number" class="form-control" name="saldo" id="field_saldo"
-                           formControlName="saldo"/>
-                </div>
-
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="jogueOnlineApp.revendedor.senha" for="field_senha">Senha</label>
                     <input type="text" class="form-control" name="senha" id="field_senha"
                            formControlName="senha"/>
@@ -100,6 +94,14 @@
                     <label class="form-control-label" jhiTranslate="jogueOnlineApp.revendedor.comissao" for="field_comissao">Comissao</label>
                     <input type="number" class="form-control" name="comissao" id="field_comissao"
                            formControlName="comissao"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.revendedor.saldo" for="field_saldo">Saldo</label>
+                    <select class="form-control" id="field_saldo" name="saldo" formControlName="saldo">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="saldoOption.id === editForm.get('saldo')!.value?.id ? editForm.get('saldo')!.value : saldoOption" *ngFor="let saldoOption of saldos; trackBy: trackById">{{ saldoOption.id }}</option>
+                    </select>
                 </div>
 
                 <div class="form-group">

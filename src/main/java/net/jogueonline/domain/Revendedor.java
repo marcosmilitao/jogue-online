@@ -7,7 +7,6 @@ import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.util.Objects;
-import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
@@ -55,9 +54,6 @@ public class Revendedor implements Serializable {
     @Column(name = "situacao")
     private Boolean situacao;
 
-    @Column(name = "saldo", precision = 21, scale = 2)
-    private BigDecimal saldo;
-
     @Column(name = "senha")
     private String senha;
 
@@ -66,6 +62,10 @@ public class Revendedor implements Serializable {
 
     @Column(name = "comissao")
     private Long comissao;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Saldo saldo;
 
     @OneToMany(mappedBy = "revendedor")
     private Set<Terminal> terminals = new HashSet<>();
@@ -200,19 +200,6 @@ public class Revendedor implements Serializable {
         this.situacao = situacao;
     }
 
-    public BigDecimal getSaldo() {
-        return saldo;
-    }
-
-    public Revendedor saldo(BigDecimal saldo) {
-        this.saldo = saldo;
-        return this;
-    }
-
-    public void setSaldo(BigDecimal saldo) {
-        this.saldo = saldo;
-    }
-
     public String getSenha() {
         return senha;
     }
@@ -250,6 +237,19 @@ public class Revendedor implements Serializable {
 
     public void setComissao(Long comissao) {
         this.comissao = comissao;
+    }
+
+    public Saldo getSaldo() {
+        return saldo;
+    }
+
+    public Revendedor saldo(Saldo saldo) {
+        this.saldo = saldo;
+        return this;
+    }
+
+    public void setSaldo(Saldo saldo) {
+        this.saldo = saldo;
     }
 
     public Set<Terminal> getTerminals() {
@@ -320,7 +320,6 @@ public class Revendedor implements Serializable {
             ", serialColetor='" + getSerialColetor() + "'" +
             ", nomeComercial='" + getNomeComercial() + "'" +
             ", situacao='" + isSituacao() + "'" +
-            ", saldo=" + getSaldo() +
             ", senha='" + getSenha() + "'" +
             ", data='" + getData() + "'" +
             ", comissao=" + getComissao() +

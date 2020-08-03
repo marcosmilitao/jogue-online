@@ -85,6 +85,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers("/api/bilhetes/aposta").permitAll()
             .antMatchers("/api/bilhetes/aposta/mobile").permitAll()
             .antMatchers("/api/bilhetes/*").permitAll()
+            .antMatchers("/api/saldos/mobile/**").permitAll()
             .antMatchers("/api/terminal/login/**").permitAll()
             .antMatchers("/api/account/reset-password/init").permitAll()
             .antMatchers("/api/account/reset-password/finish").permitAll()

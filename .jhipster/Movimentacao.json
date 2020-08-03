@@ -1,0 +1,41 @@
+{
+    "name": "Movimentacao",
+    "fields": [
+        {
+            "fieldName": "valor",
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "data",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "tipoMovimento",
+            "fieldType": "TipoMovimento",
+            "fieldValues": "ENTRADA,SAIDA"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "saldo",
+            "otherEntityRelationshipName": "movimentacao",
+            "relationshipName": "saldo",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200725233800",
+    "entityTableName": "movimentacao",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

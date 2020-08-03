@@ -90,7 +90,7 @@
     "javadoc": "entity MovimentoGeral {\\ndataMovimentacao Instant,\\nvalor BigDecimal,\\ntipo String,\\nidDadosEntrada Long,\\nidDadosSaida Long,\\nidBanca Long,\\nidCliente Long,\\ndescricao String,\\ntipoMovimentacao TipoMovimento\\n}",
     "entityTableName": "bilhete",
     "dto": "no",
-    "pagination": "no",
+    "pagination": "pagination",
     "service": "no",
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,

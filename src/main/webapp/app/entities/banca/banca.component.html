@@ -36,6 +36,7 @@
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.banca.mensagemPule3">Mensagem Pule 3</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.banca.data">Data</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.banca.bonus">Bonus</span></th>
+                    <th scope="col" ><span jhiTranslate="jogueOnlineApp.banca.saldo">Saldo</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.banca.modalidade">Modalidade</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.banca.loteria">Loteria</span></th>
                     <th scope="col" ><span jhiTranslate="jogueOnlineApp.banca.customUser">Custom User</span></th>
@@ -58,6 +59,11 @@
                     <td>{{ banca.mensagemPule3 }}</td>
                     <td>{{ banca.data | date:'medium' }}</td>
                     <td>{{ banca.bonus }}</td>
+                    <td>
+                        <div *ngIf="banca.saldo">
+                            <a [routerLink]="['/saldo', banca.saldo?.id, 'view']" >{{ banca.saldo?.id }}</a>
+                        </div>
+                    </td>
                     <td>
                         <span *ngFor="let modalidade of banca.modalidades; let last = last">
                             <a class="form-control-static" [routerLink]="['/modalidade', modalidade?.id, 'view']">{{ modalidade.nome }}</a>{{ last ? '' : ', ' }}

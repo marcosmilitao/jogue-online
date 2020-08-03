@@ -97,6 +97,14 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jogueOnlineApp.banca.saldo" for="field_saldo">Saldo</label>
+                    <select class="form-control" id="field_saldo" name="saldo" formControlName="saldo">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="saldoOption.id === editForm.get('saldo')!.value?.id ? editForm.get('saldo')!.value : saldoOption" *ngFor="let saldoOption of saldos; trackBy: trackById">{{ saldoOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
                     <label jhiTranslate="jogueOnlineApp.banca.modalidade" for="field_modalidades">Modalidade</label>
                     <select class="form-control" id="field_modalidades" multiple name="modalidades" formControlName="modalidades">
                         <option [ngValue]="getSelected(editForm.get('modalidades')!.value, modalidadeOption)" *ngFor="let modalidadeOption of modalidades; trackBy: trackById">{{ modalidadeOption.nome }}</option>

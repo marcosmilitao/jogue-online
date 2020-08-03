@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="movimentacao">
+            <h2><span jhiTranslate="jogueOnlineApp.movimentacao.detail.title">Movimentacao</span> {{ movimentacao.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jogueOnlineApp.movimentacao.valor">Valor</span></dt>
+                <dd>
+                    <span>{{ movimentacao.valor }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.movimentacao.data">Data</span></dt>
+                <dd>
+                    <span>{{ movimentacao.data }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.movimentacao.tipoMovimento">Tipo Movimento</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'jogueOnlineApp.TipoMovimento.' + movimentacao.tipoMovimento }}">{{ movimentacao.tipoMovimento }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.movimentacao.saldo">Saldo</span></dt>
+                <dd>
+                    <div *ngIf="movimentacao.saldo">
+                        <a [routerLink]="['/saldo', movimentacao.saldo?.id, 'view']">{{ movimentacao.saldo?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/movimentacao', movimentacao.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,5 @@
 import { Moment } from 'moment';
+import { ISaldo } from 'app/shared/model/saldo.model';
 import { ITerminal } from 'app/shared/model/terminal.model';
 import { IPromotor } from 'app/shared/model/promotor.model';
 
@@ -13,10 +14,10 @@ export interface IRevendedor {
   serialColetor?: string;
   nomeComercial?: string;
   situacao?: boolean;
-  saldo?: number;
   senha?: string;
   data?: Moment;
   comissao?: number;
+  saldo?: ISaldo;
   terminals?: ITerminal[];
   promotor?: IPromotor;
 }
@@ -33,10 +34,10 @@ export class Revendedor implements IRevendedor {
     public serialColetor?: string,
     public nomeComercial?: string,
     public situacao?: boolean,
-    public saldo?: number,
     public senha?: string,
     public data?: Moment,
     public comissao?: number,
+    public saldo?: ISaldo,
     public terminals?: ITerminal[],
     public promotor?: IPromotor
   ) {

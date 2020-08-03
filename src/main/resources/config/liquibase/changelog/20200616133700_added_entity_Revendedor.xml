@@ -42,9 +42,6 @@
             <column name="situacao" type="boolean">
                 <constraints nullable="true" />
             </column>
-            <column name="saldo" type="decimal(21,2)">
-                <constraints nullable="true" />
-            </column>
             <column name="senha" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -53,6 +50,9 @@
             </column>
             <column name="comissao" type="bigint">
                 <constraints nullable="true" />
+            </column>
+            <column name="saldo_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_revendedor_saldo_id" />
             </column>
             <column name="promotor_id" type="bigint">
                 <constraints nullable="true" />
@@ -90,7 +90,6 @@
             <column name="serial_coletor" type="string"/>
             <column name="nome_comercial" type="string"/>
             <column name="situacao" type="boolean"/>
-            <column name="saldo" type="numeric"/>
             <column name="senha" type="string"/>
             <column name="data" type="datetime"/>
             <column name="comissao" type="numeric"/>

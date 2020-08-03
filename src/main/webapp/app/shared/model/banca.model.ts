@@ -1,4 +1,5 @@
 import { Moment } from 'moment';
+import { ISaldo } from 'app/shared/model/saldo.model';
 import { IPromotor } from 'app/shared/model/promotor.model';
 import { IBilhete } from 'app/shared/model/bilhete.model';
 import { IModalidade } from 'app/shared/model/modalidade.model';
@@ -20,6 +21,7 @@ export interface IBanca {
   mensagemPule3?: string;
   data?: Moment;
   bonus?: number;
+  saldo?: ISaldo;
   promotors?: IPromotor[];
   bilhetes?: IBilhete[];
   modalidades?: IModalidade[];
@@ -43,6 +45,7 @@ export class Banca implements IBanca {
     public mensagemPule3?: string,
     public data?: Moment,
     public bonus?: number,
+    public saldo?: ISaldo,
     public promotors?: IPromotor[],
     public bilhetes?: IBilhete[],
     public modalidades?: IModalidade[],

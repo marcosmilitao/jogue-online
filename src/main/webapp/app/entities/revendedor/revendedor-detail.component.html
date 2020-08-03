@@ -44,10 +44,6 @@
                 <dd>
                     <span>{{ revendedor.situacao }}</span>
                 </dd>
-                <dt><span jhiTranslate="jogueOnlineApp.revendedor.saldo">Saldo</span></dt>
-                <dd>
-                    <span>{{ revendedor.saldo }}</span>
-                </dd>
                 <dt><span jhiTranslate="jogueOnlineApp.revendedor.senha">Senha</span></dt>
                 <dd>
                     <span>{{ revendedor.senha }}</span>
@@ -59,6 +55,12 @@
                 <dt><span jhiTranslate="jogueOnlineApp.revendedor.comissao">Comissao</span></dt>
                 <dd>
                     <span>{{ revendedor.comissao }}</span>
+                </dd>
+                <dt><span jhiTranslate="jogueOnlineApp.revendedor.saldo">Saldo</span></dt>
+                <dd>
+                    <div *ngIf="revendedor.saldo">
+                        <a [routerLink]="['/saldo', revendedor.saldo?.id, 'view']">{{ revendedor.saldo?.id }}</a>
+                    </div>
                 </dd>
                 <dt><span jhiTranslate="jogueOnlineApp.revendedor.promotor">Promotor</span></dt>
                 <dd>
