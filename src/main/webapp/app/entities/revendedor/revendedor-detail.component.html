@@ -59,7 +59,7 @@
                 <dt><span jhiTranslate="jogueOnlineApp.revendedor.saldo">Saldo</span></dt>
                 <dd>
                     <div *ngIf="revendedor.saldo">
-                        <a [routerLink]="['/saldo', revendedor.saldo?.id, 'view']">{{ revendedor.saldo?.id }}</a>
+                        <a [routerLink]="['/saldo', revendedor.saldo?.id, 'view']">{{ revendedor.saldo?.valor }}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="jogueOnlineApp.revendedor.promotor">Promotor</span></dt>

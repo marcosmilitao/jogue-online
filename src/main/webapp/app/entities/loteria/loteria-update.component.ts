@@ -11,10 +11,6 @@ import { ILoteria, Loteria } from 'app/shared/model/loteria.model';
 import { LoteriaService } from './loteria.service';
 import { IDiasFuncionamento } from 'app/shared/model/dias-funcionamento.model';
 import { DiasFuncionamentoService } from 'app/entities/dias-funcionamento/dias-funcionamento.service';
-import { IPremio } from 'app/shared/model/premio.model';
-import { PremioService } from 'app/entities/premio/premio.service';
-
-type SelectableEntity = IDiasFuncionamento | IPremio;
 
 @Component({
   selector: 'jhi-loteria-update',
@@ -23,7 +19,6 @@ type SelectableEntity = IDiasFuncionamento | IPremio;
 export class LoteriaUpdateComponent implements OnInit {
   isSaving = false;
   diasfuncionamentos: IDiasFuncionamento[] = [];
-  premios: IPremio[] = [];
 
   editForm = this.fb.group({
     id: [],
@@ -39,14 +34,12 @@ export class LoteriaUpdateComponent implements OnInit {
     minuto: [null, [Validators.required]],
     disponivel: [],
     descricaoCompleta: [null, [Validators.required]],
-    diasFuncionamentos: [],
-    premios: []
+    diasFuncionamentos: []
   });
 
   constructor(
     protected loteriaService: LoteriaService,
     protected diasFuncionamentoService: DiasFuncionamentoService,
-    protected premioService: PremioService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -63,8 +56,6 @@ export class LoteriaUpdateComponent implements OnInit {
       this.diasFuncionamentoService
         .query()
         .subscribe((res: HttpResponse<IDiasFuncionamento[]>) => (this.diasfuncionamentos = res.body || []));
-
-      this.premioService.query().subscribe((res: HttpResponse<IPremio[]>) => (this.premios = res.body || []));
     });
   }
 
@@ -83,8 +74,7 @@ export class LoteriaUpdateComponent implements OnInit {
       minuto: loteria.minuto,
       disponivel: loteria.disponivel,
       descricaoCompleta: loteria.descricaoCompleta,
-      diasFuncionamentos: loteria.diasFuncionamentos,
-      premios: loteria.premios
+      diasFuncionamentos: loteria.diasFuncionamentos
     });
   }
 
@@ -118,8 +108,7 @@ export class LoteriaUpdateComponent implements OnInit {
       minuto: this.editForm.get(['minuto'])!.value,
       disponivel: this.editForm.get(['disponivel'])!.value,
       descricaoCompleta: this.editForm.get(['descricaoCompleta'])!.value,
-      diasFuncionamentos: this.editForm.get(['diasFuncionamentos'])!.value,
-      premios: this.editForm.get(['premios'])!.value
+      diasFuncionamentos: this.editForm.get(['diasFuncionamentos'])!.value
     };
   }
 
@@ -139,11 +128,11 @@ export class LoteriaUpdateComponent implements OnInit {
     this.isSaving = false;
   }
 
-  trackById(index: number, item: SelectableEntity): any {
+  trackById(index: number, item: IDiasFuncionamento): any {
     return item.id;
   }
 
-  getSelected(selectedVals: SelectableEntity[], option: SelectableEntity): SelectableEntity {
+  getSelected(selectedVals: IDiasFuncionamento[], option: IDiasFuncionamento): IDiasFuncionamento {
     if (selectedVals) {
       for (let i = 0; i < selectedVals.length; i++) {
         if (option.id === selectedVals[i].id) {

@@ -19,6 +19,20 @@
             "otherEntityName": "movimentacao",
             "otherEntityRelationshipName": "saldo",
             "relationshipName": "movimentacao"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "revendedor",
+            "otherEntityRelationshipName": "saldo",
+            "relationshipName": "revendedor",
+            "ownerSide": false
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "banca",
+            "otherEntityRelationshipName": "saldo",
+            "relationshipName": "banca",
+            "ownerSide": false
         }
     ],
     "changelogDate": "20200725233700",

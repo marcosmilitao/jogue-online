@@ -6,7 +6,7 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-
+    
     <!--
         Added the entity Banca.
     -->
@@ -54,6 +54,9 @@
             <column name="bonus" type="bigint">
                 <constraints nullable="true" />
             </column>
+            <column name="saldo_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_banca_saldo_id" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         <dropDefaultValue tableName="banca" columnName="data" columnDataType="datetime"/>
@@ -71,7 +74,7 @@
         </createTable>
 
         <addPrimaryKey columnNames="banca_id, modalidade_id" tableName="banca_modalidade"/>
-
+        
         <createTable tableName="banca_loteria">
             <column name="loteria_id" type="bigint">
                 <constraints nullable="false"/>
@@ -82,7 +85,7 @@
         </createTable>
 
         <addPrimaryKey columnNames="banca_id, loteria_id" tableName="banca_loteria"/>
-
+        
         <createTable tableName="banca_custom_user">
             <column name="custom_user_id" type="bigint">
                 <constraints nullable="false"/>
@@ -93,7 +96,7 @@
         </createTable>
 
         <addPrimaryKey columnNames="banca_id, custom_user_id" tableName="banca_custom_user"/>
-
+        
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 

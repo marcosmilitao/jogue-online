@@ -1,3 +1,4 @@
+import { IPremio } from 'app/shared/model/premio.model';
 import { IBanca } from 'app/shared/model/banca.model';
 
 export interface IModalidade {
@@ -19,6 +20,7 @@ export interface IModalidade {
   palpiteMultiploTerminal?: boolean;
   ordenar?: boolean;
   permitePalpiteAleatorio?: boolean;
+  premios?: IPremio[];
   bancas?: IBanca[];
 }
 
@@ -42,6 +44,7 @@ export class Modalidade implements IModalidade {
     public palpiteMultiploTerminal?: boolean,
     public ordenar?: boolean,
     public permitePalpiteAleatorio?: boolean,
+    public premios?: IPremio[],
     public bancas?: IBanca[]
   ) {
     this.maiorValorExcessao = this.maiorValorExcessao || false;

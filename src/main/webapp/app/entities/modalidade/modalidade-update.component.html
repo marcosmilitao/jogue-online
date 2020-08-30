@@ -194,6 +194,13 @@
                     <input type="checkbox" class="form-control" name="permitePalpiteAleatorio" id="field_permitePalpiteAleatorio"
                            formControlName="permitePalpiteAleatorio"/>
                 </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="jogueOnlineApp.modalidade.premio" for="field_premios">Premio</label>
+                    <select class="form-control" id="field_premios" multiple name="premios" formControlName="premios">
+                        <option [ngValue]="getSelected(editForm.get('premios')!.value, premioOption)" *ngFor="let premioOption of premios; trackBy: trackById">{{ premioOption.nome }}</option>
+                    </select>
+                </div>
             </div>
 
             <div>

@@ -13,9 +13,9 @@
     "relationships": [
         {
             "relationshipType": "many-to-many",
-            "otherEntityName": "loteria",
+            "otherEntityName": "modalidade",
             "otherEntityRelationshipName": "premio",
-            "relationshipName": "loteria",
+            "relationshipName": "modalidade",
             "otherEntityField": "nome",
             "ownerSide": false
         }

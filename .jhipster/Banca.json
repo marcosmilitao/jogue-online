@@ -63,7 +63,7 @@
             "otherEntityName": "saldo",
             "otherEntityRelationshipName": "banca",
             "relationshipName": "saldo",
-            "otherEntityField": "id",
+            "otherEntityField": "valor",
             "ownerSide": true
         },
         {

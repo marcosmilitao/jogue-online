@@ -1,12 +1,11 @@
 package net.jogueonline.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.Objects;
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -37,13 +36,13 @@ public class Saldo implements Serializable {
     @OneToMany(mappedBy = "saldo")
     private Set<Movimentacao> movimentacaos = new HashSet<>();
 
-    @PrePersist
-    protected void prePersist() {
-        Instant nowUtc = Instant.now();
-        ZoneId brasilSaoPaulo = ZoneId.of("America/Sao_Paulo");
-        ZonedDateTime nowBrasil = ZonedDateTime.ofInstant(nowUtc,brasilSaoPaulo);
-        this.dataAtualizacao = nowBrasil.toInstant();
-    }
+    @OneToOne(mappedBy = "saldo")
+    @JsonIgnore
+    private Revendedor revendedor;
+
+    @OneToOne(mappedBy = "saldo")
+    @JsonIgnore
+    private Banca banca;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -103,6 +102,32 @@ public class Saldo implements Serializable {
 
     public void setMovimentacaos(Set<Movimentacao> movimentacaos) {
         this.movimentacaos = movimentacaos;
+    }
+
+    public Revendedor getRevendedor() {
+        return revendedor;
+    }
+
+    public Saldo revendedor(Revendedor revendedor) {
+        this.revendedor = revendedor;
+        return this;
+    }
+
+    public void setRevendedor(Revendedor revendedor) {
+        this.revendedor = revendedor;
+    }
+
+    public Banca getBanca() {
+        return banca;
+    }
+
+    public Saldo banca(Banca banca) {
+        this.banca = banca;
+        return this;
+    }
+
+    public void setBanca(Banca banca) {
+        this.banca = banca;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

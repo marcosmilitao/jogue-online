@@ -239,8 +239,8 @@ relationship OneToMany {
 relationship OneToOne{
 
     CustomUser{user(login)} to User 
-    Revendedor{saldo} to Saldo
-    Banca{saldo} to Saldo
+    Revendedor{saldo(valor)} to Saldo{revendedor(nome)}
+    Banca{saldo(valor)} to Saldo{banca(nome)}
 }
 
 
@@ -250,7 +250,7 @@ relationship ManyToMany {
    Banca{loteria(nome)} to Loteria{banca(nome)}
    Banca {customUser(login)} to CustomUser {banca(nome)}
    Loteria{diasFuncionamento(dia)} to DiasFuncionamento{loteria(nome)}
-   Loteria{premio(nome)} to Premio {loteria(nome)}
+   Modalidade{premio(nome)} to Premio {modalidade(nome)}
 }
 
 

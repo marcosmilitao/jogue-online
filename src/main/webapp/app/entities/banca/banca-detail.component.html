@@ -63,7 +63,7 @@
                 <dt><span jhiTranslate="jogueOnlineApp.banca.saldo">Saldo</span></dt>
                 <dd>
                     <div *ngIf="banca.saldo">
-                        <a [routerLink]="['/saldo', banca.saldo?.id, 'view']">{{ banca.saldo?.id }}</a>
+                        <a [routerLink]="['/saldo', banca.saldo?.id, 'view']">{{ banca.saldo?.valor }}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="jogueOnlineApp.banca.modalidade">Modalidade</span></dt>

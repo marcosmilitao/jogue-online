@@ -20,17 +20,5 @@
                                  referencedColumnNames="id"
                                  referencedTableName="dias_funcionamento"/>
         
-        <addForeignKeyConstraint baseColumnNames="loteria_id"
-                                 baseTableName="loteria_premio"
-                                 constraintName="fk_loteria_premio_loteria_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="loteria"/>
-
-        <addForeignKeyConstraint baseColumnNames="premio_id"
-                                 baseTableName="loteria_premio"
-                                 constraintName="fk_loteria_premio_premio_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="premio"/>
-        
     </changeSet>
 </databaseChangeLog>

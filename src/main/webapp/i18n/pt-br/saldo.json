@@ -18,7 +18,9 @@
       },
       "valor": "Valor",
       "dataAtualizacao": "Data Atualizacao",
-      "movimentacao": "Movimentacao"
+      "movimentacao": "Movimentacao",
+      "revendedor": "Revendedor",
+      "banca": "Banca"
     }
   }
 }

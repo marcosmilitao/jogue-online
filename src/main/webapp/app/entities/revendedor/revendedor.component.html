@@ -57,7 +57,7 @@
                     <td>{{ revendedor.comissao }}</td>
                     <td>
                         <div *ngIf="revendedor.saldo">
-                            <a [routerLink]="['/saldo', revendedor.saldo?.id, 'view']" >{{ revendedor.saldo?.id }}</a>
+                            <a [routerLink]="['/saldo', revendedor.saldo?.id, 'view']" >{{ revendedor.saldo?.valor }}</a>
                         </div>
                     </td>
                     <td>

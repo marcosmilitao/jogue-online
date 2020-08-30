@@ -83,12 +83,13 @@ public class ModalidadeResource {
     /**
      * {@code GET  /modalidades} : get all the modalidades.
      *
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of modalidades in body.
      */
     @GetMapping("/modalidades")
-    public List<Modalidade> getAllModalidades() {
+    public List<Modalidade> getAllModalidades(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get all Modalidades");
-        return modalidadeRepository.findAll();
+        return modalidadeRepository.findAllWithEagerRelationships();
     }
 
     /**
@@ -100,7 +101,7 @@ public class ModalidadeResource {
     @GetMapping("/modalidades/{id}")
     public ResponseEntity<Modalidade> getModalidade(@PathVariable Long id) {
         log.debug("REST request to get Modalidade : {}", id);
-        Optional<Modalidade> modalidade = modalidadeRepository.findById(id);
+        Optional<Modalidade> modalidade = modalidadeRepository.findOneWithEagerRelationships(id);
         return ResponseUtil.wrapOrNotFound(modalidade);
     }
 

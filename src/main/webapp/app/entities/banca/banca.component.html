@@ -61,7 +61,7 @@
                     <td>{{ banca.bonus }}</td>
                     <td>
                         <div *ngIf="banca.saldo">
-                            <a [routerLink]="['/saldo', banca.saldo?.id, 'view']" >{{ banca.saldo?.id }}</a>
+                            <a [routerLink]="['/saldo', banca.saldo?.id, 'view']" >{{ banca.saldo?.valor }}</a>
                         </div>
                     </td>
                     <td>

@@ -18,6 +18,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 /**
  * REST controller for managing {@link net.jogueonline.domain.Saldo}.
@@ -83,10 +85,25 @@ public class SaldoResource {
     /**
      * {@code GET  /saldos} : get all the saldos.
      *
+     * @param filter the filter of the request.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of saldos in body.
      */
     @GetMapping("/saldos")
-    public List<Saldo> getAllSaldos() {
+    public List<Saldo> getAllSaldos(@RequestParam(required = false) String filter) {
+        if ("revendedor-is-null".equals(filter)) {
+            log.debug("REST request to get all Saldos where revendedor is null");
+            return StreamSupport
+                .stream(saldoRepository.findAll().spliterator(), false)
+                .filter(saldo -> saldo.getRevendedor() == null)
+                .collect(Collectors.toList());
+        }
+        if ("banca-is-null".equals(filter)) {
+            log.debug("REST request to get all Saldos where banca is null");
+            return StreamSupport
+                .stream(saldoRepository.findAll().spliterator(), false)
+                .filter(saldo -> saldo.getBanca() == null)
+                .collect(Collectors.toList());
+        }
         log.debug("REST request to get all Saldos");
         return saldoRepository.findAll();
     }
@@ -116,19 +133,4 @@ public class SaldoResource {
         saldoRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
-
-
-    /**
-     * {@code GET  /saldos/:id} : get the "id" saldo Mobile.
-     *
-     * @param id the id of the saldo to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the saldo, or with status {@code 404 (Not Found)}.
-     */
-    @GetMapping("/saldos/mobile/{id}")
-    public ResponseEntity<Saldo> getSaldoMobile(@PathVariable Long id) {
-        log.debug("REST request to get Saldo : {}", id);
-        Optional<Saldo> saldo = saldoRepository.findById(id);
-        return ResponseUtil.wrapOrNotFound(saldo);
-    }
-
 }
