@@ -27,6 +27,6 @@ public interface ModalidadeRepository extends JpaRepository<Modalidade, Long> {
     @Query("select modalidade from Modalidade modalidade left join fetch modalidade.premios where modalidade.id =:id")
     Optional<Modalidade> findOneWithEagerRelationships(@Param("id") Long id);
 
-    @Query("select distinct modalidade from Modalidade modalidade left join fetch modalidade.bancas  left join fetch modalidade.premios b where b.id =:id")
+    @Query("select distinct modalidade from Modalidade modalidade left join fetch modalidade.bancas b left join fetch modalidade.premios  where b.id =:id")
     List<Modalidade> findByBancaPremio(@Param("id") Long id);
 }
