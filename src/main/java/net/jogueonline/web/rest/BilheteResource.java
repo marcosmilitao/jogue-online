@@ -116,6 +116,7 @@ public class BilheteResource {
      * @param id the id of the bilhete to retrieve.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the bilhete, or with status {@code 404 (Not Found)}.
      */
+    @CrossOrigin("*")
     @GetMapping("/bilhetes/{id}")
     public ResponseEntity<Bilhete> getBilhete(@PathVariable Long id) {
         log.debug("REST request to get Bilhete : {}", id);
