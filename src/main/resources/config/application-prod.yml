@@ -87,7 +87,7 @@ server:
 
 jhipster:
   cors:
-    allowed-origins: 'https://jogue-online.herokuapp.com/'
+    allowed-origins: '*'
     allowed-methods: '*'
     allowed-headers: '*'
     exposed-headers: 'Authorization,Link,X-Total-Count'
