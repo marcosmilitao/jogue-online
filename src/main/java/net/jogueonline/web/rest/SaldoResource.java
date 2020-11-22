@@ -133,4 +133,18 @@ public class SaldoResource {
         saldoRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
+
+
+    /**
+     * {@code GET  /saldos/:id} : get the "id" saldo.
+     *
+     * @param id the id of the saldo to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the saldo, or with status {@code 404 (Not Found)}.
+     */
+    @GetMapping("/saldos/mobile/{id}")
+    public ResponseEntity<Saldo> getSaldoMobile(@PathVariable Long id) {
+        log.debug("REST request to get Saldo : {}", id);
+        Optional<Saldo> saldo = saldoRepository.findById(id);
+        return ResponseUtil.wrapOrNotFound(saldo);
+    }
 }
