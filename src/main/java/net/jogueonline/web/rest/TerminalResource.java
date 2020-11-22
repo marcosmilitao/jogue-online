@@ -124,7 +124,6 @@ public class TerminalResource {
      * @param imei the imei of the terminal to retrieve.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the terminal, or with status {@code 404 (Not Found)}.
      */
-    @CrossOrigin("*")
     @GetMapping("/terminal/login2/{imei}/{telefone}")
     public ResponseEntity<Terminal> getTerminalbyImei(@PathVariable String imei, @PathVariable Long telefone) {
         log.debug("REST request to get Terminal : {}", imei);

@@ -117,7 +117,7 @@ public class LoteriaResource {
         loteriaRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
-    @CrossOrigin("*")
+
     @GetMapping("/loterias/banca/{id}")
     public List<Loteria> findByBanca(@PathVariable Long id){
         return loteriaRepository.findByBanca(id);
