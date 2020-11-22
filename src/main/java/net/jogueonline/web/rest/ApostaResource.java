@@ -128,6 +128,7 @@ public class ApostaResource {
 
 
     //apostas/mobile
+    @CrossOrigin("*")
     @PostMapping("/apostas/mobile")
     public ResponseEntity<Void> createAposta2(@Valid @RequestBody List<Aposta> aposta) throws URISyntaxException {
         log.debug("REST request to save Aposta : {}", aposta);

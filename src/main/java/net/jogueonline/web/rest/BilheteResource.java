@@ -144,6 +144,7 @@ public class BilheteResource {
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new bilhete, or with status {@code 400 (Bad Request)} if the bilhete has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
+    @CrossOrigin("*")
     @PostMapping("/bilhetes/aposta/mobile")
     public ResponseEntity<Bilhete> addBilhete(@RequestBody Bilhete bilhete) throws URISyntaxException {
         log.debug("REST request to save Bilhete : {}",  bilhete.getApostas());

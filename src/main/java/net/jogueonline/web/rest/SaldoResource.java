@@ -141,6 +141,7 @@ public class SaldoResource {
      * @param id the id of the saldo to retrieve.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the saldo, or with status {@code 404 (Not Found)}.
      */
+    @CrossOrigin("*")
     @GetMapping("/saldos/mobile/{id}")
     public ResponseEntity<Saldo> getSaldoMobile(@PathVariable Long id) {
         log.debug("REST request to get Saldo : {}", id);
