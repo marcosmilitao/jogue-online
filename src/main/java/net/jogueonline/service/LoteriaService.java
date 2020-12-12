@@ -41,8 +41,12 @@ public class LoteriaService {
         ZoneId brasilSaoPaulo = ZoneId.of("America/Sao_Paulo");
         ZonedDateTime nowBrasil = ZonedDateTime.ofInstant(nowUtc,brasilSaoPaulo);
 
-        if(loteria.getHora() < nowBrasil.getHour() && loteria.getMinuto() < nowBrasil.getMinute()){
-            return true;
+        if(loteria.getHora() < nowBrasil.getHour()){
+            if( loteria.getMinuto() < nowBrasil.getMinute()){
+                return true;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }
