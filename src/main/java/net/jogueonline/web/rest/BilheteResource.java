@@ -2,10 +2,12 @@ package net.jogueonline.web.rest;
 
 import net.jogueonline.domain.Aposta;
 import net.jogueonline.domain.Bilhete;
-import net.jogueonline.domain.Saldo;
+import net.jogueonline.domain.Loteria;
 import net.jogueonline.repository.ApostaRepository;
 import net.jogueonline.repository.BilheteRepository;
+import net.jogueonline.repository.LoteriaRepository;
 import net.jogueonline.service.BilheteService;
+import net.jogueonline.service.LoteriaService;
 import net.jogueonline.service.SaldoService;
 import net.jogueonline.web.rest.errors.BadRequestAlertException;
 
@@ -47,13 +49,17 @@ public class BilheteResource {
 
     private final BilheteRepository bilheteRepository;
     private final ApostaRepository apostaRepository;
-
     private final SaldoService saldoService;
 
-    public BilheteResource(BilheteRepository bilheteRepository, ApostaRepository apostaRepository, SaldoService saldoService) {
+    private final LoteriaRepository loteriaRepository;
+    private final LoteriaService loteriaService;
+
+    public BilheteResource(BilheteRepository bilheteRepository, ApostaRepository apostaRepository, SaldoService saldoService, LoteriaRepository loteriaRepository, LoteriaService loteriaService) {
         this.bilheteRepository = bilheteRepository;
         this.apostaRepository = apostaRepository;
         this.saldoService = saldoService;
+        this.loteriaRepository = loteriaRepository;
+        this.loteriaService = loteriaService;
     }
 
     /**
@@ -87,7 +93,14 @@ public class BilheteResource {
     @PutMapping("/bilhetes")
     public ResponseEntity<Bilhete> updateBilhete(@Valid @RequestBody Bilhete bilhete) throws URISyntaxException {
         log.debug("REST request to update Bilhete : {}", bilhete);
-        if (bilhete.getId() == null) {
+
+        Optional<Loteria> loteriaByid = loteriaRepository.findById(bilhete.getCodigoLoteria());
+        Loteria loteria = new Loteria();
+        if(loteriaByid != null){
+             loteria = loteriaByid.get();
+        }
+
+        if (bilhete.getId() == null && loteriaService.validarLoteria(loteria)) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
         Bilhete result = bilheteRepository.save(bilhete);
