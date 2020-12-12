@@ -4,6 +4,7 @@ import net.jogueonline.JogueOnlineApp;
 import net.jogueonline.domain.Loteria;
 import net.jogueonline.repository.LoteriaRepository;
 
+import net.jogueonline.service.LoteriaService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -81,6 +82,9 @@ public class LoteriaResourceIT {
 
     @Mock
     private LoteriaRepository loteriaRepositoryMock;
+
+    @Mock
+    private LoteriaService loteriaServiceMock;
 
     @Autowired
     private EntityManager em;
@@ -339,10 +343,10 @@ public class LoteriaResourceIT {
             .andExpect(jsonPath("$.[*].disponivel").value(hasItem(DEFAULT_DISPONIVEL.booleanValue())))
             .andExpect(jsonPath("$.[*].descricaoCompleta").value(hasItem(DEFAULT_DESCRICAO_COMPLETA)));
     }
-    
+
     @SuppressWarnings({"unchecked"})
     public void getAllLoteriasWithEagerRelationshipsIsEnabled() throws Exception {
-        LoteriaResource loteriaResource = new LoteriaResource(loteriaRepositoryMock);
+        LoteriaResource loteriaResource = new LoteriaResource(loteriaRepositoryMock,loteriaServiceMock);
         when(loteriaRepositoryMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
 
         restLoteriaMockMvc.perform(get("/api/loterias?eagerload=true"))
@@ -353,7 +357,7 @@ public class LoteriaResourceIT {
 
     @SuppressWarnings({"unchecked"})
     public void getAllLoteriasWithEagerRelationshipsIsNotEnabled() throws Exception {
-        LoteriaResource loteriaResource = new LoteriaResource(loteriaRepositoryMock);
+        LoteriaResource loteriaResource = new LoteriaResource(loteriaRepositoryMock,loteriaServiceMock);
         when(loteriaRepositoryMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
 
         restLoteriaMockMvc.perform(get("/api/loterias?eagerload=true"))

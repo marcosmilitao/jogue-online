@@ -2,6 +2,7 @@ package net.jogueonline.web.rest;
 
 import net.jogueonline.domain.Loteria;
 import net.jogueonline.repository.LoteriaRepository;
+import net.jogueonline.service.LoteriaService;
 import net.jogueonline.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -35,9 +36,11 @@ public class LoteriaResource {
     private String applicationName;
 
     private final LoteriaRepository loteriaRepository;
+    private final LoteriaService loteriaService;
 
-    public LoteriaResource(LoteriaRepository loteriaRepository) {
+    public LoteriaResource(LoteriaRepository loteriaRepository , LoteriaService loteriaService) {
         this.loteriaRepository = loteriaRepository;
+        this.loteriaService = loteriaService;
     }
 
     /**
@@ -120,6 +123,6 @@ public class LoteriaResource {
 
     @GetMapping("/loterias/banca/{id}")
     public List<Loteria> findByBanca(@PathVariable Long id){
-        return loteriaRepository.findByBanca(id);
+        return loteriaService.listarLoterias(id);
     }
 }
