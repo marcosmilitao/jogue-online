@@ -46,10 +46,10 @@ spring:
   liquibase:
     contexts: prod
   mail:
-    host: localhost
-    port: 25
-    username:
-    password:
+    host: mail.coderfullstack.com
+    port: 587
+    username: marcos@coderfullstack.com
+    password: FRx6wBLC84bqp55
   thymeleaf:
     cache: true
 
@@ -114,7 +114,8 @@ jhipster:
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000
   mail: # specific JHipster mail property, for standard properties see MailProperties
-    base-url: http://my-server-url-to-change # Modify according to your server's URL
+    base-url: https://jogue-online.herokuapp.com # Modify according to your server's URL
+    from: noreplay@coderfullstack.com
   metrics:
     logs: # Reports metrics in the logs
       enabled: false
